@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <title>روميتك - منصة البحث عن السكن المشترك</title>
+    <style>
+          :root {
+            --primary-color: #0037ff;
+            --secondary-color: #f5f5f5;
+            --text-color: #333;
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            direction: rtl;
+            text-align: right;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #fff;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 1rem 2rem;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-links .contact-group {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--secondary-color);
+            border-radius: 20px;
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .search-cards {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .search-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 32px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .search-card-white {
+            background: #fff;
+            border: 1px solid #E5E7EB;
+        }
+
+        .search-card-blue {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .search-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 16px;
+        }
+
+        .search-card-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .search-btn {
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .search-btn-blue {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .search-btn-white {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .search-illustration {
+            width: 120px;
+            height: 120px;
+        }
+
+        .search-card-white .search-illustration {
+            filter: brightness(0) invert(1);
+        }
+
+        .platform-info {
+            text-align: center;
+            margin: 4rem 0;
+        }
+
+        .platform-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .platform-info p {
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .main-illustration {
+            max-width: 600px;
+            margin: 2rem auto;
+            display: block;
+        }
+
+        /* Listings Section */
+        .listings-section {
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .filters {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.outline {
+            border: 1px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .filter-btn.solid {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+        }
+
+        .filter-icon {
+            width: 32px;
+            height: 32px;
+            background: #F3F4F6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .listing-card {
+            border: 1px solid #E5E7EB;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .listing-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .image-slider {
+            position: relative;
+            height: 200px;
+        }
+
+        .image-slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        .property-type, .featured-tag {
+            position: absolute;
+            bottom: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        .listings-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section-title {
+    color: #0033FF; /* لون أزرق مشابه للصورة */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.filter-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-btn.outline {
+    color: #0033FF;
+    background-color: transparent;
+    border: 2px solid #0033FF;
+}
+
+.filter-btn.solid {
+    color: white;
+    background-color: #0033FF;
+    border: none;
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #0033FF;
+    background-color: #F0F5FF;
+}
+
+.filter-icon img {
+    width: 20px;
+    height: 20px;
+}
+
+        .property-type { left: 10px; }
+        .featured-tag { right: 10px; }
+
+        .listing-content {
+            padding: 1.5rem;
+        }
+
+        .listing-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .listing-location {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .gender-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .women { background-color: #FFD1DC; color: #FF69B4; }
+
+        .price-info {
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .amenities {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .amenity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .details-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .details-btn:hover {
+            background-color: #002BC5;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .gender-badge {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #FFD1DC; /* لون خلفية النساء */
+    color: #FF69B4; /* لون النص للنساء */
+    text-align: center;
+    line-height: 32px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.gender-badge.men {
+    background-color: #ADD8E6; /* لون خلفية الرجال */
+    color: #0000FF; /* لون النص للرجال */
+}
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .listings-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.section-title {
+    color: #0033FF;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.filter-btn {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.filter-btn.outline {
+    color: #0033FF;
+    background-color: transparent;
+    border: 2px solid #0033FF;
+}
+
+.filter-btn.solid {
+    color: white;
+    background-color: #0033FF;
+    border: none;
+}
+
+.filter-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #0033FF;
+    background-color: #F0F5FF;
+}
+
+.filter-icon i {
+    color: #0033FF;
+    font-size: 18px;
+}
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .search-cards {
+                flex-direction: column;
+            }
+
+            .search-card {
+                padding: 24px;
+            }
+
+            .search-illustration {
+                width: 100px;
+                height: 100px;
+            }
+
+            .search-card-title {
+                font-size: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="Group 1.png" alt="روميتك">
+            </div>
+            <div class="nav-links">
+                <a href="#" class="blue">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        <path d="M2 12h20"/>
+                    </svg>
+                </a>
+                <div class="contact-group">
+                    <a href="#" class="blue">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="blue">
+                        <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                    </a>
+                </div>
+                <a href="#" class="blue">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </a>
+                <a href="#" class="blue">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/>
+                        <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/>
+                    </svg>
+                </a>
+                <a href="#" class="blue">
+                    <svg class="nav-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="12" x2="20" y2="12"/>
+                        <line x1="4" y1="6" x2="20" y2="6"/>
+                        <line x1="4" y1="18" x2="20" y2="18"/>
+                    </svg>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <div class="hero-section">
+            <div class="search-cards">
+                <div class="search-card search-card-blue">
+                    <div class="search-card-content">
+                        <h2 class="search-card-title">ابحث عن غرفة</h2>
+                        <button class="search-btn search-btn-white">اشتراعلانك</button>
+                    </div>
+                    
+                    <img src="Video tutorial 1.png" alt="Roommate illustration" class="search-illustration">
+                </div>
+                <div class="search-card search-card-white">
+                    <div class="search-card-content">
+                        <h2 class="search-card-title">أحتاج شريك سكن</h2>
+                        <button class="search-btn search-btn-blue">ارسل اعلانك</button>
+                    </div>
+                    <img src="Group 4127.png" alt="Room search illustration" class="search-illustration">
+
+                </div>
+
+                
+            </div>
+
+            <div class="platform-info">
+                <h1>أول منصة للباحثين عن سكن مشترك بالسعودية</h1>
+                <p>مجاني بالكامل في البحث وإدراج الطلبات</p>
+                <img src="Frame.png" alt="رسوم توضيحية" class="main-illustration">
+            </div>
+
+            <div class="listings-section">
+                <h1 class="section-title">أحدث الطلبات</h1>
+            
+                <div class="filters">
+                    <button class="filter-btn outline">شركاء بحاجة للسكن</button>
+                    <div class="filter-icon">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <button class="filter-btn solid">غرف متوفرة</button>
+                </div>
+            </div>
+            
+
+                <div class="listings-grid">
+                    <!-- Card 1 -->
+                    <div class="listing-card">
+                        <div class="image-slider">
+                            <img src="شقة للبيع.jpg" alt="غرفة للايجار">
+                            <button class="favorite-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </button>
+                            <div class="slider-nav prev">←</div>
+                            <div class="slider-nav next">→</div>
+                            <div class="property-type">نوع العقار: شقة</div>
+                            <div class="featured-tag">مميز ⭐</div>
+                        </div>
+                        <div class="listing-content">
+                            <h2 class="listing-title">غرفة نوم للايجار مميزة</h2>
+                            <p class="listing-location">7339 نمار الموسى، قرطبة، الرياض 13248</p>
+                            <div class="gender-badge women">نساء</div>
+                            <div class="price-info">
+                                <span class="price">1000 ريال شهرياً</span>
+                                <br>
+                                <span>تأمين 1000 ريال</span>
+                                <br>
+                                <span>بدون تأمين</span>
+                            </div>
+                            <div class="amenities">
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+                                    <span>شامل الخدمات</span>
+                                </div>
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+                                    <span>موقف سيارة</span>
+                                </div>
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shower-head"><path d="m4 4 2.5 2.5"/><path d="M13.5 6.5a4.95 4.95 0 0 0-7 7"/><path d="M15 5 5 15"/><path d="M14 17v.01"/><path d="M10 16v.01"/><path d="M13 13v.01"/><path d="M16 10v.01"/><path d="M11 20v.01"/><path d="M17 14v.01"/><path d="M20 11v.01"/></svg>
+                                    <span>دورة مياه منفصلة</span>
+                                </div>
+                            </div>
+                            <button class="details-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                
+                    <!-- Card 2 -->
+                    <div class="listing-card">
+                        <div class="image-slider">
+                            <img src="نافذة نجدية سعودية بزخارف ونقوش نجدية🇸🇦.jpg" alt="غرفة للايجار">
+                            <button class="favorite-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </button>
+                            <div class="slider-nav prev">←</div>
+                            <div class="slider-nav next">→</div>
+                            <div class="property-type">نوع العقار: غرفة</div>
+                            <div class="featured-tag">مميز ⭐</div>
+                        </div>
+                        <div class="listing-content">
+                            <h2 class="listing-title">غرفة مفروشة للايجار</h2>
+                            <p class="listing-location">1234 شارع الملك فهد، الرياض</p>
+                            <div class="gender-badge men">رجال</div>
+                            <div class="price-info">
+                                <span class="price">800 ريال شهرياً</span>
+                                <br>
+                                <span>تأمين 800 ريال</span>
+                                <br>
+                                <span>بدون تأمين</span>
+                            </div>
+                            <div class="amenities">
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+                                    <span>شامل الخدمات</span>
+                                </div>
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+                                    <span>موقف سيارة</span>
+                                </div>
+                            </div>
+                            <button class="details-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                
+                    <!-- Card 3 -->
+                    <div class="listing-card">
+                        <div class="image-slider">
+                            <img src="شقق مفروشه للايجار اليومي.jpg" alt="غرفة للايجار">
+                            <button class="favorite-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </button>
+                            <div class="slider-nav prev">←</div>
+                            <div class="slider-nav next">→</div>
+                            <div class="property-type">نوع العقار: استوديو</div>
+                            <div class="featured-tag">مميز ⭐</div>
+                        </div>
+                        <div class="listing-content">
+                            <h2 class="listing-title">استوديو مفروش للايجار</h2>
+                            <p class="listing-location">5678 شارع التحلية، جدة</p>
+                            <div class="gender-badge women">نساء</div>
+                            <div class="price-info">
+                                <span class="price">1200 ريال شهرياً</span>
+                                <br>
+                                <span>تأمين 1200 ريال</span>
+                                <br>
+                                <span>بدون تأمين</span>
+                            </div>
+                            <div class="amenities">
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+                                    <span>شامل الخدمات</span>
+                                </div>
+                            </div>
+                            <button class="details-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                
+                    <!-- Card 4 -->
+                    <div class="listing-card">
+                        <div class="image-slider">
+                            <img src="c958bdea-1428-43a7-bdab-b03050cd2db4.jpg" alt="غرفة للايجار">
+                            <button class="favorite-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                            </button>
+                            <div class="slider-nav prev">←</div>
+                            <div class="slider-nav next">→</div>
+                            <div class="property-type">نوع العقار: شقة</div>
+                            <div class="featured-tag">مميز ⭐</div>
+                        </div>
+                        <div class="listing-content">
+                            <h2 class="listing-title">شقة مفروشة للايجار</h2>
+                            <p class="listing-location">91011 شارع العليا، الرياض</p>
+                            <div class="gender-badge men">رجال</div>
+                            <div class="price-info">
+                                <span class="price">1500 ريال شهرياً</span>
+                                <br>
+                                <span>تأمين 1500 ريال</span>
+                                <br>
+                                <span>بدون تأمين</span>
+                            </div>
+                            <div class="amenities">
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+                                    <span>شامل الخدمات</span>
+                                </div>
+                                <div class="amenity">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-car"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"/><circle cx="6.5" cy="16.5" r="2.5"/><circle cx="16.5" cy="16.5" r="2.5"/></svg>
+                                    <span>موقف سيارة</span>
+                                </div>
+                            </div>
+                            <button class="details-btn">تفاصيل أكثر</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عن روميتك</h3>
+                <ul>
+                    <li><a href="#">نبذة عن روميتك</a></li>
+                    <li><a href="#">قصص المستخدمين</a></li>
+                    <li><a href="#">الوظائف</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>مساعدة</h3>
+                <ul>
+                    <li><a href="#">كيف تجد شريك السكن المناسب</a></li>
+                    <li><a href="#">كيف تجد السكن المناسب</a></li>
+                    <li><a href="#">كيف تنشر إعلانك بشكل صحيح</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>قسم النشر</h3>
+                <ul>
+                    <li><a href="#">نشر طلب مستأجر</a></li>
+                    <li><a href="#">نشر طلب شريك</a></li>
+                    <li><a href="#">نشر إعلان سكن</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

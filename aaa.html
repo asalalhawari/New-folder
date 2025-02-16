@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج الاتصال</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px; 
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 550px; 
+        }
+
+        .form-title {
+            color: #C4962D;
+            margin-bottom: 30px; 
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 20px; 
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px; 
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            text-align: right;
+        }
+
+        input[type="tel"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            text-align: right;
+        }
+
+        textarea {
+            min-height: 150px; 
+            resize: vertical;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #C4962D;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px; 
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 25px; 
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px; 
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .btn-cancel {
+            background-color: white;
+            border: 1px solid #ddd;
+            color: #333;
+        }
+
+        .btn-submit {
+            background-color: #C4962D;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background-color: #b3861f;
+        }
+
+        .btn-cancel:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <form class="contact-form">
+        <h2 class="form-title">تواصل معنا</h2>
+        
+        <div class="form-group">
+            <input type="text" placeholder="الاسم" required>
+        </div>
+
+        <div class="form-group">
+            <input type="email" placeholder="البريد الالكتروني" required>
+        </div>
+
+        <div class="form-group">
+            <input type="tel" placeholder="رقم الهاتف" required>
+        </div>
+
+        <div class="form-group">
+            <textarea placeholder="اكتب رسالتك هنا" required></textarea>
+        </div>
+
+        <div class="buttons">
+            <button type="submit" class="btn-submit">تأكيد</button>
+            <button type="button" class="btn-cancel">الغاء</button>
+        </div>
+    </form>
+</body>
+</html>
