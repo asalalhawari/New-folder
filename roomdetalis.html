@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روميتك - غرفة مفروشة في شقة راقية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        :root {
+            --primary-color: #0326d8;
+            --secondary-color: #25252e;
+            --light-gray: #f9f9f9;
+            --medium-gray: #81818f;
+            --dark-gray: #585866;
+            --border-color: #f1f1f1;
+            --success-color: #31b118;
+        }
+
+        body {
+            background-color: var(--light-gray);
+            min-height: 100vh;
+            direction: rtl;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #fff;
+            padding: 20px 64px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--secondary-color);
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .notification-icons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-name {
+            color: var(--secondary-color);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .main-container {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 64px;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 32px;
+        }
+
+        /* Gallery Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr) 2fr;
+            grid-template-rows: repeat(2, 250px);
+            gap: 16px;
+            height: 516px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item.main-image {
+            grid-column: 3;
+            grid-row: 1 / span 2;
+        }
+
+        .show-all-photos {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            background: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Property Details */
+        .property-details {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 32px;
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 24px;
+        }
+
+        .property-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary-color);
+        }
+
+        .favorite-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #666;
+            padding: 8px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--dark-gray);
+        }
+
+        .info-item i {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .amenities {
+            margin: 24px 0;
+        }
+
+        .amenities-title {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .amenity-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark-gray);
+        }
+
+        .amenity-item i {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            text-align: left;
+            margin-top: 24px;
+        }
+
+        .price .currency {
+            color: var(--dark-gray);
+            font-weight: 400;
+        }
+
+        /* Sidebar */
+        .owner-card,
+        .roommate-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .profile {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .profile-image {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .profile-status {
+            color: var(--dark-gray);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success-color);
+            border-radius: 50%;
+        }
+
+        .contact-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .contact-btn.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .contact-btn.secondary {
+            background: var(--border-color);
+            color: var(--secondary-color);
+        }
+
+        /* Fullscreen Gallery */
+        .fullscreen-gallery {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 1000;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .fullscreen-content {
+            padding: 60px 20px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .fullscreen-item {
+            margin-bottom: 20px;
+        }
+
+        .fullscreen-item img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .close-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: black;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .main-container {
+                padding: 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: 300px;
+                height: auto;
+            }
+
+            .gallery-item:not(.main-image) {
+                display: none;
+            }
+
+            .gallery-item.main-image {
+                grid-column: 1;
+                grid-row: 1;
+            }
+
+            .amenities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="/" class="logo">
+            <img src="Group 1 (2).png" alt="روميتك">
+        </a>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#" class="active">الرئيسية</a></li>
+                <li><a href="#">الغرف</a></li>
+                <li><a href="#">شركاء السكن</a></li>
+                <li><a href="#">الأسئلة الشائعة</a></li>
+            </ul>
+        </nav>
+
+        <div class="user-section">
+            <div class="notification-icons">
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.46667 26.6113L9.49867 24.986L9.512 24.9753C9.936 24.6353 10.1507 24.4647 10.3893 24.3433C10.6036 24.234 10.8293 24.1549 11.0667 24.106C11.332 24.0513 11.608 24.0513 12.1627 24.0513H23.7373C25.228 24.0513 25.9747 24.0513 26.544 23.7607C27.0457 23.505 27.4537 23.0971 27.7093 22.5953C28 22.0247 28 21.278 28 19.79V9.64732C28 8.15665 28 7.40999 27.7093 6.84065C27.4533 6.33871 27.0449 5.93075 26.5427 5.67532C25.9733 5.38465 25.2267 5.38465 23.7333 5.38465H8.26667C6.77333 5.38465 6.02667 5.38465 5.456 5.67532C4.95426 5.93098 4.54633 6.33891 4.29067 6.84065C4 7.41132 4 8.15799 4 9.65132V24.946C4 26.3673 4 27.078 4.29067 27.442C4.41566 27.5989 4.57445 27.7256 4.75521 27.8127C4.93597 27.8997 5.13404 27.9448 5.33467 27.9447C5.80133 27.9447 6.356 27.4993 7.46667 26.6113Z" stroke="#0326D8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.0001 2.05132C15.4697 2.05132 14.961 2.26204 14.5859 2.63711C14.2108 3.01218 14.0001 3.52089 14.0001 4.05132V4.25132C11.7414 4.71238 9.7113 5.93969 8.25348 7.72552C6.79566 9.51135 5.99962 11.746 6.00009 14.0513V22.0513L3.59009 24.7073C2.42409 25.9933 3.33609 28.0513 5.07009 28.0513H12.5361C12.8872 28.6594 13.3921 29.1643 14.0002 29.5153C14.6082 29.8663 15.298 30.0511 16.0001 30.0511C16.7022 30.0511 17.392 29.8663 18 29.5153C18.6081 29.1643 19.113 28.6594 19.4641 28.0513H26.9301C28.6641 28.0513 29.5761 25.9913 28.4101 24.7073L26.0001 22.0513V14.0513C26.0006 11.746 25.2045 9.51135 23.7467 7.72552C22.2889 5.93969 20.2588 4.71238 18.0001 4.25132V4.05132C18.0001 3.52089 17.7894 3.01218 17.4143 2.63711C17.0392 2.26204 16.5305 2.05132 16.0001 2.05132ZM9.00009 23.2113L8.22009 24.0673L7.32809 25.0513H24.6721L23.7781 24.0673L23.0001 23.2093V14.0513C23.0001 13.1321 22.819 12.2218 22.4673 11.3725C22.1155 10.5233 21.5998 9.75159 20.9498 9.10158C20.2998 8.45157 19.5282 7.93595 18.6789 7.58417C17.8296 7.23238 16.9193 7.05132 16.0001 7.05132C15.0808 7.05132 14.1706 7.23238 13.3213 7.58417C12.472 7.93595 11.7004 8.45157 11.0503 9.10158C10.4003 9.75159 9.88472 10.5233 9.53294 11.3725C9.18115 12.2218 9.00009 13.1321 9.00009 14.0513V23.2113Z" fill="#0326D8"/>
+                </svg>
+            </div>
+
+            <div class="user-profile">
+                <span class="user-name">محمد</span>
+                <img src="image (8).png" alt="صورة المستخدم" class="user-avatar">
+                <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <div class="content-section">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%284%29-RIwmWXlW4t4h80l0OR067hiPy6TPFb.png" alt="Map View">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%289%29-RmZtwIDYH8WH9H9LFrS1H9pNZzXxMS.png" alt="Living Room">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%287%29-TzyzbKsARzbcF30BU6UyE28htspBFV.png" alt="Bathroom">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2810%29-P5ZLIaoM4IS1l5To5pyvwcTL4wJoX4.png" alt="Bedroom">
+                </div>
+                <div class="gallery-item main-image">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%285%29-r8qOvfBkpdQhw13M3tPbcOYtrWauyS.png" alt="Building Exterior">
+                    <button class="show-all-photos" onclick="showAllPhotos()">عرض كافة الصور</button>
+                </div>
+            </div>
+
+            <div class="property-details">
+                <div class="details-header">
+                    <h1 class="property-title">غرفة مفروشة في شقة راقية</h1>
+                    <button class="favorite-btn" onclick="toggleFavorite(this)">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                </div>
+
+                <div class="info-list">
+                    <div class="info-item">
+                        <i class="ri-map-pin-line"></i>
+                        <span>موقع السكن : الدوار السابع، عمان</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="ri-calendar-line"></i>
+                        <span>متاح من 1 مارس</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="ri-home-line"></i>
+                        <span>نوع السكن : غرفة في شقة مشتركة</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="ri-hotel-line"></i>
+                        <span>الشقة مفروشة</span>
+                    </div>
+                </div>
+
+                <div class="amenities">
+                    <h2 class="amenities-title">الخدمات والمرافق المتاحة</h2>
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="ri-wifi-line"></i>
+                            <span>إنترنت</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="ri-flashlight-line"></i>
+                            <span>كهرباء</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="ri-temp-hot-line"></i>
+                            <span>مسبح / جيم</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="ri-home-smile-line"></i>
+                            <span>حمام خاص</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="ri-parking-box-line"></i>
+                            <span>موقف سيارات</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="ri-arrow-up-down-line"></i>
+                            <span>مصعد</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price">
+                    <span class="amount">1000</span>
+                    <span class="currency">دينار/شهر</span>
+                </div>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="owner-card">
+                <h3 class="card-title">
+                    <i class="ri-search-line"></i>
+                    تفاصيل مالك السكن
+                </h3>
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="/placeholder.svg?height=56&width=56" alt="صورة المالك">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">محمد</div>
+                        <div class="profile-status">
+                            <span class="status-dot"></span>
+                            <span>ودود ويسعدني مساعدتك في العثور على سكن مناسب!</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="contact-btn primary" onclick="contactOwner()">
+                    <i class="ri-message-3-line"></i>
+                    تواصل مع المالك
+                </button>
+            </div>
+
+            <div class="roommate-card">
+                <h3 class="card-title">شريك سكن واحد</h3>
+                <div class="profile">
+                    <div class="profile-image">
+                        <img src="/placeholder.svg?height=56&width=56" alt="صورة الشريك">
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">عبد الله</div>
+                    </div>
+                </div>
+                <button class="contact-btn secondary" onclick="contactRoommate()">
+                    <i class="ri-message-3-line"></i>
+                    تواصل
+                </button>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Fullscreen Gallery -->
+    <div id="fullscreen-gallery" class="fullscreen-gallery">
+        <button class="close-button" onclick="closeGallery()">✕</button>
+        <div class="fullscreen-content">
+            <div class="fullscreen-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%284%29-RIwmWXlW4t4h80l0OR067hiPy6TPFb.png" alt="Map View">
+            </div>
+            <div class="fullscreen-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%289%29-RmZtwIDYH8WH9H9LFrS1H9pNZzXxMS.png" alt="Living Room">
+            </div>
+            <div class="fullscreen-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%285%29-r8qOvfBkpdQhw13M3tPbcOYtrWauyS.png" alt="Building Exterior">
+            </div>
+            <div class="fullscreen-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%287%29-TzyzbKsARzbcF30BU6UyE28htspBFV.png" alt="Bathroom">
+            </div>
+            <div class="fullscreen-item">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%20%2810%29-P5ZLIaoM4IS1l5To5pyvwcTL4wJoX4.png" alt="Bedroom">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gallery Functions
+        function showAllPhotos() {
+            document.getElementById('fullscreen-gallery').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGallery() {
+            document.getElementById('fullscreen-gallery').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close gallery when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeGallery();
+            }
+        });
+
+        // Favorite Button Toggle
+        function toggleFavorite(button) {
+            const icon = button.querySelector('i');
+            if (icon.classList.contains('ri-heart-line')) {
+                icon.classList.remove('ri-heart-line');
+                icon.classList.add('ri-heart-fill');
+                icon.style.color = 'red';
+            } else {
+                icon.classList.remove('ri-heart-fill');
+                icon.classList.add('ri-heart-line');
+                icon.style.color = '';
+            }
+        }
+
+        // Contact Functions
+        function contactOwner() {
+            alert('سيتم فتح نافذة المحادثة مع المالك');
+        }
+
+        function contactRoommate() {
+            alert('سيتم فتح نافذة المحادثة مع الشريك');
+        }
+    </script>
+</body>
+</html>

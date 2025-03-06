@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روميتك - تفاصيل الغرفة</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap");
+
+:root {
+    --primary-color: #0326D8;
+    --secondary-color: #31B118;
+    --text-primary: #25252E;
+    --text-secondary: #81818F;
+    --text-tertiary: #585866;
+    --bg-light: #FBFBFB;
+    --bg-white: #ffffff;
+    --border-color: #CCCCCC;
+    --tag-bg: #F1F1F1;
+    --interest-tag-bg: #E0E4F7;
+    --shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    --border-radius-sm: 8px;
+    --border-radius-md: 20px;
+    --border-radius-lg: 24px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Tajawal", sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-primary);
+    direction: rtl;
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 100px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--bg-white);
+    padding: 19px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+}
+
+/* Content Layout */
+.content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+/* Room Card */
+.room-card {
+    background-color: var(--bg-white);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow);
+    padding: 32px 16px;
+    width: 400px;
+}
+
+.search-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.search-header h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.room-details {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    position: relative;
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+.owner-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.owner-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.owner-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.owner-meta h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.post-time {
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.verification-badges {
+    position: absolute;
+    left: 169px;
+    top: 22px;
+}
+
+.room-image-container {
+    position: relative;
+    height: 221px;
+    margin: 0 16px;
+}
+
+.room-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius-md);
+}
+
+.image-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(217, 217, 217, 0.47);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8.2px);
+}
+
+.image-nav.prev {
+    right: 8px;
+}
+
+.image-nav.next {
+    left: 8px;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    cursor: pointer;
+}
+
+.room-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 16px 16px 8px;
+    text-align: right;
+}
+
+.room-info {
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    color: var(--text-secondary);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.amenities {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.amenity-tag {
+    background-color: var(--tag-bg);
+    border-radius: var(--border-radius-md);
+    padding: 4px 8px;
+    font-size: 16px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.price {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.price-amount {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.price-currency {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.price-period {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+}
+
+/* Owner Profile */
+.owner-profile {
+    flex: 1;
+}
+
+.profile-container {
+    display: flex;
+    gap: 51px;
+    margin-bottom: 50px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+}
+
+.profile-name {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.profile-occupation {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.profile-age {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.age-label {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.age-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-tertiary);
+}
+
+.interests {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    width: 100%;
+}
+
+.interests-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+.interest-tags {
+    display: flex;
+    gap: 4px;
+}
+
+.interest-tag {
+    background-color: var(--interest-tag-bg);
+    border-radius: var(--border-radius-md);
+    padding: 4px 8px;
+    font-size: 20px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-lg);
+    padding: 4px 24px 8px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "Tajawal", sans-serif;
+    cursor: pointer;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.profile-image {
+    width: 257px;
+    height: 256px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 531px;
+}
+
+.about-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.about-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-text {
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    text-align: right;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 50px;
+    }
+    
+    .content-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .room-card {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .profile-container {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+    
+    .profile-info {
+        align-items: center;
+    }
+    
+    .about-section {
+        align-items: center;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+    
+    .navbar-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .user-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .room-header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .verification-badges {
+        position: static;
+    }
+    
+    .profile-age, .interests-title {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .about-header {
+        justify-content: center;
+    }
+    
+    .about-text {
+        text-align: center;
+    }
+}
+</style>
+<body>
+    
+    <main class="container">
+        <div class="content-wrapper">
+            <!-- Room Card -->
+            <section class="room-card">
+                <div class="search-header">
+                    <svg class="icon-search" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.9849 17.0174C14.8509 17.0126 17.981 13.8747 17.9762 10.0088C17.9714 6.14276 14.8335 3.01264 10.9675 3.01744C7.10153 3.02224 3.97142 6.16013 3.97621 10.0261C3.98101 13.8921 7.1189 17.0222 10.9849 17.0174Z" stroke="#0326D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15.9824 15.0112L21.9899 21.0038" stroke="#0326D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h2>الشقق والغرف المتاحة</h2>
+                </div>
+                
+                <div class="room-details">
+                    <div class="room-header">
+                        <div class="owner-info">
+                            <img src="image (11).png" alt="محمد" class="owner-avatar">
+                            <div class="owner-meta">
+                                <h3>محمد</h3>
+                                <span class="post-time">منذ اسبوع</span>
+                            </div>
+                        </div>
+                        <div class="verification-badges">
+                            <svg width="40" height="17" viewBox="0 0 40 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10 3.65584L11.3333 4.98918L14 2.32251M3.33333 2.98918H6L7.33333 6.32251L5.66667 7.32251C6.38064 8.7702 7.55231 9.94187 9 10.6558L10 8.98918L13.3333 10.3225V12.9892C13.3333 13.3428 13.1929 13.6819 12.9428 13.932C12.6928 14.182 12.3536 14.3225 12 14.3225C6.61867 13.9958 2.32667 9.70384 2 4.32251C2 3.96889 2.14048 3.62975 2.39052 3.3797C2.64057 3.12965 2.97971 2.98918 3.33333 2.98918Z" stroke="#31B118" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <g clip-path="url(#clip0_389_786)">
+                                <path d="M40 14.5447C40 15.0162 39.8127 15.4684 39.4793 15.8018C39.1459 16.1352 38.6937 16.3225 38.2222 16.3225H25.7778C25.3063 16.3225 24.8541 16.1352 24.5207 15.8018C24.1873 15.4684 24 15.0162 24 14.5447V2.10029C24 1.62879 24.1873 1.17661 24.5207 0.843209C24.8541 0.509811 25.3063 0.32251 25.7778 0.32251L38.2222 0.32251C38.6937 0.32251 39.1459 0.509811 39.4793 0.843209C39.8127 1.17661 40 1.62879 40 2.10029V14.5447Z" fill="#31B118"/>
+                                <path d="M26.5408 4.39181C26.5408 3.70292 26.9817 3.31714 27.5741 3.31714C28.1665 3.31714 28.6074 3.70292 28.6074 4.39181V12.2189C28.6074 12.9083 28.1665 13.2936 27.5741 13.2936C26.9817 13.2936 26.5408 12.9083 26.5408 12.2189V4.39181ZM29.8474 4.46114C29.8474 3.82692 30.2883 3.39981 30.9083 3.39981H33.1963C36.283 3.39981 38.047 5.38425 38.047 8.44336C38.0466 11.3371 36.1728 13.2114 33.3337 13.2114H30.9359C30.4812 13.2114 29.8474 12.9629 29.8474 12.178V4.46114ZM31.9141 11.3096H33.3061C35.0839 11.3096 35.8963 10.0007 35.8963 8.34692C35.8963 6.58292 35.0701 5.30158 33.1679 5.30158H31.9137L31.9141 11.3096Z" fill="white"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_389_786">
+                                <rect width="16" height="16" fill="white" transform="translate(24 0.32251)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="room-image-container">
+                        <img src="image (7).png" alt="صورة الغرفة" class="room-image">
+                        <button class="image-nav prev">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15.6 1.52246L17.28 3.32246L8.40003 12.3225L17.28 21.3225L15.6 23.1225L4.80003 12.3225L15.6 1.52246Z" fill="black"/>
+                            </svg>
+                        </button>
+                        <button class="image-nav next">
+                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.39997 1.52246L6.71997 3.32246L15.6 12.3225L6.71997 21.3225L8.39997 23.1225L19.2 12.3225L8.39997 1.52246Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div class="favorite-btn">
+                        <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.93415 18.8667L15.3152 27.6792C15.6397 27.984 15.8019 28.1364 15.9999 28.1364C16.1979 28.1364 16.3602 27.984 16.6846 27.6792L26.0657 18.8667C28.6739 16.4165 28.9907 12.3846 26.797 9.55718L26.3845 9.02555C23.7603 5.6432 18.4928 6.21045 16.6488 10.074C16.3883 10.6197 15.6115 10.6197 15.351 10.074C13.5071 6.21045 8.23955 5.6432 5.61531 9.02555L5.20284 9.55718C3.00918 12.3846 3.32592 16.4165 5.93415 18.8667Z" stroke="#25252E" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    
+                    <h1 class="room-title">غرفة مفروشة في شقة راقية</h1>
+                    
+                    <div class="room-info">
+                        <div class="info-item">
+                            <svg class="icon-location" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 13.3225C13.6569 13.3225 15 11.9794 15 10.3225C15 8.66566 13.6569 7.32251 12 7.32251C10.3431 7.32251 9 8.66566 9 10.3225C9 11.9794 10.3431 13.3225 12 13.3225Z" stroke="#0326D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 2.32251C9.87827 2.32251 7.84344 3.16536 6.34315 4.66566C4.84285 6.16595 4 8.20078 4 10.3225C4 12.2145 4.402 13.4525 5.5 14.8225L12 22.3225L18.5 14.8225C19.598 13.4525 20 12.2145 20 10.3225C20 8.20078 19.1571 6.16595 17.6569 4.66566C16.1566 3.16536 14.1217 2.32251 12 2.32251Z" stroke="#0326D8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span>عمان, الدوار السابع</span>
+                        </div>
+                        <div class="info-item">
+                            <svg class="icon-calendar" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 4.32251H17V3.32251C17 3.05729 16.8946 2.80294 16.7071 2.6154C16.5196 2.42787 16.2652 2.32251 16 2.32251C15.7348 2.32251 15.4804 2.42787 15.2929 2.6154C15.1054 2.80294 15 3.05729 15 3.32251V4.32251H9V3.32251C9 3.05729 8.89464 2.80294 8.70711 2.6154C8.51957 2.42787 8.26522 2.32251 8 2.32251C7.73478 2.32251 7.48043 2.42787 7.29289 2.6154C7.10536 2.80294 7 3.05729 7 3.32251V4.32251H5C4.20435 4.32251 3.44129 4.63858 2.87868 5.20119C2.31607 5.7638 2 6.52686 2 7.32251V19.3225C2 20.1182 2.31607 20.8812 2.87868 21.4438C3.44129 22.0064 4.20435 22.3225 5 22.3225H19C19.7956 22.3225 20.5587 22.0064 21.1213 21.4438C21.6839 20.8812 22 20.1182 22 19.3225V7.32251C22 6.52686 21.6839 5.7638 21.1213 5.20119C20.5587 4.63858 19.7956 4.32251 19 4.32251ZM20 19.3225C20 19.5877 19.8946 19.8421 19.7071 20.0296C19.5196 20.2172 19.2652 20.3225 19 20.3225H5C4.73478 20.3225 4.48043 20.2172 4.29289 20.0296C4.10536 19.8421 4 19.5877 4 19.3225V12.3225H20V19.3225ZM20 10.3225H4V7.32251C4 7.05729 4.10536 6.80294 4.29289 6.6154C4.48043 6.42787 4.73478 6.32251 5 6.32251H7V7.32251C7 7.58773 7.10536 7.84208 7.29289 8.02962C7.48043 8.21715 7.73478 8.32251 8 8.32251C8.26522 8.32251 8.51957 8.21715 8.70711 8.02962C8.89464 7.84208 9 7.58773 9 7.32251V6.32251H15V7.32251C15 7.58773 15.1054 7.84208 15.2929 8.02962C15.4804 8.21715 15.7348 8.32251 16 8.32251C16.2652 8.32251 16.5196 8.21715 16.7071 8.02962C16.8946 7.84208 17 7.58773 17 7.32251V6.32251H19C19.2652 6.32251 19.5196 6.42787 19.7071 6.6154C19.8946 6.80294 20 7.05729 20 7.32251V10.3225Z" fill="#0326D8"/>
+                            </svg>
+                            <span>متاحة من 1 مارس</span>
+                        </div>
+                        
+                        <div class="amenities">
+                            <span class="amenity-tag">مصعد</span>
+                            <span class="amenity-tag">حمام خاص</span>
+                            <span class="amenity-tag">كهرباء</span>
+                            <span class="amenity-tag">إنترنت</span>
+                            <span class="amenity-tag">غرفة</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price">
+                        <span class="price-amount">1000</span>
+                        <span class="price-currency">دينار</span>
+                        <span class="price-period">/شهر</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Owner Profile -->
+            <section class="owner-profile">
+                <div class="profile-container">
+                    <div class="profile-info">
+                        <h2 class="profile-name">محمد</h2>
+                        <p class="profile-occupation">موظف</p>
+                        <div class="profile-age">
+                            <span class="age-label">العمر : </span>
+                            <span class="age-value">32</span>
+                        </div>
+                        
+                        <div class="interests">
+                            <h3 class="interests-title">الاهتمامات :</h3>
+                            <div class="interest-tags">
+                                <span class="interest-tag">موسيقى</span>
+                                <span class="interest-tag">رياضة</span>
+                            </div>
+                        </div>
+                        
+                        <button class="contact-btn">
+                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.31111 16.0544L4.66578 14.9017L4.67467 14.8941C4.95733 14.653 5.10044 14.5319 5.25956 14.4459C5.40237 14.3683 5.55289 14.3122 5.71111 14.2775C5.888 14.2388 6.072 14.2388 6.44178 14.2388H14.1582C15.152 14.2388 15.6498 14.2388 16.0293 14.0326C16.3638 13.8513 16.6358 13.562 16.8062 13.2061C17 12.8014 17 12.2719 17 11.2165V4.02317C17 2.96596 17 2.43641 16.8062 2.03262C16.6356 1.67663 16.3633 1.3873 16.0284 1.20615C15.6489 1 15.1511 1 14.1556 1H3.84444C2.84889 1 2.35111 1 1.97067 1.20615C1.63617 1.38746 1.36422 1.67678 1.19378 2.03262C1 2.43735 1 2.9669 1 4.026V14.8733C1 15.8813 1 16.3853 1.19378 16.6435C1.2771 16.7548 1.38296 16.8447 1.50347 16.9064C1.62398 16.9681 1.75603 17.0001 1.88978 17C2.20089 17 2.57067 16.6842 3.31111 16.0544Z" stroke="#FBFBFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            تواصل معي
+                        </button>
+                    </div>
+                    
+                    <div class="profile-image-container">
+                        <img src="image (11).png" alt="محمد" class="profile-image">
+                        <div class="verification-badges-large">
+                            <svg width="73" height="32" viewBox="0 0 73 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.5 6.66667L23.1667 9.33333L28.5 4M7.16667 5.33333H12.5L15.1667 12L11.8333 14C13.2613 16.8954 15.6046 19.2387 18.5 20.6667L20.5 17.3333L27.1667 20V25.3333C27.1667 26.0406 26.8857 26.7189 26.3856 27.219C25.8855 27.719 25.2072 28 24.5 28C13.7373 27.3467 5.15333 18.7627 4.5 8C4.5 7.29276 4.78095 6.61448 5.28105 6.11438C5.78115 5.61428 6.45942 5.33333 7.16667 5.33333Z" stroke="#31B118" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <g clip-path="url(#clip0_77_1875)">
+                                <path d="M72.5 28.4444C72.5 29.3874 72.1254 30.2918 71.4586 30.9586C70.7918 31.6254 69.8874 32 68.9444 32H44.0556C43.1126 32 42.2082 31.6254 41.5414 30.9586C40.8746 30.2918 40.5 29.3874 40.5 28.4444V3.55556C40.5 2.61256 40.8746 1.70819 41.5414 1.0414C42.2082 0.374602 43.1126 0 44.0556 0L68.9444 0C69.8874 0 70.7918 0.374602 71.4586 1.0414C72.1254 1.70819 72.5 2.61256 72.5 3.55556V28.4444Z" fill="#31B118"/>
+                                <path d="M45.5815 8.13859C45.5815 6.76081 46.4633 5.98926 47.6482 5.98926C48.8331 5.98926 49.7149 6.76081 49.7149 8.13859V23.7928C49.7149 25.1715 48.8331 25.9421 47.6482 25.9421C46.4633 25.9421 45.5815 25.1715 45.5815 23.7928V8.13859ZM52.1949 8.27726C52.1949 7.00881 53.0767 6.15459 54.3167 6.15459H58.8927C65.066 6.15459 68.594 10.1235 68.594 16.2417C68.5931 22.0293 64.8455 25.7777 59.1673 25.7777H54.3718C53.4624 25.7777 52.1949 25.2808 52.1949 23.711V8.27726ZM56.3282 21.9741H59.1122C62.6678 21.9741 64.2927 19.3564 64.2927 16.0488C64.2927 12.5208 62.6402 9.95815 58.8358 9.95815H56.3273L56.3282 21.9741Z" fill="white"/>
+                                </g>
+                                <defs>
+                                <clipPath id="clip0_77_1875">
+                                <rect width="32" height="32" fill="white" transform="translate(40.5)"/>
+                                </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-section">
+                    <div class="about-header">
+                        <svg class="icon-info" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 1.33325H20.552L28 8.78125V30.6666H4V1.33325ZM6.66667 3.99992V27.9999H25.3333V9.88525L19.448 3.99992H6.66667ZM16 11.9999C15.4696 11.9999 14.9609 12.2106 14.5858 12.5857C14.2107 12.9608 14 13.4695 14 13.9999C14 14.5304 14.2107 15.0391 14.5858 15.4141C14.9609 15.7892 15.4696 15.9999 16 15.9999C16.5304 15.9999 17.0391 15.7892 17.4142 15.4141C17.7893 15.0391 18 14.5304 18 13.9999C18 13.4695 17.7893 12.9608 17.4142 12.5857C17.0391 12.2106 16.5304 11.9999 16 11.9999ZM11.3333 13.9999C11.3333 13.3871 11.454 12.7802 11.6886 12.2141C11.9231 11.6479 12.2668 11.1334 12.7002 10.7001C13.1335 10.2667 13.648 9.923 14.2141 9.68848C14.7803 9.45396 15.3872 9.33325 16 9.33325C16.6128 9.33325 17.2197 9.45396 17.7859 9.68848C18.352 9.923 18.8665 10.2667 19.2998 10.7001C19.7332 11.1334 20.0769 11.6479 20.3114 12.2141C20.546 12.7802 20.6667 13.3871 20.6667 13.9999C20.6667 15.2376 20.175 16.4246 19.2998 17.2998C18.4247 18.1749 17.2377 18.6666 16 18.6666C14.7623 18.6666 13.5753 18.1749 12.7002 17.2998C11.825 16.4246 11.3333 15.2376 11.3333 
+                            13.9999ZM8 25.3333C8 23.9188 8.5619 22.5622 9.5621 21.562C10.5623 20.5618 11.9188 19.9999 13.3333 19.9999H18.6667C20.0812 19.9999 21.4377 20.5618 22.4379 21.562C23.4381 22.5622 24 23.9188 24 25.3333V26.6666H21.3333V25.3333C21.3333 24.626 21.0524 23.9477 20.5523 23.4476C20.0522 22.9475 19.3739 22.6666 18.6667 22.6666H13.3333C12.6261 22.6666 11.9478 22.9475 11.4477 23.4476C10.9476 23.9477 10.6667 24.626 10.6667 25.3333V26.6666H8V25.3333Z" fill="#0326D8"/>
+                        </svg>
+                        <h2 class="about-title">عن محمد :</h2>
+                    </div>
+                    <p class="about-text">
+                        أنا شاب جامعي هادئ واجتماعي في نفس الوقت. أحب جو الراحة والترتيب في البيت. ملتزم بدراستي وأفضل أن يكون لدي وقت خاص للمذاكرة، لكن لا أقول لا لجلسات السمر والدردشة مع شريكي في السكن. أنا شخص نظيف ومرتب وأحب الحفاظ على نظافة المكان بشكل عام.
+                        <br><br>
+                        إذا كنت تبحث عن شريك سكن يكون مريحًا ومتعاونًا، قد أكون الخيار المناسب
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const prevBtn = document.querySelector('.image-nav.prev');
+    const nextBtn = document.querySelector('.image-nav.next');
+    const roomImage = document.querySelector('.room-image');
+    
+    const images = [
+        'image (7).png',
+        'image (9).png',
+        'image (5).png',
+        'image (10).png'
+    ];
+    
+    let currentImageIndex = 0;
+    
+    prevBtn.addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        roomImage.src = images[currentImageIndex];
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        roomImage.src = images[currentImageIndex];
+    });
+    
+    const favoriteBtn = document.querySelector('.favorite-btn');
+    favoriteBtn.addEventListener('click', function() {
+        const path = favoriteBtn.querySelector('path');
+        if (path.getAttribute('fill') === 'none') {
+            path.setAttribute('fill', '#FF4444');
+        } else {
+            path.setAttribute('fill', 'none');
+        }
+    });
+});
+    </script>
+</body>
+</html>

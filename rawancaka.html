@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawan Cake - Lego Brick</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&family=McLaren&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #ffffff;
+            color: #25252E;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            max-width: 1512px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        /* Sidebars */
+        .sidebar {
+            width: 328px;
+            height: 100%;
+            position: relative;
+            background-color: rgba(201, 178, 213, 0.23);
+            backdrop-filter: blur(7px);
+            z-index: 10;
+        }
+
+        .left-sidebar {
+            box-shadow: -6px 0px 15.8px 1px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 40px;
+        }
+
+        .right-sidebar {
+            box-shadow: 6px 0px 15.8px 1px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            padding: 32px 40px;
+        }
+
+        /* Logo */
+        .logo-container {
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            width: 139px;
+            height: auto;
+        }
+
+        /* Product Info */
+        .product-info {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .product-title {
+            font-family: 'McLaren', cursive;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #25252E;
+        }
+
+        .product-description {
+            font-size: 24px;
+            font-weight: 300;
+            color: #585866;
+            text-transform: capitalize;
+        }
+
+        /* People Selection */
+        .people-selection {
+            width: 100%;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #25252E;
+            text-transform: capitalize;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .radio-container {
+            position: relative;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+        }
+
+        .radio-container input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .radio-custom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 24px;
+            background-color: #915CA6;
+            margin: 4px;
+        }
+
+        .radio-container input:checked ~ .radio-custom::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 13.33px;
+            height: 13.33px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .option-text {
+            font-size: 24px;
+            font-weight: 600;
+            color: #25252E;
+            text-transform: capitalize;
+        }
+
+        .option-price {
+            font-size: 20px;
+            font-weight: 500;
+            color: #915CA6;
+            text-transform: capitalize;
+            margin-left: auto;
+        }
+
+        /* Total Price */
+        .total-price {
+            text-align: center;
+            margin-top: auto;
+            margin-bottom: 120px; /* Added space for the navigation button */
+        }
+
+        .price-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            color: #25252E;
+            text-transform: capitalize;
+        }
+
+        .price-amount {
+            font-size: 40px;
+            font-weight: 700;
+            color: #25252E;
+            text-transform: capitalize;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.9;
+        }
+
+        .cake-image-container {
+            position: relative;
+            width: 858px;
+            height: 553px;
+        }
+
+        .cake-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .expand-icon {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        /* Navigation Controls */
+        .nav-button {
+            width: 88px;
+            height: 88px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 30px;
+        }
+
+        .left-sidebar .nav-button {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .right-sidebar .nav-button {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Right Sidebar Content */
+        .favorite-button {
+            width: 80px;
+            height: 56px;
+            background: rgba(201, 178, 213, 0.35);
+            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 119px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .favorite-button.active {
+            background: rgba(201, 178, 213, 0.7);
+        }
+
+        .menu-options {
+            width: 254px;
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+            margin-bottom: 120px; /* Added space for the navigation button */
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .menu-text {
+            font-size: 24px;
+            font-weight: 500;
+            color: #25252E;
+            text-transform: capitalize;
+        }
+
+        .chevron-icon, .plus-icon {
+            color: #915CA6;
+        }
+
+        /* Selection Pages Common Styles */
+        .selection-page {
+            display: none;
+            background: white;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .selection-page::before {
+            content: "";
+            position: absolute;
+            width: 1476px;
+            height: 1049px;
+            left: 18px;
+            top: 0px;
+            opacity: 0.11;
+            box-shadow: 3.9px 3.9px 3.9px;
+            filter: blur(3.9px);
+            z-index: 0;
+        }
+
+        .back-button {
+            position: absolute;
+            left: 123px;
+            top: 137px;
+            width: 64px;
+            height: 64px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .selection-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            z-index: 5;
+        }
+
+        .selection-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 88px;
+        }
+
+        .selection-title {
+            font-family: 'McLaren', cursive;
+            font-size: 48px;
+            font-weight: 400;
+            color: #25252E;
+            text-align: center;
+        }
+
+        .selection-subtitle {
+            font-size: 40px;
+            font-weight: 300;
+            color: #585866;
+            text-transform: capitalize;
+        }
+
+        /* Flavor Options */
+        .flavor-options {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            width: 263px;
+        }
+
+        .flavor-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Filling Options */
+        .filling-options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px 80px;
+            width: 80%;
+            max-width: 1000px;
+        }
+
+        .filling-option {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        /* Notes Textarea */
+        .notes-textarea {
+            width: 800px;
+            height: 350px;
+            padding: 20px;
+            border: 1px solid #d0d0d0;
+            border-radius: 10px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            color: #25252E;
+            resize: none;
+            outline: none;
+        }
+
+        .notes-textarea::placeholder {
+            color: #d0d0d0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Product Page -->
+    <div class="container" id="product-page">
+        <!-- Left Sidebar -->
+        <div class="sidebar left-sidebar">
+            <div class="logo-container">
+                <img src="image 1 (2).png" alt="Rawan Cake Logo" class="logo">
+            </div>
+            
+            <div class="product-info">
+                <h1 class="product-title">Lego brick 1</h1>
+                <p class="product-description">Cake with sugar cover</p>
+            </div>
+            
+            <div class="people-selection">
+                <h2 class="section-title">Number Of People :</h2>
+                <div class="option-group">
+                    <div class="option">
+                        <label class="radio-container">
+                            <input type="radio" name="people" checked>
+                            <span class="radio-custom"></span>
+                        </label>
+                        <span class="option-text">20 people</span>
+                        <span class="option-price">65 JOD</span>
+                    </div>
+                    
+                    <div class="option">
+                        <label class="radio-container">
+                            <input type="radio" name="people">
+                            <span class="radio-custom"></span>
+                        </label>
+                        <span class="option-text">30 people</span>
+                        <span class="option-price">95 JOD</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="total-price">
+                <h2 class="price-title">Total Price</h2>
+                <div class="price-amount">65 JOD</div>
+            </div>
+            
+            <!-- Left Navigation Button -->
+            <button class="nav-button prev">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#915CA6"/>
+                    <path d="M24 12L16 20L24 28" stroke="#FEFEFE" stroke-width="3"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="cake-image-container">
+                <img src="image 2.png" alt="Lego Brick Cake" class="cake-image">
+                <div class="expand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 3H21V9" stroke="#915CA6" stroke-width="2"/>
+                        <path d="M9 21H3V15" stroke="#915CA6" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Sidebar -->
+        <div class="sidebar right-sidebar">
+            <div class="favorite-button" id="favorite-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.09C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.03L12 21.35Z" fill="#915CA6"/>
+                </svg>
+            </div>
+            
+            <div class="menu-options">
+                <div class="menu-item" id="favorites-menu-item">
+                    <span class="menu-text">Favorites</span>
+                    <svg class="chevron-icon" width="10" height="17" viewBox="0 0 10 17" fill="none">
+                        <path d="M1 1L9 8.5L1 16" stroke="#915CA6" stroke-width="2"/>
+                    </svg>
+                </div>
+                
+                <div class="menu-item" id="cake-type-menu-item">
+                    <span class="menu-text">Cake Type</span>
+                    <svg class="chevron-icon" width="10" height="17" viewBox="0 0 10 17" fill="none">
+                        <path d="M1 1L9 8.5L1 16" stroke="#915CA6" stroke-width="2"/>
+                    </svg>
+                </div>
+                
+                <div class="menu-item" id="filling-type-menu-item">
+                    <span class="menu-text">Filling Type</span>
+                    <svg class="chevron-icon" width="10" height="17" viewBox="0 0 10 17" fill="none">
+                        <path d="M1 1L9 8.5L1 16" stroke="#915CA6" stroke-width="2"/>
+                    </svg>
+                </div>
+                
+                <div class="menu-item" id="notes-menu-item">
+                    <span class="menu-text">Add Notes</span>
+                    <svg class="plus-icon" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path d="M11 1V21M1 11H21" stroke="#915CA6" stroke-width="2"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Right Navigation Button -->
+            <button class="nav-button next">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#915CA6"/>
+                    <path d="M16 12L24 20L16 28" stroke="#FEFEFE" stroke-width="3"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Cake Flavor Selection Page -->
+    <div class="container selection-page" id="flavor-page">
+        <div class="back-button">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <path d="M32 56L8 32L32 8" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        
+        <div class="selection-content">
+            <div class="selection-header">
+                <h1 class="selection-title">Cake Type</h1>
+                <p class="selection-subtitle">Which cake flavor would you like?</p>
+            </div>
+            
+            <div class="flavor-options">
+                <div class="flavor-option">
+                    <label class="radio-container">
+                        <input type="radio" name="flavor" checked>
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Vanilla</span>
+                </div>
+                
+                <div class="flavor-option">
+                    <label class="radio-container">
+                        <input type="radio" name="flavor">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Chocolate</span>
+                </div>
+                
+                <div class="flavor-option">
+                    <label class="radio-container">
+                        <input type="radio" name="flavor">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">German</span>
+                </div>
+                
+                <div class="flavor-option">
+                    <label class="radio-container">
+                        <input type="radio" name="flavor">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Two Kinds of filling</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filling Type Selection Page -->
+    <div class="container selection-page" id="filling-page">
+        <div class="back-button">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <path d="M32 56L8 32L32 8" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        
+        <div class="selection-content">
+            <div class="selection-header">
+                <h1 class="selection-title">Filling Type</h1>
+                <p class="selection-subtitle">What Type Of Filling Would You Like?</p>
+            </div>
+            
+            <div class="filling-options-grid">
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Plain</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Blueberry</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Chocolate Chip</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Chocoriso</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Strawberry</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Black Forest Cherry</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Fruit</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Toffee Caramel</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Wafer</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Ferrero Rocher</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Pineapple</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Lotus</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Crocan</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Cookies And Cream</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Two Flavors</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Snaky</span>
+                </div>
+                
+                <div class="filling-option">
+                    <label class="radio-container">
+                        <input type="radio" name="filling">
+                        <span class="radio-custom"></span>
+                    </label>
+                    <span class="option-text">Chocotella</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes Page -->
+    <div class="container selection-page" id="notes-page">
+        <div class="back-button">
+            <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <path d="M32 56L8 32L32 8" stroke="black" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        
+        <div class="selection-content">
+            <div class="selection-header">
+                <h1 class="selection-title">Notes</h1>
+                <p class="selection-subtitle">What Would You Like Written On Your Cake?</p>
+            </div>
+            
+            <textarea class="notes-textarea" placeholder="Example : Happy 10th Birthday, Adam!"></textarea>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const favoriteBtn = document.getElementById('favorite-btn');
+            const favoritesMenuItem = document.getElementById('favorites-menu-item');
+            const cakeTypeMenuItem = document.getElementById('cake-type-menu-item');
+            const fillingTypeMenuItem = document.getElementById('filling-type-menu-item');
+            const notesMenuItem = document.getElementById('notes-menu-item');
+            const productPage = document.getElementById('product-page');
+            const flavorPage = document.getElementById('flavor-page');
+            const fillingPage = document.getElementById('filling-page');
+            const notesPage = document.getElementById('notes-page');
+            const backButtons = document.querySelectorAll('.back-button');
+            
+            // Make favorite button toggle active state when clicked
+            favoriteBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+            
+            // Favorites menu item doesn't navigate anywhere now
+            
+            // Show cake type page when Cake Type menu item is clicked
+            cakeTypeMenuItem.addEventListener('click', function() {
+                showPage(flavorPage);
+            });
+            
+            // Show filling page when Filling Type menu item is clicked
+            fillingTypeMenuItem.addEventListener('click', function() {
+                showPage(fillingPage);
+            });
+            
+            // Show notes page when Add Notes menu item is clicked
+            notesMenuItem.addEventListener('click', function() {
+                showPage(notesPage);
+            });
+            
+            // Show product page when back buttons are clicked
+            backButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    showPage(productPage);
+                });
+            });
+            
+            // Function to show a specific page and hide others
+            function showPage(pageToShow) {
+                // Hide all pages
+                productPage.style.display = 'none';
+                flavorPage.style.display = 'none';
+                fillingPage.style.display = 'none';
+                notesPage.style.display = 'none';
+                
+                // Show the requested page
+                pageToShow.style.display = 'flex';
+            }
+            
+            // Handle radio button selection for flavors
+            const flavorOptions = document.querySelectorAll('#flavor-page input[name="flavor"]');
+            flavorOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    console.log('Selected flavor:', this.parentElement.nextElementSibling.textContent.trim());
+                });
+            });
+            
+            // Handle radio button selection for fillings
+            const fillingOptions = document.querySelectorAll('#filling-page input[name="filling"]');
+            fillingOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    console.log('Selected filling:', this.parentElement.nextElementSibling.textContent.trim());
+                });
+            });
+            
+            // Handle notes textarea input
+            const notesTextarea = document.querySelector('.notes-textarea');
+            notesTextarea.addEventListener('input', function() {
+                console.log('Notes text:', this.value);
+            });
+            
+            // Handle radio button selection for people count
+            const peopleOptions = document.querySelectorAll('input[name="people"]');
+            peopleOptions.forEach((option, index) => {
+                option.addEventListener('change', function() {
+                    const priceElement = document.querySelector('.price-amount');
+                    if (index === 0) {
+                        priceElement.textContent = '65 JOD';
+                    } else {
+                        priceElement.textContent = '95 JOD';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

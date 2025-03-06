@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روميتك - أسهل طريقة للعثور على شريك سكن وغرفة للإيجار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            
+            direction: rtl;
+            text-align: right;
+            background-color: #fbfbfb;
+            color: #25252e;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 48px 0 64px;
+            text-align: center;
+        }
+
+        .hero-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+
+        .hero-logo {
+            height: 48px;
+            width: auto;
+        }
+
+        .hero-title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image%201%20%281%29-KKxjmiZ8pBkUu7gj10JllMp2GCcf9d.png');
+            background-repeat: repeat;
+            background-position: center top;
+            background-size: 100% auto;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #25252e;
+            text-align: right;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #81818f;
+            margin: 24px auto 48px;
+            max-width: 600px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .cta-card {
+            height: 158px;
+            padding: 24px 72px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .cta-card.primary {
+            background-color: #0326d8;
+        }
+
+        .cta-card.secondary {
+            background-color: #ff9d23;
+        }
+
+        .cta-title {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .cta-button {
+            background: white;
+            border: none;
+            border-radius: 16px;
+            padding: 13px 32px 11px;
+            font-size: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .cta-card.primary .cta-button {
+            color: #0326d8;
+        }
+
+        .cta-card.secondary .cta-button {
+            color: #ff9d23;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+            color: #25252e;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .features-grid-bottom {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            padding: 0 calc(16.666% + 12px);
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0326d8;
+            font-size: 24px;
+        }
+
+        .feature-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #25252e;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #81818f;
+        }
+
+        /* Bottom CTA Section */
+        .bottom-cta {
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bottom-cta-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            color: #25252e;
+        }
+
+        .bottom-cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .bottom-cta-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            border-radius: 100px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .bottom-cta-button.primary {
+            background: #0326d8;
+        }
+
+        .bottom-cta-button.secondary {
+            background: #ff9d23;
+        }
+
+        .bottom-cta-button i {
+            font-size: 20px;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 24px;
+            background: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 32px;
+            height: 40px;
+        }
+
+        .footer-logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .footer-link {
+            color: #585866;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #0326d8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .social-link {
+            color: #000000;
+            text-decoration: none;
+            font-size: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 0.7;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+            width: 100%;
+        }
+
+        .copyright {
+            color: #81818f;
+            font-size: 14px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-link {
+            color: #81818f;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-link:hover {
+            color: #0326d8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .cta-card {
+                width: 100%;
+                max-width: 453px;
+                padding: 24px 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid-bottom {
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features-grid,
+            .features-grid-bottom {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-pattern"></div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-header">
+                <div class="hero-title-wrapper">
+                    <h1 class="hero-title">
+                        <img src="Group 1 (3).png" alt="روميتك" class="hero-logo">
+
+                        أسهل طريقة للعثور
+                        <br>
+                        على شريك سكن وغرفة للإيجار
+                    </h1>
+                </div>
+            </div>
+
+            <p class="hero-subtitle">
+                سواء كنت تبحث عن غرفة فردية أو شريك سكن متوافق
+                معك، روميتك لمساعدتك على العثور عليه بسهولة
+            </p>
+
+            <div class="cta-buttons">
+                <div class="cta-card secondary">
+                    <h3 class="cta-title">أبحث عن شريك سكن</h3>
+                    <button class="cta-button">اعثر على شريك</button>
+                </div>
+                <div class="cta-card primary">
+                    <h3 class="cta-title">أحتاج إلى سكن مناسب</h3>
+                    <button class="cta-button">استكشف الغرف</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">مميزات المنصة</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="feature-title">بحث متقدم وسريع</h3>
+                    <p class="feature-description">ابحث بسهولة باستخدام الفلاتر الذكية</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3 class="feature-title">ملفات شخصية موثوقة</h3>
+                    <p class="feature-description">تأكد من هوية شريك السكن قبل التواصل</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3 class="feature-title">دردشة داخل الموقع</h3>
+                    <p class="feature-description">تواصل بسهولة مع المالك أو الشريك المحتمل</p>
+                </div>
+            </div>
+
+            <div class="features-grid-bottom">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">منصة سهلة الاستخدام</h3>
+                    <p class="feature-description">واجهة سلسة وسريعة تتيح لك البحث بسهولة</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="feature-title">خيارات متنوعة</h3>
+                    <p class="feature-description">سواء كنت تبحث عن غرفة شقة كاملة أو سكن مشترك، ستجد ما يناسبك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bottom-cta">
+        <div class="container">
+            <h2 class="bottom-cta-title">لا تفوت الفرصة، ابحث عن سكنك المثالي اليوم</h2>
+
+            <div class="bottom-cta-buttons">
+                <button class="bottom-cta-button secondary">
+                    <i class="fas fa-user-friends"></i>
+                    ابحث عن شريك سكن
+                </button>
+                <button class="bottom-cta-button primary">
+                    <i class="fas fa-home"></i>
+                    ابحث عن سكن
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="Group 1 (3).png" alt="روميتك">
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" class="footer-link">عن المنصة</a>
+                    <a href="#" class="footer-link">الغرف</a>
+                    <a href="#" class="footer-link">شركاء السكن</a>
+                    <a href="#" class="footer-link">الأسئلة الشائعة</a>
+                </div>
+
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+
+                <div class="footer-bottom">
+                    <div class="footer-bottom-links">
+                        <a href="#" class="footer-bottom-link">Terms of Service</a>
+                        <a href="#" class="footer-bottom-link">Privacy Policy</a>
+                    </div>
+                    <div class="copyright">© 2025 All rights reserved</div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Hover effects for cards
+            const cards = document.querySelectorAll('.cta-card, .feature-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.1)';
+                    this.style.transition = 'all 0.3s ease';
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.05)';
+                });
+            });
+
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+    
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #FBFBFB;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            background: var(--Background-Color, #FBFBFB);
+        }
+
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(103, 148, 190, 0.8) 0%, transparent 70%);
+            pointer-events: none;
+
+        }
+        .background-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .background-shapes .shape {
+            position: absolute;
+            border-radius: 9999px;
+        }
+
+        .shape-1 {
+            background: rgba(184, 194, 244, 0.41);
+        }
+
+        .shape-2 {
+            background: #B8C2F4;
+        }
+
+        .shape-3 {
+            background: #D4D9B1;
+        }
+
+        .shape-4 {
+            background: rgba(147, 170, 255, 0.15);
+        }
+
+        .shape-5 {
+            background: rgba(217, 217, 217, 0.68);
+        }
+
+        
+        .logo {
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo img {
+            height: 35px;
+        }
+
+        .container {
+            
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.24);
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: right;
+            position: relative;
+            
+            backdrop-filter: blur(91.30px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            
+        }
+
+        h1 {
+            color: #25252E;
+            font-size: 32px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            
+        }
+
+        .subtitle {
+            color: #585866;
+            font-size: 16px;
+        }
+
+        .subtitle a {
+            color: #25252E;
+            text-decoration: none;
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(51, 51, 51, 0.35);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(51, 51, 51, 0.50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .step.active .step-number {
+            background: #25252E;
+        }
+
+        .step.completed .step-number {
+            background: #81818F;
+        }
+
+        .step-label {
+            font-size: 20px;
+            color: #81818F;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #25252E;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #585866;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid rgba(102, 102, 102, 0.35);
+            border-radius: 12px;
+            font-size: 1rem;
+            outline: none;
+            background-color: transparent;
+        }
+
+        .password-toggle {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(102, 102, 102, 0.80);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .password-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .password-requirements {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(102, 102, 102, 0.60);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px;
+        }
+
+        .requirement svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: rgba(102, 102, 102, 0.60);
+        }
+
+        .requirement.met {
+            color: #0326D8;
+        }
+
+        .requirement.met svg {
+            background: #0326D8;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 18.5px;
+            border: none;
+            border-radius: 40px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 220px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0326D8;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #81818F;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .password-requirements {
+                grid-template-columns: 1fr;
+            }
+
+            .step-label {
+                font-size: 16px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+            <path opacity="0.6" d="M135.093 117.576C145.482 19.9544 186.665 -5.79624 304.278 2.27485C315.038 8.0399 334.628 29.6396 326.91 69.9182C317.264 120.266 218.944 65.6905 218.944 89.5194C218.944 113.348 241.576 180.223 218.944 237.874C196.312 295.524 195.569 393.915 170.34 474.241C145.111 554.568 104.67 559.564 71.649 569.941C45.2325 578.243 13.1517 573.4 0.41333 569.941C72.7621 535.735 52.7271 524.59 92.0551 493.842C131.383 463.095 124.705 215.198 135.093 117.576Z" fill="#0326D8" fill-opacity="0.3"/>
+        </svg>
+    </div>
+
+    <div class="logo">
+        <img src="Group 1 (2).png" alt="روميتك">
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>انشاء حساب جديد</h1>
+            <div class="subtitle">
+                تمتلك حساباً بالفعل؟
+                <a href="#">تسجيل دخول</a>
+            </div>
+        </div>
+        
+        <div class="steps">
+            <div class="step completed">
+                <div class="step-number">1</div>
+                <div class="step-label">المعلومات الأساسية</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">2</div>
+                <div class="step-label">كلمة المرور</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-label">التفاصيل الشخصية</div>
+            </div>
+        </div>
+
+        <form id="passwordForm">
+            <div class="form-group">
+                <label>كلمة السر</label>
+                <div class="password-input-container">
+                    <input type="password" class="password-input" id="password" required>
+                    <div class="password-toggle" onclick="togglePassword('password')">
+                        <span>اخفاء</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>تأكيد كلمة السر</label>
+                <div class="password-input-container">
+                    <input type="password" class="password-input" id="confirmPassword" required>
+                    <div class="password-toggle" onclick="togglePassword('confirmPassword')">
+                        <span>اخفاء</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="password-requirements">
+                <div class="requirement" id="lengthReq">
+                    <svg viewBox="0 0 16 16"></svg>
+                    استخدم أكثر من 8 حروف
+                </div>
+                <div class="requirement" id="numberReq">
+                    <svg viewBox="0 0 16 16"></svg>
+                    استخدم رقم (مثل:1234)
+                </div>
+                <div class="requirement" id="symbolReq">
+                    <svg viewBox="0 0 16 16"></svg>
+                    استخدم رموز (مثل : @#$%&)
+                </div>
+                <div class="requirement" id="caseReq">
+                    <svg viewBox="0 0 16 16"></svg>
+                    استخدم حروف كبيرة وصغيرة
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary" onclick="previousStep()">السابق</button>
+                <button type="submit" class="btn btn-primary">التالي</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const toggle = input.nextElementSibling;
+            const icon = toggle.querySelector('svg');
+            const text = toggle.querySelector('span');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                text.textContent = 'اظهار';
+                icon.innerHTML = '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>';
+            } else {
+                input.type = 'password';
+                text.textContent = 'اخفاء';
+                icon.innerHTML = '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>';
+            }
+        }
+
+        function updateRequirements(password) {
+            const requirements = {
+                length: password.length >= 8,
+                number: /\d/.test(password),
+                symbol: /[!@#$%^&*(),.?":{}|<>]/.test(password),
+                case: /[a-z]/.test(password) && /[A-Z]/.test(password)
+            };
+
+            Object.entries(requirements).forEach(([req, met]) => {
+                const element = document.getElementById(req + 'Req');
+                if (met) {
+                    element.classList.add('met');
+                } else {
+                    element.classList.remove('met');
+                }
+            });
+        }
+
+        function previousStep() {
+            console.log('Navigate to previous step');
+        }
+
+        document.getElementById('password').addEventListener('input', function(e) {
+            updateRequirements(e.target.value);
+        });
+
+        document.getElementById('passwordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('كلمات المرور غير متطابقة');
+                return;
+            }
+
+            console.log('Form submitted');
+        });
+    </script>
+</body>
+</html>

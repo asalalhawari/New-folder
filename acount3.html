@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روميتك - إعلاناتي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0326d8',
+                        secondary: '#93aaff',
+                        lightblue: '#b8c2f4',
+                        lightgray: '#d9d9d9',
+                        darkgray: '#25252e',
+                        success: '#31b118',
+                        danger: '#de0d0d'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(145deg, #ffffff, #f8f9ff);
+        }
+        
+        .tab-active {
+            color: #0326d8;
+            border-bottom: 2px solid #0326d8;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <main class="container mx-auto py-6 px-4">
+        <h1 class="text-2xl font-bold text-right mb-6">حسابي</h1>
+        
+        <div class="border-b border-gray-200 mb-6">
+            <div class="flex justify-end gap-8">
+                <a href="#" class="py-3 px-1 tab-active font-medium">إعلاناتي</a>
+                <a href="#" class="py-3 px-1 text-gray-500 hover:text-primary">الاعدادات العامة</a>
+                <a href="#" class="py-3 px-1 text-gray-500 hover:text-primary">معلوماتي الشخصية</a>
+            </div>
+        </div>
+        
+        <div class="flex justify-between items-center mb-6">
+            <button class="bg-primary text-white px-5 py-2 rounded-full flex items-center text-sm">
+                <i class="fa-solid fa-plus ml-2"></i>
+                <span>أضف إعلان</span>
+            </button>
+            
+            <button class="bg-gray-50 text-gray-700 px-5 py-2 rounded-full text-sm">
+                الكل
+            </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="w-[370px] h-[449px] bg-white rounded-3xl shadow-md overflow-hidden relative">
+                <div class="relative">
+                    <img src="image (1).png" alt="غرفة مفروشة" class="w-[338px] h-[221px] object-cover m-[16px] rounded-[20px]">
+                    <button class="absolute left-[24px] top-1/2 -translate-y-1/2 bg-zinc-300/50 w-8 h-8 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-right text-black"></i>
+                    </button>
+                    <button class="absolute right-[24px] top-1/2 -translate-y-1/2 bg-zinc-300/50 w-8 h-8 rounded-full flex items-center justify-center">
+                        <i class="fa-solid fa-chevron-left text-black"></i>
+                    </button>
+                </div>
+                
+                <div class="p-4 relative">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex flex-col items-center gap-0.5">
+                            <div class="w-1.5 h-1.5 bg-zinc-800 rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-zinc-800 rounded-full"></div>
+                            <div class="w-1.5 h-1.5 bg-zinc-800 rounded-full"></div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-right">غرفة مفروشة في عبدون...</h3>
+                    </div>
+                    
+                    <div class="flex flex-col items-end gap-2 mt-2">
+                        <div class="flex items-center gap-1 text-gray-500">
+                            <span class="text-xl font-bold">عمان, شارع الملك عبدالله</span>
+                            <i class="fa-solid fa-location-dot text-orange-500 text-2xl"></i>
+                        </div>
+                        
+                        <div class="flex items-center gap-1 text-gray-600">
+                            <span class="text-xl">متاحة من 1 مارس</span>
+                            <i class="fa-regular fa-calendar text-orange-500 text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end gap-1 mt-4">
+                        <div class="px-2 py-1 bg-zinc-100 rounded-[20px] text-gray-600 text-base">مصعد</div>
+                        <div class="px-2 py-1 bg-zinc-100 rounded-[20px] text-gray-600 text-base">حمام خاص</div>
+                        <div class="px-2 py-1 bg-zinc-100 rounded-[20px] text-gray-600 text-base">كهرباء</div>
+                        <div class="px-2 py-1 bg-zinc-100 rounded-[20px] text-gray-600 text-base">إنترنت</div>
+                        <div class="px-2 py-1 bg-zinc-100 rounded-[20px] text-gray-600 text-base">غرفة</div>
+                    </div>
+                    
+                    <div class="absolute bottom-4 left-4 flex items-end gap-1.5">
+                        <span class="text-gray-600 text-base font-bold">/شهر</span>
+                        <div class="text-right">
+                            <span class="text-zinc-800 text-[40px] font-bold">100</span>
+                            <span class="text-zinc-800 text-2xl font-medium"> دينار</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('main .flex.justify-end a');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active', 'font-medium');
+                        t.classList.add('text-gray-500', 'hover:text-primary');
+                    });
+                    this.classList.add('tab-active', 'font-medium');
+                    this.classList.remove('text-gray-500', 'hover:text-primary');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

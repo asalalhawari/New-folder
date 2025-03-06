@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل دخول</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #FBFBFB;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .background-gradient {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(124, 185, 224, 0.5) 0%, rgba(124, 185, 224, 0) 100%);
+            pointer-events: none;
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+
+        .logo img {
+            height: 35px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 580px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.24);
+            backdrop-filter: blur(91.30px);
+            border-radius: 30px;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #25252E;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: start;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            color: #585866;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-align: right;
+        }
+
+        input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid rgba(102, 102, 102, 0.35);
+            border-radius: 12px;
+            font-size: 16px;
+            background: transparent;
+            color: #25252E;
+        }
+
+        .password-group {
+            position: relative;
+        }
+
+        .password-toggle {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(102, 102, 102, 0.8);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 1rem 0;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            accent-color: #0326D8;
+        }
+
+        .remember-me label {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .terms {
+            text-align: right;
+            margin: 1rem 0;
+            font-size: 16px;
+            color: #24242D;
+        }
+
+        .terms a {
+            color: #24242D;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 17px;
+            background: #0326D8;
+            color: white;
+            border: none;
+            border-radius: 32px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .forgot-password a {
+            color: #24242D;
+            text-decoration: underline;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .signup-link span {
+            color: #80808E;
+            font-size: 16px;
+        }
+
+        .signup-link a {
+            color: #0326D8;
+            text-decoration: none;
+            font-size: 16px;
+            margin-right: 4px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 23px;
+            margin: 1.5rem 0;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 2px;
+            background: rgba(102, 102, 102, 0.25);
+        }
+
+        .divider span {
+            color: #585866;
+            font-size: 20px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .social-btn {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        .password-toggle svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .password-toggle span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-gradient"></div>
+    
+    <div class="logo">
+        <img src="Group 1 (2).png" alt="روميتك">
+    </div>
+
+    <div class="container">
+        <h1>تسجيل دخول</h1>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label>بريدك الالكتروني</label>
+                <input type="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>كلمة السر</label>
+                <div class="password-group">
+                    <input type="password" required>
+                    <div class="password-toggle">
+                        <svg class="eye-closed" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+                            <path d="M12 19C11.158 19 10.315 18.822 9.49597 18.505C8.67697 18.188 7.91497 17.731 7.21997 17.134C6.52497 16.538 5.89697 15.844 5.33597 15.055C4.77497 14.266 4.31197 13.434 3.94797 12.559L3.79297 12.134L3.94797 11.709C4.31197 10.834 4.77497 10.002 5.33597 9.21295C5.89697 8.42395 6.52897 7.72995 7.23197 7.13395C7.93497 6.53795 8.69697 6.08095 9.51597 5.76395C10.335 5.44695 11.158 5.26895 12 5.26895C12.842 5.26895 13.684 5.44695 14.504 5.76395C15.323 6.08095 16.084 6.53795 16.787 7.13395C17.49 7.72995 18.122 8.42395 18.683 9.21295C19.244 10.002 19.707 10.834 20.071 11.709L20.226 12.134L20.071 12.559C19.707 13.434 19.244 14.266 18.683 15.055C18.122 15.844 17.49 16.538 16.787 17.134C16.084 17.731 15.323 18.188 14.504 18.505C13.684 18.822 12.842 19 12 19ZM12 6.76895C10.072 6.76895 8.31997 7.47295 6.73997 8.88195C5.15997 10.291 4.01997 12.017 3.31897 14.061C4.01997 16.105 5.15997 17.831 6.73997 19.24C8.31997 20.649 10.072 21.353 12 21.353C13.928 21.353 15.679 20.649 17.259 19.24C18.839 17.831 19.979 16.105 20.68 14.061C19.979 12.017 18.839 10.291 17.259 8.88195C15.679 7.47295 13.928 6.76895 12 6.76895Z" fill="#666666" fill-opacity="0.8"/>
+                            <path d="M12 16C11.172 16 10.453 15.701 9.84198 15.104C9.23098 14.507 8.92498 13.808 8.92498 13C8.92498 12.192 9.23098 11.493 9.84198 10.896C10.453 10.299 11.172 10 12 10C12.828 10 13.547 10.299 14.158 10.896C14.769 11.493 15.075 12.192 15.075 13C15.075 13.808 14.769 14.507 14.158 15.104C13.547 15.701 12.828 16 12 16ZM12 11.5C11.528 11.5 11.12 11.672 10.776 12.015C10.432 12.358 10.26 12.765 10.26 13.235C10.26 13.705 10.432 14.112 10.776 14.455C11.12 14.798 11.528 14.97 12 14.97C12.472 14.97 12.88 14.798 13.224 14.455C13.568 14.112 13.74 13.705 13.74 13.235C13.74 12.765 13.568 12.358 13.224 12.015C12.88 11.672 12.472 11.5 12 11.5Z" fill="#666666" fill-opacity="0.8"/>
+                        </svg>
+                        <svg class="eye-open" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M19.8822 4.88128L19.1463 4.14533C18.9383 3.93734 18.5543 3.96935 18.3143 4.2573L15.7541 6.80126C14.602 6.30532 13.3382 6.06532 12.0101 6.06532C8.05798 6.08126 4.6342 8.38523 2.98608 11.6974C2.89006 11.9054 2.89006 12.1614 2.98608 12.3373C3.75402 13.9054 4.90609 15.2014 6.34609 16.1773L4.2501 18.3053C4.0101 18.5453 3.97809 18.9293 4.13813 19.1373L4.87408 19.8732C5.08207 20.0812 5.46606 20.0492 5.70606 19.7613L19.754 5.71339C20.058 5.47352 20.09 5.08956 19.882 4.88155L19.8822 4.88128Z" fill="#666666" fill-opacity="0.8"/>
+                            <path d="M21.0342 11.6974C20.4742 10.5773 19.7381 9.56939 18.8262 8.75336L15.8502 11.6974V12.0173C15.8502 14.1453 14.1382 15.8573 12.0102 15.8573H11.6902L9.80225 17.7453C10.5063 17.8893 11.2422 17.9853 11.9623 17.9853C15.9144 17.9853 19.3382 15.6813 20.9863 12.3532C21.1302 12.1291 21.1302 11.9052 21.0342 11.6972L21.0342 11.6974Z" fill="#666666" fill-opacity="0.8"/>
+                        </svg>
+                        <span>اخفاء</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">تذكرني</label>
+            </div>
+
+            <div class="terms">
+                بالاستمرار، أنت توافق على <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية.</a>
+            </div>
+
+            <button type="submit" class="login-btn">تسجيل دخول</button>
+
+            <div class="forgot-password">
+                <a href="#">نسيت كلمة المرور</a>
+            </div>
+
+            <div class="signup-link">
+                <span>لا تمتلك حساب ؟</span>
+                <a href="#">انشئ حسابك</a>
+            </div>
+
+            <div class="divider">
+                <span>أو قم بالتسجيل باستخدام</span>
+            </div>
+
+            <div class="social-login">
+                <a href="#" class="social-btn">
+                    <svg width="13" height="22" viewBox="0 0 13 22" fill="none">
+                        <path d="M11.7137 12.2816L12.3356 8.3301H8.44522V5.76699C8.44522 4.6857 8.98767 3.63107 10.7302 3.63107H12.5V0.26699C12.5 0.26699 10.8945 0 9.36027 0C6.15484 0 4.06166 1.89294 4.06166 5.31845V8.3301H0.5V12.2816H4.06166V21.8345C4.77671 21.944 5.50824 22 6.25344 22C6.99864 22 7.73017 21.944 8.44522 21.8345V12.2816H11.7137Z" fill="url(#paint0_linear_235_1348)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_235_1348" x1="6.5" y1="0" x2="6.5" y2="22" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0E88F0"/>
+                                <stop offset="1" stop-color="#097BEB"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <a href="#" class="social-btn">
+                    <svg width="43" height="42" viewBox="0 0 43 42" fill="none">
+                        <path d="M39.875 21C39.875 31.143 31.6522 39.375 21.5 39.375C11.3478 39.375 3.125 31.143 3.125 21C3.125 10.8478 11.3478 2.625 21.5 2.625C31.6522 2.625 39.875 10.8478 39.875 21Z" fill="white"/>
+                        <path d="M30.1128 16.3503C30.0125 16.4088 27.6255 17.6433 27.6255 20.3803C27.738 23.5017 30.6378 24.5964 30.6875 24.5964C30.6378 24.6549 30.2497 26.0876 29.1003 27.5895C28.188 28.8832 27.1755 30.1875 25.638 30.1875C24.1755 30.1875 23.6505 29.3253 21.963 29.3253C20.1508 29.3253 19.638 30.1875 18.2505 30.1875C16.713 30.1875 15.6255 28.8133 14.6635 27.5317C13.4138 25.8544 12.3516 23.2222 12.3141 20.6948C12.2888 19.3555 12.5644 18.039 13.2638 16.9208C14.251 15.3597 16.0135 14.3 17.9383 14.2651C19.413 14.2187 20.7255 15.2086 21.6255 15.2086C22.488 15.2086 24.1005 14.2651 25.925 14.2651C26.7125 14.2658 28.8125 14.4869 30.1128 16.3503ZM21.5008 13.9977C21.2383 12.7746 21.963 11.5516 22.638 10.7714C23.5005 9.82789 24.8628 9.1875 26.0375 9.1875C26.1125 10.4106 25.6372 11.6101 24.7878 12.4837C24.0255 13.4272 22.713 14.1374 21.5008 13.9977Z" fill="url(#paint0_linear_104_1719)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_104_1719" x1="21.5" y1="9.1875" x2="21.5" y2="30.1875" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#293645"/>
+                                <stop offset="1" stop-color="#0F1011"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </a>
+                <a href="#" class="social-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M22.0637 12.2235C22.0637 11.3961 21.9952 10.7924 21.8469 10.1663H12.2065V13.9005H17.8652C17.7512 14.8285 17.1351 16.2261 15.766 17.1652L15.7468 17.2902L18.795 19.6044L19.0061 19.625C20.9456 17.8696 22.0637 15.2869 22.0637 12.2235" fill="#4285F4"/>
+                        <path d="M12.2048 22.0625C14.9771 22.0625 17.3045 21.168 19.0044 19.6251L15.7643 17.1653C14.8973 17.7579 13.7336 18.1716 12.2048 18.1716C9.48959 18.1716 7.18505 16.4163 6.36354 13.9901L6.24313 14.0001L3.07368 16.4039L3.03223 16.5168C4.72069 19.8039 8.18894 22.0625 12.2048 22.0625Z" fill="#34A853"/>
+                        <path d="M6.3655 13.9902C6.14874 13.3641 6.02329 12.6932 6.02329 12C6.02329 11.3068 6.14874 10.636 6.3541 10.0099L6.34836 9.87652L3.13917 7.43408L3.03418 7.48303C2.33827 8.84707 1.93896 10.3788 1.93896 12C1.93896 13.6212 2.33827 15.1529 3.03418 16.5169L6.3655 13.9902" fill="#FBBC05"/>
+                        <path d="M12.2049 5.82831C14.1329 5.82831 15.4335 6.64448 16.1751 7.32654L19.0729 4.55375C17.2932 2.93257 14.9772 1.9375 12.2049 1.9375C8.18897 1.9375 4.7207 4.19595 3.03223 7.48301L6.35216 10.0099C7.18507 7.58367 9.48962 5.82831 12.2049 5.82831" fill="#EB4335"/>
+                    </svg>
+                </a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('.password-toggle').addEventListener('click', function() {
+            const input = this.previousElementSibling;
+            const eyeOpen = this.querySelector('.eye-open');
+            const eyeClosed = this.querySelector('.eye-closed');
+            const toggleText = this.querySelector('span');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeClosed.style.display = 'block';
+                toggleText.textContent = 'اظهار';
+            } else {
+                input.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeClosed.style.display = 'none';
+                toggleText.textContent = 'اخفاء';
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add login logic here
+        });
+    </script>
+</body>
+</html>
+

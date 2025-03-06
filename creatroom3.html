@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب جديد</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #FBFBFB;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(50% 50% at 50% 50%, rgba(124, 185, 224, 0.35) 0%, rgba(124, 185, 224, 0) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .background-shapes,
+        .background-shapes .shape,
+        .shape-1,
+        .shape-2,
+        .shape-3,
+        .shape-4,
+        .shape-5,
+        .decorative-path {
+            display: none;
+        }
+
+        .logo {
+            margin: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo img {
+            height: 35px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.24);
+            border-radius: 30px;
+            padding: 2rem;
+            text-align: right;
+            position: relative;
+            backdrop-filter: blur(45.65px);
+            -webkit-backdrop-filter: blur(45.65px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            color: #25252E;
+            font-size: 32px;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: #585866;
+            font-size: 16px;
+        }
+
+        .subtitle a {
+            color: #25252E;
+            text-decoration: none;
+            font-weight: 700;
+            margin-right: 0.25rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(51, 51, 51, 0.35);
+            z-index: 1;
+        }
+
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(51, 51, 51, 0.50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .step.active .step-number {
+            background: #0326D8;
+            border-color: #0326D8;
+            color: white;
+        }
+
+        .step.completed .step-number {
+            background: #81818F;
+        }
+
+        .step-label {
+            font-size: 20px;
+            color: #81818F;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        .step.active .step-label {
+            color: #0326D8;
+            font-weight: 500;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #585866;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-wrapper select,
+        input[type="number"] {
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(102, 102, 102, 0.35);
+            font-size: 16px;
+            color: #585866;
+        }
+
+        .select-wrapper::after {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-75%) rotate(-45deg);
+            width: 10px;
+            height: 10px;
+            border-left: 2px solid #585866;
+            border-bottom: 2px solid #585866;
+            border-right: none;
+            border-top: none;
+            pointer-events: none;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            outline: none;
+            background-color: transparent;
+        }
+
+        .interests-section {
+            margin-top: 2rem;
+        }
+
+        .interests-title {
+            color: #25252E;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .interests-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+            justify-content: flex-end;
+        }
+
+        .interest-tag {
+            padding: 8px 16px;
+            background: #E0E4F7;
+            border-radius: 20px;
+            color: #585866;
+            font-size: 16px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .interest-tag.selected {
+            background: #0326D8;
+            color: white;
+        }
+
+        .interest-tag.add-more {
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 18.5px 40px;
+            border: none;
+            border-radius: 40px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #0326D8;
+            color: white;
+            padding: 18px 40px;
+            font-size: 22px;
+            min-width: 240px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #81818F;
+            font-size: 22px;
+            min-width: 120px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+            }
+
+            .step-label {
+                font-size: 16px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .interest-tag {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="Group 1 (2).png">
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>انشاء حساب جديد</h1>
+            <div class="subtitle">
+                تمتلك حساباً بالفعل؟
+                <a href="#">تسجيل دخول</a>
+            </div>
+        </div>
+        
+        <div class="steps">
+            <div class="step completed">
+                <div class="step-number">1</div>
+                <div class="step-label">المعلومات الأساسية</div>
+            </div>
+            <div class="step completed">
+                <div class="step-number">2</div>
+                <div class="step-label">كلمة المرور</div>
+            </div>
+            <div class="step active">
+                <div class="step-number">3</div>
+                <div class="step-label">التفاصيل الشخصية</div>
+            </div>
+        </div>
+
+        <form id="personalDetailsForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label>ماذا تفعل حاليًا؟</label>
+                    <div class="select-wrapper">
+                        <select required>
+                            <option value="" disabled selected>الحالة المهنية</option>
+                            <option value="student">طالب</option>
+                            <option value="employed">موظف</option>
+                            <option value="self-employed">عمل حر</option>
+                            <option value="unemployed">عاطل عن العمل</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>العمر</label>
+                    <input type="number" min="18" max="100" required>
+                </div>
+            </div>
+
+            <div class="interests-section">
+                <h2 class="interests-title">ما هي اهتماماتك؟</h2>
+                <div class="interests-grid">
+                    <div class="interest-tag">التسوق</div>
+                    <div class="interest-tag">القراءة</div>
+                    <div class="interest-tag">مشاهدة الأفلام والمسلسلات</div>
+                    <div class="interest-tag">موسيقى</div>
+                    <div class="interest-tag">ألعاب الفيديو</div>
+                    <div class="interest-tag">محب للحيوانات</div>
+                    <div class="interest-tag">الخروج إلى المقاهي</div>
+                    <div class="interest-tag">الفنون والتصميم</div>
+                    <div class="interest-tag">السفر والمغامرات</div>
+                    <div class="interest-tag">الطبخ</div>
+                    <div class="interest-tag">كاريوكي والموسيقى الحية</div>
+                    <div class="interest-tag">الرياضة واللياقة البدنية</div>
+                    <div class="interest-tag">شخص بيتوتي</div>
+                    <div class="interest-tag add-more">
+                        اضافة المزيد
+                        <svg width="16" height="8" viewBox="0 0 16 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.52599 6.77131L3.75466 2.99998L4.69732 2.05731L7.99732 5.35731L11.2973 2.05731L12.24 2.99998L8.46866 6.77131C8.34364 6.89629 8.1741 6.9665 7.99732 6.9665C7.82055 6.9665 7.65101 6.89629 7.52599 6.77131Z" fill="black"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="button" class="btn btn-secondary">السابق</button>
+                <button type="submit" class="btn btn-primary">ابدأ باستخدام روماتيك الآن</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.querySelectorAll('.interest-tag').forEach(tag => {
+            if (!tag.classList.contains('add-more')) {
+                tag.addEventListener('click', () => {
+                    tag.classList.toggle('selected');
+                });
+            }
+        });
+
+        document.getElementById('personalDetailsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedInterests = Array.from(document.querySelectorAll('.interest-tag.selected'))
+                .map(tag => tag.textContent);
+            
+            console.log('Selected interests:', selectedInterests);
+        });
+    </script>
+</body>
+</html>
+

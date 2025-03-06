@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>روميتك - حسابي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0326d8',
+                        secondary: '#93aaff',
+                        lightblue: '#b8c2f4',
+                        lightgray: '#d9d9d9',
+                        darkgray: '#25252e',
+                        success: '#31b118',
+                        danger: '#de0d0d'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(to bottom, #ffffff, #fbfbfb);
+        }
+        
+        .tab-active {
+            color: #0326d8;
+            border-bottom: 3px solid #0326d8;
+        }
+        
+        .checkbox-blue {
+            accent-color: #0326d8;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .radio-blue {
+            accent-color: #0326d8;
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-3 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo (Right Side) -->
+            <div class="flex items-center space-x-4 order-2">
+                <div class="text-primary text-3xl font-bold">
+                    <span class="text-primary">روميتك</span>
+                    <i class="fa-solid fa-house-user text-primary ml-1"></i>
+                </div>
+            </div>
+            
+            <!-- Navigation (Middle) -->
+            <nav class="hidden md:flex space-x-8 order-1">
+                <a href="#" class="text-darkgray hover:text-primary px-2 py-1">الرئيسية</a>
+                <a href="#" class="text-darkgray hover:text-primary px-2 py-1">الغرف</a>
+                <a href="#" class="text-darkgray hover:text-primary px-2 py-1">شركاء السكن</a>
+                <a href="#" class="text-darkgray hover:text-primary px-2 py-1">الأسئلة الشائعة</a>
+            </nav>
+            
+            <!-- User Menu (Left Side) -->
+            <div class="flex items-center space-x-4 order-0">
+                <div class="flex items-center space-x-2">
+                    <div class="relative">
+                        <img src="/placeholder.svg?height=40&width=40" alt="صورة المستخدم" class="w-10 h-10 rounded-full border-2 border-gray-200">
+                        <i class="fa-solid fa-chevron-down text-xs absolute bottom-0 left-0"></i>
+                    </div>
+                    <span class="text-darkgray">محمد</span>
+                </div>
+                <div class="relative">
+                    <button class="text-darkgray hover:text-primary">
+                        <i class="fa-regular fa-comment text-xl"></i>
+                    </button>
+                </div>
+                <div class="relative">
+                    <button class="text-darkgray hover:text-primary">
+                        <i class="fa-regular fa-bell text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4">
+        <h1 class="text-3xl font-bold text-right mb-8">حسابي</h1>
+        
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-8">
+            <div class="flex justify-end space-x-8">
+                <a href="#" class="py-4 px-2 text-gray-500 hover:text-primary">إعلاناتي</a>
+                <a href="#" class="py-4 px-2 tab-active font-medium">الاعدادات العامة</a>
+                <a href="#" class="py-4 px-2 text-gray-500 hover:text-primary">معلوماتي الشخصية</a>
+            </div>
+        </div>
+        
+        <!-- Settings Content -->
+        <div class="max-w-4xl mx-auto">
+            <!-- Language Section -->
+            <div class="mb-12">
+                <h2 class="text-xl font-bold mb-6 text-right">اللغة</h2>
+                <div class="bg-white rounded-lg shadow-sm p-4 flex justify-between items-center">
+                    <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                    <div class="flex items-center">
+                        <span class="ml-2">العربية</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notifications Section -->
+            <div class="mb-12">
+                <div class="flex justify-between items-center mb-6">
+                    <p class="text-gray-500 text-sm">روميتك سيرسل لك إشعارات.</p>
+                    <h2 class="text-xl font-bold">اعدادات الاشعارات</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Right Column -->
+                    <div class="space-y-4">
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات بشأن سكن مطابق لبحثك</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات الحساب والأمان</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات فورية داخل الموقع (Web Notifications)</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                    </div>
+                    
+                    <!-- Left Column -->
+                    <div class="space-y-4">
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات الرسائل</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات بشأن شريك سكن مناسب لك</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                        <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                            <span>إشعارات عبر البريد الإلكتروني</span>
+                            <input type="checkbox" class="checkbox-blue" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interaction Settings -->
+            <div class="mb-12">
+                <h2 class="text-xl font-bold mb-6 text-right">إعدادات التفاعل والتواصل</h2>
+                <div class="space-y-4">
+                    <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                        <span>السماح للمستخدمين بالتواصل معي مباشرة</span>
+                        <input type="checkbox" class="checkbox-blue" checked>
+                    </div>
+                    <div class="flex flex-row-reverse justify-between items-center bg-white rounded-lg shadow-sm p-4">
+                        <span>السماح باستقبال الرسائل فقط من المستخدمين الموثوقين</span>
+                        <input type="radio" name="messages" class="radio-blue">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Identity Verification -->
+            <div class="mb-12">
+                <div class="flex justify-end items-center bg-white rounded-lg shadow-sm p-4">
+                    <span class="ml-2">توثيق الهوية</span>
+                    <div class="w-6 h-6 rounded-full bg-success flex items-center justify-center">
+                        <i class="fa-solid fa-check text-white text-xs"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Delete Account -->
+            <div class="mb-12">
+                <div class="flex justify-end items-center bg-white rounded-lg shadow-sm p-4">
+                    <span class="ml-2 text-danger font-medium">حذف الحساب</span>
+                    <div class="w-6 h-6 text-danger">
+                        <i class="fa-solid fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('main .flex.justify-end.space-x-8 a');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active', 'font-medium');
+                        t.classList.add('text-gray-500', 'hover:text-primary');
+                    });
+                    
+                    this.classList.add('tab-active', 'font-medium');
+                    this.classList.remove('text-gray-500', 'hover:text-primary');
+                });
+            });
+            
+            const languageDropdown = document.querySelector('.bg-white.rounded-lg.shadow-sm.p-4.flex');
+            if (languageDropdown) {
+                languageDropdown.addEventListener('click', function() {
+                    alert('تم النقر على قائمة اللغات');
+                });
+            }
+            
+            const checkboxes = document.querySelectorAll('.checkbox-blue');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    console.log(`تم تغيير حالة الخيار إلى: ${this.checked ? 'مفعل' : 'غير مفعل'}`);
+                });
+            });
+            
+            const deleteAccount = document.querySelector('.text-danger.font-medium');
+            if (deleteAccount) {
+                deleteAccount.parentElement.addEventListener('click', function() {
+                    if (confirm('هل أنت متأكد من رغبتك في حذف الحساب؟ هذا الإجراء لا يمكن التراجع عنه.')) {
+                        alert('تم إرسال طلب حذف الحساب');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

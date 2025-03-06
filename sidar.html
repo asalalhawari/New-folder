@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلايدر الصور</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            text-align: right;
+        }
+        .swiper-container {
+            width: 50%;
+            margin-left: auto;
+            margin-right: 0;
+        }
+        .swiper-slide img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .swiper-thumb {
+            display: flex;
+            justify-content: flex-start;
+        }
+        .swiper-thumb .swiper-slide {
+            width: 100px;
+            height: 100px;
+            opacity: 1;
+            cursor: default;
+            border: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="swiper-container main-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="dd4.png.webp" alt="صورة 1"></div>
+        </div>
+    </div>
+    <div class="swiper-container swiper-thumb">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="dd1.png.webp" alt="صورة 1"></div>
+            <div class="swiper-slide"><img src="dd3.png.webp" alt="صورة 2"></div>
+            <div class="swiper-slide"><img src="dd4.png.webp" alt="صورة 3"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        var thumbSlider = new Swiper('.swiper-thumb', {
+            spaceBetween: 10,
+            slidesPerView: 3,
+            freeMode: true,
+            watchSlidesProgress: false,
+        });
+        var mainSlider = new Swiper('.main-slider', {
+            spaceBetween: 10,
+            loop: true,
+        });
+    </script>
+</body>
+</html>
