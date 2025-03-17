@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مرحباً بكم في عالنا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #faf7f2;
+            font-family: 'Noto Naskh Arabic', serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23bc9139' fill-opacity='0.05' d='M96.5,40.5c-0.5-1-2.5-2-2.5-2s1.5-2,1.5-3s-1.5-2-1.5-2s1-1.5,0.5-2.5s-2-1-2-1s0.5-2-0.5-2.5s-2,0-2,0s0-2-1-2.5 s-2,0.5-2,0.5s-0.5-2-1.5-2s-1.5,1-1.5,1s-1-1.5-2-1.5s-1.5,1.5-1.5,1.5s-1.5-1-2.5-0.5s-1,2-1,2s-2-0.5-2.5,0.5s0,2,0,2s-2,0.5-2.5,1.5 s0.5,2,0.5,2s-1.5,1-2,2s0.5,2,0.5,2s-2,1.5-2,2.5s1,1.5,1,1.5s-1.5,2-1,3s2,1,2,1s-1,2-0.5,2.5s2,0.5,2,0.5s-0.5,2,0.5,2.5s2-0.5,2-0.5 s0,2,1,2.5s2-0.5,2-0.5s0.5,2,1.5,2s1.5-1,1.5-1s1,1.5,2,1.5s1.5-1.5,1.5-1.5s1.5,1,2.5,0.5s1-2,1-2s2,0.5,2.5-0.5s0-2,0-2s2-0.5,2.5-1.5 s-0.5-2-0.5-2s1.5-1,2-2s-0.5-2-0.5-2s2-1.5,2-2.5S96.5,40.5,96.5,40.5z'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .main-title {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-title img {
+            height: 80px;
+            width: auto;
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            color: #c4962d;
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .description {
+            text-align: center;
+            color: #c4962d;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 353px);
+            gap: 30px;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 353px;
+            height: 361px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-label {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #c4962d;
+            color: white;
+            padding: 8px 30px;
+            font-size: 24px;
+            border-top-left-radius: 60px;
+            font-weight: 500;
+            min-width: 247px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 353px;
+            }
+        }
+
+        .footer {
+            margin-top: 6rem;
+            position: relative;
+            background: white;
+            overflow: hidden;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo img {
+            height: 120px;
+            width: auto;
+        }
+
+        .story-section {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: right;
+        }
+
+        .story-title {
+            color: #c4962d;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .story-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .contact-info {
+            text-align: right;
+            margin-bottom: 4rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            color: #c4962d;
+            font-weight: 500;
+        }
+
+        .contact-item i {
+            color: #c4962d;
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+
+        .footer-bottom {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        .skyline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            z-index: 1;
+        }
+
+        .skyline img {
+            width: 100%;
+            height: auto;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .curved-shape {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #c4962d;
+            border-top-left-radius: 100%;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="main-title">
+                <img src="image (21).png" alt="مرحباً بكم في عالمنا" />
+            </div>
+            <div class="subtitle">Welcome to our world!</div>
+        </header>
+
+        <div class="description">
+            <p>نحن نصنع لك أفضل أنواع الحلويات الشرقية والغربية لتستمتع بتجربة ذوق لا مثيل لها</p>
+            <p>كل ما هو أمامك صنع بحب</p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="image (23).png" alt="كنافة" class="product-image">
+                <div class="product-label">كنافة</div>
+            </div>
+            <div class="product-card">
+                <img src="image (21).png" alt="حلويات يومية" class="product-image">
+                <div class="product-label">حلويات يومية</div>
+            </div>
+            <div class="product-card">
+                <img src="image (22).png" alt="حلويات شرقية" class="product-image">
+                <div class="product-label">حلويات شرقية</div>
+            </div>
+            <div class="product-card">
+                <img src="image (20).png" alt="مشكل نواشف" class="product-image">
+                <div class="product-label">مشكل نواشف</div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="Frame 36762.png" alt="AKHO DONIA" />
+            </div>
+            
+            <div class="story-section">
+                <h2 class="story-title">قصتنا</h2>
+                <div class="story-text">
+                    <p>وهي علامة أخو دنيا التي تشتهر بصناعة كل ما هو مميز في عالم الحلو
+                        وهي عائلة أخو دُنيا التي تنحدر أصولها من قبيلة بني عباد الغنيّة عن التعريف
+                        حيث تأسست في مدينة السلط وتحديداً الصبيحي , بسواعد أبناء الشيخ محمد أخو دُنيا " أبو رعد"
+                        وكانت هذه الإنطلاقة ليست الأولى لهذه العائلة بل جائت بعد النجاح الكبير الذي حققه مطبخ وملحمة أخو دُنيا
+                        لتقديم المناسف والهيطلية في المناسبات على مستوى المملكة الأردنية الهاشمية منذ عام ١٩٩٦ م ,
+                        استطعنا الوصول الى تقديم أفخر أنواع الحلويات العربية والغربية وأن نكون محل ثقة عملائنا ,
+                        وتم التوسع للوصول الى ٤ فروع داخل محافظة البلقاء ونسعى للإنتشار في جميع أنحاء العالم بمحبتكم .يتم التوسع للوصول إلى ٤ فروع داخل محافظة البلقاء وسعي للانتشار في جميع أنحاء عالمنا الحبيب.</p>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>ALSALT - JORDAN</span>
+                    <i>📍</i>
+                </div>
+                <div class="contact-item">
+                    <span>0775502091</span>
+                    <i>📞</i>
+                </div>
+                <div class="contact-item">
+                    <span>akhuduneaeweet@gmail.com</span>
+                    <i>📧</i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="skyline">
+                <!-- <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/path119990-5NIqdIBNfTFvJs7MFlqo29Yfe7TPZy.png" alt="City Skyline" /> -->
+            </div>
+            <div class="curved-shape"></div>
+        </div>
+    </footer>
+</body>
+</html>

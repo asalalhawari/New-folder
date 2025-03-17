@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلويات أخو دنيا - Akho Donia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+
+        :root {
+            --primary-color: #c4962d;
+            --secondary-color: #901a1d;
+            --gold-color: #b27b00;
+            --light-bg: #faf7f2;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .decorative-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .decorative-lines::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 2px;
+            transform: rotate(-45deg);
+            top: 50px;
+            left: -100px;
+        }
+
+        .decorative-lines::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 2px;
+            transform: rotate(-45deg);
+            top: 150px;
+            left: -200px;
+        }
+
+        .logo-container {
+            position: relative;
+            z-index: 1;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+            background-color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            margin: 0 auto;
+        }
+
+        .logo-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carousel-container {
+            position: relative;
+            padding: 20px;
+            margin: 40px auto;
+            max-width: 1000px;
+        }
+
+        .carousel-frame {
+            position: relative;
+            padding: 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(196, 150, 45, 0.1);
+        }
+
+        .frame-title {
+            position: absolute;
+            top: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            background: #8c6b1e;
+            padding: 5px 25px;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 20px;
+        }
+
+        .carousel-inner img {
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .shop-now-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 40px;
+            border-radius: 25px;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .shop-now-btn:hover {
+            background-color: #7a1518;
+        }
+
+        .content-section {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* تنسيق العنوان مع الزخارف */
+        .content-title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .decorative-icon {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .decorative-icon.left {
+            transform: scaleX(-1);
+        }
+
+        .content-title {
+            color: var(--secondary-color);
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+            flex-grow: 0;
+            white-space: nowrap;
+        }
+
+        .content-description {
+            color: #666;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .carousel-indicators [data-bs-target] {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        /* ===== القسم الثاني: مرحباً بكم في عالمنا ===== */
+        .welcome-section {
+            background-color: var(--light-bg);
+            padding: 2rem;
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .welcome-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23bc9139' fill-opacity='0.05' d='M96.5,40.5c-0.5-1-2.5-2-2.5-2s1.5-2,1.5-3s-1.5-2-1.5-2s1-1.5,0.5-2.5s-2-1-2-1s0.5-2-0.5-2.5s-2,0-2,0s0-2-1-2.5 s-2,0.5-2,0.5s-0.5-2-1.5-2s-1.5,1-1.5,1s-1-1.5-2-1.5s-1.5,1.5-1.5,1.5s-1.5-1-2.5-0.5s-1,2-1,2s-2-0.5-2.5,0.5s0,2,0,2s-2,0.5-2.5,1.5 s0.5,2,0.5,2s-1.5,1-2,2s0.5,2,0.5,2s-2,1.5-2,2.5s1,1.5,1,1.5s-1.5,2-1,3s2,1,2,1s-1,2-0.5,2.5s2,0.5,2,0.5s-0.5,2,0.5,2.5s2-0.5,2-0.5 s0,2,1,2.5s2-0.5,2-0.5s0.5,2,1.5,2s1.5-1,1.5-1s1,1.5,2,1.5s1.5-1.5,1.5-1.5s1.5,1,2.5,0.5s1-2,1-2s2,0.5,2.5-0.5s0-2,0-2s2-0.5,2.5-1.5 s-0.5-2-0.5-2s1.5-1,2-2s-0.5-2-0.5-2s2-1.5,2-2.5S96.5,40.5,96.5,40.5z'/%3E%3C/svg%3E");
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .welcome-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-title {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .welcome-title img {
+            height: 80px;
+            width: auto;
+        }
+
+        .welcome-subtitle {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .welcome-description {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 4rem;
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 353px);
+            gap: 30px;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .product-card-grid {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 353px;
+            height: 361px;
+        }
+
+        .product-image-grid {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-label {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 30px;
+            font-size: 24px;
+            border-top-left-radius: 60px;
+            font-weight: 500;
+            min-width: 247px;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ===== القسم الثالث: منتجاتنا الفاخرة ===== */
+        .luxury-section {
+            background-color: #000000;
+            color: white;
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+        .luxury-container {
+            width: 100%;
+            max-width: 1326px;
+            margin: 0 auto;
+        }
+
+        .luxury-header {
+            position: relative;
+            width: 100%;
+            height: 106px;
+            margin-bottom: 100px;
+        }
+
+        .black-bar {
+            position: absolute;
+            width: 100%;
+            height: 86px;
+            background-color: #000;
+            top: 11px;
+        }
+
+        .gold-title {
+            position: absolute;
+            width: 300px;
+            height: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--gold-color);
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .gold-title h1 {
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+        }
+
+        .gold-pattern {
+            position: absolute;
+            width: 100%;
+            height: 86px;
+            top: 11px;
+            /* background-image: url("data:image/svg+xml,%3Csvg width='70' height='50' viewBox='0 0 70 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M43.7166 0L53.9648 13.3717C53.4791 15.1745 53.6748 17.3783 54.6461 19.6102L40.7641 36.7641C40.233 34.9921 39.0345 33.6351 37.2491 33.0883C33.7585 32.0201 29.2791 34.4033 26.7913 38.4914L13.3845 21.8113C13.5801 20.3505 13.3705 18.6962 12.7241 17.0083L25.5264 0H23.7584L12.0497 15.5529C9.65277 11.0864 4.90082 8.4031 1.23902 9.52184C-0.277416 9.98728 -1.37805 11.0333 -2 12.4212V18.741C-1.83578 19.2092 -1.64011 19.6803 -1.4095 20.1513C0.907079 24.8646 5.84772 27.7498 9.62482 26.5947C11.2111 26.1096 12.3327 24.9852 12.9372 23.5019L26.075 39.8428C23.9611 44.4523 25.1665 49.0283 28.8633 50.1582C32.6369 51.3162 37.5775 48.4339 39.8976 43.7178C40.7571 41.9598 41.1345 40.1961 41.0716 38.6148L55.3379 20.9869C57.7978 25.2011 62.3715 27.6798 65.9215 26.5947C69.7021 25.4395 70.8831 20.6785 68.57 15.9652C66.2535 11.2519 61.3128 8.36665 57.5357 9.52184C56.2289 9.9256 55.2436 10.7584 54.5937 11.8688L45.4951 0H43.7166Z' fill='%23bc9139'/%3E%3C/svg%3E"); */
+            background-repeat: repeat-x;
+            z-index: 5;
+        }
+
+        .products-container {
+            width: 1069px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 29px;
+            padding-top: 50px;
+        }
+
+        .products-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 334px;
+            height: 400px;
+            background-color: white;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .product-image {
+            width: 334px;
+            height: 335px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .gradient-overlay {
+            position: absolute;
+            width: 334px;
+            height: 132px;
+            left: 0;
+            top: 194px;
+            background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+        }
+
+        .product-title {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* ===== تجاوب مع الشاشات المختلفة ===== */
+        @media (max-width: 1100px) {
+            .products-container {
+                width: 100%;
+                padding: 0 20px;
+            }
+            
+            .products-row {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .decorative-lines {
+                display: none;
+            }
+
+            .carousel-container {
+                padding: 10px;
+            }
+
+            .content-title {
+                font-size: 24px;
+            }
+
+            .content-description {
+                font-size: 16px;
+            }
+            
+            .logo-inner {
+                padding: 10px;
+            }
+            
+            .decorative-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .products-grid {
+                grid-template-columns: 353px;
+            }
+            
+            .gold-title {
+                width: 300px;
+            }
+            
+            .gold-title h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- القسم الأول: البانر والكاروسيل -->
+    <section class="section-one">
+        <div class="decorative-lines"></div>
+        
+        <!-- حاوية اللوجو -->
+        <div class="logo-container">
+            <div class="logo-inner">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2036797-p8bQST9GLzhvyqaxA91t3R1Chl112s.png" alt="Akho Donia" class="logo">
+            </div>
+        </div>
+
+        <div class="carousel-container">
+            <div class="carousel-frame">
+               
+                <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"></button>
+                        <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="image (12).png" class="d-block w-100" alt="Product Menu">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="image (13).png" class="d-block w-100" alt="Product Catalog">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="image (14).png" class="d-block w-100" alt="Products">
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button class="shop-now-btn">تسوق الآن !</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="content-title-wrapper">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Union-FwDUidDrCAZtfeQozlThzUE8LSSrUA.png" alt="" class="decorative-icon left">
+                <h1 class="content-title">حلويات شرقية</h1>
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Union-FwDUidDrCAZtfeQozlThzUE8LSSrUA.png" alt="" class="decorative-icon">
+            </div>
+            <p class="content-description">
+                نصنع بأفضل أنواع المواد في العالم
+                <br>
+                في مصنعنا مع الإهتمام في أدق التفاصيل
+            </p>
+        </div>
+    </section>
+
+    <!-- القسم الثاني: مرحباً بكم في عالمنا -->
+    <section class="welcome-section">
+        <div class="welcome-container">
+            <header class="welcome-header">
+                <div class="welcome-title">
+                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Frame%2036764%20%281%29-MBurcybdHCDqRz0UEQbqWoiBzjP1P0.png" alt="مرحباً بكم في عالمنا" />
+                </div>
+                <div class="welcome-subtitle">Welcome to our world!</div>
+            </header>
+
+            <div class="welcome-description">
+                <p>نحن نصنع لك أفضل أنواع الحلويات الشرقية والغربية لتستمتع بتجربة ذوق لا مثيل لها</p>
+                <p>كل ما هو أمامك صنع بحب</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card-grid">
+                    <img src="image (23).png" alt="كنافة" class="product-image-grid">
+                    <div class="product-label">كنافة</div>
+                </div>
+                <div class="product-card-grid">
+                    <img src="image (20).png" alt="حلويات يومية" class="product-image-grid">
+                    <div class="product-label">حلويات يومية</div>
+                </div>
+                <div class="product-card-grid">
+                    <img src="image (21).png" alt="حلويات شرقية" class="product-image-grid">
+                    <div class="product-label">حلويات شرقية</div>
+                </div>
+                <div class="product-card-grid">
+                    <img src="image (22).png" alt="مشكل نواشف" class="product-image-grid">
+                    <div class="product-label">مشكل نواشف</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- القسم الثالث: منتجاتنا الفاخرة -->
+    <section class="luxury-section">
+        <div class="luxury-container">
+            <div class="luxury-header">
+                <div class="black-bar"></div>
+                <div class="gold-pattern"></div>
+                <div class="gold-title">
+                    <h1>مُنتجاتنا الفاخرة</h1>
+                </div>
+            </div>
+            
+            <div class="products-container">
+                <!-- الصف الأول -->
+                <div class="products-row">
+                    <div class="product-card">
+                        <img src="image (19).png" alt="الكيك" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">الكيك</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image (20).png" alt="كنافة بأنواعها" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">كنافة بأنواعها</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image (21).png" alt="حلويات يومية" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">حلويات يومية</div>
+                    </div>
+                </div>
+                
+                <!-- الصف الثاني -->
+                <div class="products-row">
+                    <div class="product-card">
+                        <img src="image (22).png" alt="الشوكولاتة والهدايا" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">الشوكولاتة والهدايا</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image (23).png" alt="المعمول والنواشف" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">المعمول والنواشف</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image (21).png" alt="البوظة" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">البوظة</div>
+                    </div>
+                </div>
+                
+                <!-- الصف الثالث -->
+                <div class="products-row">
+                    <div class="product-card">
+                        <img src="image (22).png" alt="علب أخو دنيا" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">علب أخو دنيا</div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <img src="image (20).png" alt="حلويات تراثية" class="product-image">
+                        <div class="gradient-overlay"></div>
+                        <div class="product-title">حلويات تراثية</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="footer-section">
+        <div class="container">
+            <!-- Top Section -->
+            <div class="text-center mb-5">
+                <div class="arabic-ornament">
+                    <img src="path-to-ornament.png" alt="" class="ornament-image">
+                </div>
+                <h2 class="story-title">قصتنا أجمل معاً!</h2>
+                <p class="story-subtitle">Your story is more beautiful with us!</p>
+                <button class="learn-more-btn">تعرف أكثر</button>
+                
+                <div class="app-download mt-4">
+                    <p class="download-text">قم بتحميل التطبيق !</p>
+                    <div class="store-buttons">
+                        <a href="#" class="store-button">
+                            <img src="thumbnail 1.png" alt="Download on App Store" class="store-img">
+                        </a>
+                       
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Decorative Border -->
+            <div class="decorative-border"></div>
+    
+            <!-- Middle Section -->
+            <div class="text-center mb-5">
+                <img src="Frame 36762.png" alt="Akho Donia" class="footer-logo mb-4">
+                <div class="about-text">
+                    <h3 class="mb-3">قصتنا</h3>
+                    <p class="text-justify">
+                        نحن في "أخو دنيا" نؤمن بأن كل يوم هو فرصة لإسعاد عملائنا بأجود أصناف الحلويات العربية والغربية، ونحرص على تقديم منتجات تجمع بين الأصالة والحداثة. منذ بداياتنا، كان هدفنا هو تقديم تجربة فريدة في عالم الحلويات، حيث نجمع بين النكهات التقليدية والابتكار المعاصر.
+                    </p>
+                    <p class="text-justify">
+                        نفخر بأن نكون جزءاً من ذكرياتكم السعيدة ولحظاتكم الخاصة، ونسعى دائماً لتقديم أفضل خدمة ممكنة لعملائنا الكرام.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Contact Info -->
+            <div class="contact-info text-center">
+                <p class="location">AL SALT - JORDAN</p>
+                <p class="phone">0775530051</p>
+                <p class="email">akhodonasweets@gmail.com</p>
+            </div>
+    
+            <!-- Cityscape -->
+            <div class="cityscape"></div>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

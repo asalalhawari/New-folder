@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منتجاتنا الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #000000;
+            color: white;
+            width: 100%;
+            max-width: 1326px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            position: relative;
+            width: 100%;
+            height: 106px;
+            margin-bottom: 100px;
+        }
+        
+        .black-bar {
+            position: absolute;
+            width: 100%;
+            height: 86px;
+            background-color: #000;
+            top: 11px;
+        }
+        
+        .gold-title {
+            position: absolute;
+            width: 390px;
+            height: 106px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #b27b00;
+            border-radius: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .gold-title h1 {
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .gold-pattern {
+            position: absolute;
+            width: 100%;
+            height: 86px;
+            top: 11px;
+            background-image: url("data:image/svg+xml,%3Csvg width='70' height='50' viewBox='0 0 70 50' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M43.7166 0L53.9648 13.3717C53.4791 15.1745 53.6748 17.3783 54.6461 19.6102L40.7641 36.7641C40.233 34.9921 39.0345 33.6351 37.2491 33.0883C33.7585 32.0201 29.2791 34.4033 26.7913 38.4914L13.3845 21.8113C13.5801 20.3505 13.3705 18.6962 12.7241 17.0083L25.5264 0H23.7584L12.0497 15.5529C9.65277 11.0864 4.90082 8.4031 1.23902 9.52184C-0.277416 9.98728 -1.37805 11.0333 -2 12.4212V18.741C-1.83578 19.2092 -1.64011 19.6803 -1.4095 20.1513C0.907079 24.8646 5.84772 27.7498 9.62482 26.5947C11.2111 26.1096 12.3327 24.9852 12.9372 23.5019L26.075 39.8428C23.9611 44.4523 25.1665 49.0283 28.8633 50.1582C32.6369 51.3162 37.5775 48.4339 39.8976 43.7178C40.7571 41.9598 41.1345 40.1961 41.0716 38.6148L55.3379 20.9869C57.7978 25.2011 62.3715 27.6798 65.9215 26.5947C69.7021 25.4395 70.8831 20.6785 68.57 15.9652C66.2535 11.2519 61.3128 8.36665 57.5357 9.52184C56.2289 9.9256 55.2436 10.7584 54.5937 11.8688L45.4951 0H43.7166Z' fill='%23bc9139'/%3E%3C/svg%3E");
+            background-repeat: repeat-x;
+            z-index: 5;
+        }
+        
+        .products-container {
+            width: 1069px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 29px;
+            padding-top: 100px;
+        }
+        
+        .products-row {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+        }
+        
+        .product-card {
+            width: 334px;
+            height: 400px;
+            background-color: white;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image {
+            width: 334px;
+            height: 335px;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        
+        .gradient-overlay {
+            position: absolute;
+            width: 334px;
+            height: 132px;
+            left: 0;
+            top: 194px;
+            background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+        }
+        
+        .product-title {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="black-bar"></div>
+        <div class="gold-pattern"></div>
+        <div class="gold-title">
+            <h1>مُنتجاتنا الفاخرة</h1>
+        </div>
+    </div>
+    
+    <div class="products-container">
+        <!-- Row 1 -->
+        <div class="products-row">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="image (19).png" alt="الكيك" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">الكيك</div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="image (20).png" alt="كنافة بأنواعها" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">كنافة بأنواعها</div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="image (21).png" alt="حلويات يومية" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">حلويات يومية</div>
+            </div>
+        </div>
+        
+        <!-- Row 2 -->
+        <div class="products-row">
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="image (22).png" alt="الشوكولاتة والهدايا" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">الشوكولاتة والهدايا</div>
+            </div>
+            
+            <!-- Product 5 -->
+            <div class="product-card">
+                <img src="image (23).png" alt="المعمول والنواشف" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">المعمول والنواشف</div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card">
+                <img src="image (21).png" alt="البوظة" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">البوظة</div>
+            </div>
+        </div>
+        
+        <!-- Row 3 -->
+        <div class="products-row">
+            <!-- Product 7 -->
+            <div class="product-card">
+                <img src="image (22).png" alt="علب أخو دنيا" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">علب أخو دنيا</div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card">
+                <img src="image (20).png" alt="حلويات تراثية" class="product-image">
+                <div class="gradient-overlay"></div>
+                <div class="product-title">حلويات تراثية</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

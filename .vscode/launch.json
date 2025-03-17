@@ -7,8 +7,8 @@
         {
             "type": "msedge",
             "request": "launch",
-            "name": "Open room.html",
-            "file": "c:\\Users\\Anas\\New folder\\room.html"
+            "name": "Open home2.html",
+            "file": "c:\\Users\\Anas\\New folder\\home2.html"
         }
     ]
 }
