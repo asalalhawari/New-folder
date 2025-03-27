@@ -6,727 +6,1025 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أبشر بارك - Absher Park</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Tajawal', sans-serif;
-        }
-
-        body {
-            background-color: #f9f7f2;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            font-weight:bold;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-       
-        .logo img {
-            height: 50px;
-        }
-
-        .logo-text {
-            margin-right: 10px;
-            text-align: right;
-        }
-
-        .logo-text h2 {
-            color: #1a2e5c;
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .logo-text p {
-            color: #1a2e5c;
-            font-size: 16px;
-            margin: 0;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #8c8c8c;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #1a2e5c;
-        }
-
-        .lang-switch {
-            color: #1a2e5c;
-            font-weight: 500;
-        }
-
-        .hero {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 0;
-        }
-
-        .hero-content {
-            width: 50%;
-            text-align: right;
-        }
-
-        .hero-image {
-            width: 50%;
-        }
-
-        .hero-image img {
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            color: #1a2e5c;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        .hero h1 span {
-            color: #8cc63f;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .stats-section {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 50px 0;
-        }
-
-        .stat-box-wrapper {
-            background-color: rgba(255, 255, 255, 0.5);
-            border-radius: 25px;
-            padding: 20px;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .stat-box {
-            background-color: #ffffff;
-            border-radius: 20px;
-            width: 160px;
-            height: 160px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
-        }
-
-        .stat-number {
-            color: #1a2e5c;
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .stat-text {
-            color: #666;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .parking-management {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 0;
-            background-color: #f9f7f2;
-        }
-
-        .parking-management-content {
-            width: 50%;
-            text-align: right;
-            padding-left: 50px;
-        }
-
-        .parking-management-image {
-            width: 50%;
-        }
-
-        .parking-management-image img {
-            width: 100%;
-            max-width: 450px;
-        }
-
-        .parking-management h2 {
-            font-size: 28px;
-            color: #1a2e5c;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .parking-management p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .valet-service {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 0;
-            background-color: #f9f7f2;
-        }
-
-        .valet-service-content {
-            width: 50%;
-            text-align: right;
-        }
-
-        .valet-service-image {
-            width: 50%;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .valet-service-image img {
-            width: 100%;
-            max-width: 450px;
-        }
-
-        .valet-service h2 {
-            font-size: 28px;
-            color: #1a2e5c;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .valet-service ul {
-            list-style: none;
-        }
-
-        .valet-service ul li {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .valet-service ul li:before {
-            content: "•";
-            color: #8cc63f;
-            font-size: 20px;
-            margin-left: 10px;
-        }
-
-        .how-it-works {
-            padding: 80px 0;
-        }
-
-        .how-it-works h2 {
-            text-align: center;
-            font-size: 32px;
-            color: #1a2e5c;
-            margin-bottom: 15px;
-        }
-
-        .how-it-works h2 span {
-            color: #8cc63f;
-        }
-
-        .how-it-works .subtitle {
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 80px;
-        }
-
-        .steps-container {
-            position: relative;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 20px 0;
-        }
-
-        .step {
-            position: relative;
-            width: 45%;
-            margin-bottom: 80px;
-            text-align: right;
-        }
-
-
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: 2px dashed #8cc63f;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            color: #8cc63f;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-
-        .step-content {
-            padding: 0 10px;
-        }
-
-        .step h3 {
-            font-size: 20px;
-            color: #1a2e5c;
-            margin-bottom: 10px;
-        }
-
-        .step p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .step-one {
-            display: flex;
-            justify-content: space-around;
-            width: 70%;
-        }
-
-        .step-arrow {
-            margin-top: 146px;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            text-align: center;
-            margin: auto;
-            width: 100px;
-            height: 100px;
-            margin-bottom: 30px;
-        }
-
-        .step-tow {
-            display: flex;
-            flex-direction: row-reverse;
-        }
-
-        .step-tow .step-arrow {
-            margin-top: 235px;
-        }
-
-        .faq-section {
-            padding: 80px 0;
-            background-color: #f9f7f2;
-        }
-
-        .faq-section h2 {
-            text-align: center;
-            font-size: 32px;
-            color: #1a2e5c;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            margin-bottom: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .faq-question {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: #fff;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .faq-question.active {
-            background-color: #e9f5d8;
-        }
-
-        .faq-question-text {
-            font-size: 18px;
-            color: #1a2e5c;
-            font-weight: 500;
-        }
-
-        .faq-number {
-            font-size: 18px;
-            color: #8cc63f;
-            font-weight: 700;
-            margin-left: 15px;
-        }
-
-        .faq-toggle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: #1a2e5c;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .faq-answer {
-            padding: 20px;
-            background-color: #e9f5d8;
-            font-size: 16px;
-            color: #555;
-            line-height: 1.6;
-            display: none;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        .faq-item:first-child .faq-answer {
-            display: block;
-        }
-
-        .faq-item:first-child .faq-question {
-            background-color: #e9f5d8;
-        }
-
-        .faq-item:first-child .faq-toggle {
-            background-color: #000;
-        }
-
-        .locations-section {
-            padding: 80px 0;
-            background-color: #f9f7f2;
-        }
-
-        .locations-section h2 {
-            text-align: center;
-            font-size: 32px;
-            color: #1a2e5c;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-
-        .locations-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .locations-info {
-            width: 40%;
-            text-align: right;
-        }
-
-        .locations-info h3 {
-            font-size: 24px;
-            color: #1a2e5c;
-            margin-bottom: 20px;
-        }
-
-        .locations-info p {
-            font-size: 16px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .location-item {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .location-item:before {
-            content: "+";
-            color: #8cc63f;
-            font-size: 20px;
-            margin-left: 10px;
-            font-weight: bold;
-        }
-
-        .locations-map {
-            width: 55%;
-        }
-
-        .locations-map img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .pricing-section {
-            padding: 80px 0;
-            background-color: #f9f7f2;
-        }
-
-        .pricing-section h2 {
-            color: #0B2854;
-font-size: 56px;
-font-family: Tajawal;
-font-weight: 700;
-line-height: 60px;
-word-wrap: break-word
-        }
-
-        .pricing-toggle {
-            display: flex;
-            justify-content: end;
-            margin-bottom: 40px;
-        }
-
-        .toggle-container {
-            display: flex;
-            background-color: #f0f0f0;
-            border-radius: 30px;
-            padding: 5px;
-            color: #42526B;
-font-size: 16px;
-font-family: Inter;
-font-weight: 600;
-line-height: 24px;
-word-wrap: break-word
-        }
-
-        .toggle-option {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .toggle-option.active {
-            background-color: #ffc107;
-            color: #1a2e5c;
-        }
-
-        .pricing-cards {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            width: 30%;
-            text-align: right;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .pricing-card.highlighted {
-            background-color: #8cc63f;
-            color: #fff;
-        }
-
-        .pricing-card-header {
-            margin-bottom: 20px;
-        }
-
-        .pricing-card-title {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #1a2e5c;
-        }
-
-        .pricing-card.highlighted .pricing-card-title {
-            color: #fff;
-        }
-
-        .pricing-card-price {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1a2e5c;
-            margin-bottom: 5px;
-        }
-
-        .pricing-card.highlighted .pricing-card-price {
-            color: #fff;
-        }
-
-        .pricing-card-period {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .pricing-card.highlighted .pricing-card-period {
-            color: #fff;
-        }
-
-        .pricing-card-description {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .pricing-card.highlighted .pricing-card-description {
-            color: #fff;
-        }
-
-        .pricing-card-features {
-            margin-bottom: 30px;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            font-size: 14px;
-            color: #555;
-        }
-
-        .pricing-card.highlighted .feature-item {
-            color: #fff;
-        }
-
-        .feature-icon {
-            margin-left: 10px;
-            color: #8cc63f;
-            font-size: 16px;
-        }
-
-        .pricing-card.highlighted .feature-icon {
-            color: #fff;
-        }
-
-        .pricing-card-button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #1a2e5c;
-            border: 1px solid #1a2e5c;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .pricing-card-button:hover {
-            background-color: #1a2e5c;
-            color: #fff;
-        }
-
-        .pricing-card.highlighted .pricing-card-button {
-            background-color: #fff;
-            color: #8cc63f;
-            border: none;
-        }
-
-        .pricing-card.highlighted .pricing-card-button:hover {
-            background-color: #1a2e5c;
-            color: #fff;
-        }
-
-        footer {
-            background-color: #f9f7f2;
-            padding: 50px 0 20px;
-            border-top: 1px solid #eee;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-logo img {
-            height: 60px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .footer-link {
-            color: #1a2e5c;
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        .footer-link:hover {
-            color: #8cc63f;
-        }
-
-        .parking-management-image {
-            text-align: left;
-        }
-
-        .valet-service-image {
-            justify-content: flex-start;
-        }
-
-        .valet-service-content {
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f9f7f2;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-weight: bold;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.logo-text {
+    margin-right: 10px;
+    text-align: right;
+}
+
+.logo-text h2 {
+    color: #1a2e5c;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.logo-text p {
+    color: #1a2e5c;
+    font-size: 16px;
+    margin: 0;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #8c8c8c;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #1a2e5c;
+}
+
+.lang-switch {
+    color: #1a2e5c;
+    font-weight: 500;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 0;
+}
+
+.hero-content {
+    width: 50%;
+    text-align: right;
+}
+
+.hero-image {
+    width: 50%;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    color: #1a2e5c;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.hero h1 span {
+    color: #8cc63f;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.stats-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.stat-box-wrapper {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-box {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.stat-number {
+    color: #1a2e5c;
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.stat-text {
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+}
+
+.parking-management {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+    background-color: #f9f7f2;
+}
+
+.parking-management-content {
+    width: 50%;
+    text-align: right;
+    padding-left: 50px;
+}
+
+.parking-management-image {
+    width: 50%;
+}
+
+.parking-management-image img {
+    width: 100%;
+    max-width: 450px;
+}
+
+.parking-management h2 {
+    font-size: 28px;
+    color: #1a2e5c;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.parking-management p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.valet-service {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 0;
+    background-color: #f9f7f2;
+}
+
+.valet-service-content {
+    width: 50%;
+    text-align: right;
+}
+
+.valet-service-image {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.valet-service-image img {
+    width: 100%;
+    max-width: 450px;
+}
+
+.valet-service h2 {
+    font-size: 28px;
+    color: #1a2e5c;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.valet-service ul {
+    list-style: none;
+}
+
+.valet-service ul li {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.valet-service ul li:before {
+    content: "•";
+    color: #8cc63f;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.how-it-works {
+    padding: 80px 0;
+}
+
+.how-it-works h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #1a2e5c;
+    margin-bottom: 15px;
+}
+
+.how-it-works h2 span {
+    color: #8cc63f;
+}
+
+.how-it-works .subtitle {
+    text-align: center;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 80px;
+}
+
+.steps-container {
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px 0;
+}
+
+.step {
+    position: relative;
+    width: 45%;
+    margin-bottom: 80px;
+    text-align: right;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px dashed #8cc63f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: #8cc63f;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.step-content {
+    padding: 0 10px;
+}
+
+.step h3 {
+    font-size: 20px;
+    color: #1a2e5c;
+    margin-bottom: 10px;
+}
+
+.step p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.step-one {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+}
+
+.step-arrow {
+    margin-top: 146px;
+}
+
+.step {
+    text-align: center;
+}
+
+.step-number {
+    text-align: center;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.step-tow {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.step-tow .step-arrow {
+    margin-top: 235px;
+}
+
+.faq-section {
+    padding: 80px 0;
+    background-color: #f9f7f2;
+}
+
+.faq-section h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #1a2e5c;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-question.active {
+    background-color: #e9f5d8;
+}
+
+.faq-question-text {
+    font-size: 18px;
+    color: #1a2e5c;
+    font-weight: 500;
+}
+
+.faq-number {
+    font-size: 18px;
+    color: #8cc63f;
+    font-weight: 700;
+    margin-left: 15px;
+}
+
+.faq-toggle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #1a2e5c;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.faq-answer {
+    padding: 20px;
+    background-color: #e9f5d8;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    display: none;
+}
+
+.faq-answer.active {
+    display: block;
+}
+
+.faq-item:first-child .faq-answer {
+    display: block;
+}
+
+.faq-item:first-child .faq-question {
+    background-color: #e9f5d8;
+}
+
+.faq-item:first-child .faq-toggle {
+    background-color: #000;
+}
+
+.locations-section {
+    padding: 80px 0;
+    background-color: #f9f7f2;
+}
+
+.locations-section h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #1a2e5c;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.locations-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.locations-info {
+    width: 40%;
+    text-align: right;
+}
+
+.locations-info h3 {
+    font-size: 24px;
+    color: #1a2e5c;
+    margin-bottom: 20px;
+}
+
+.locations-info p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.location-item {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.location-item:before {
+    content: "+";
+    color: #8cc63f;
+    font-size: 20px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.locations-map {
+    width: 55%;
+}
+
+.locations-map img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-section {
+    padding: 80px 0;
+    background-color: #f9f7f2;
+}
+
+.pricing-section h2 {
+    color: #0B2854;
+    font-size: 56px;
+    font-family: Tajawal;
+    font-weight: 700;
+    line-height: 60px;
+    word-wrap: break-word
+}
+
+.pricing-toggle {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 40px;
+}
+
+.toggle-container {
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+    padding: 5px;
+    color: #42526B;
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 24px;
+    word-wrap: break-word
+}
+
+.toggle-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.toggle-option.active {
+    background-color: #ffc107;
+    color: #1a2e5c;
+}
+
+.pricing-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 30px;
+    width: 30%;
+    text-align: right;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.pricing-card.highlighted {
+    background-color: #8cc63f;
+    color: #fff;
+}
+
+.pricing-card-header {
+    margin-bottom: 20px;
+}
+
+.pricing-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #1a2e5c;
+}
+
+.pricing-card.highlighted .pricing-card-title {
+    color: #fff;
+}
+
+.pricing-card-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a2e5c;
+    margin-bottom: 5px;
+}
+
+.pricing-card.highlighted .pricing-card-price {
+    color: #fff;
+}
+
+.pricing-card-period {
+    font-size: 14px;
+    color: #666;
+}
+
+.pricing-card.highlighted .pricing-card-period {
+    color: #fff;
+}
+
+.pricing-card-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.pricing-card.highlighted .pricing-card-description {
+    color: #fff;
+}
+
+.pricing-card-features {
+    margin-bottom: 30px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.pricing-card.highlighted .feature-item {
+    color: #fff;
+}
+
+.feature-icon {
+    margin-left: 10px;
+    color: #8cc63f;
+    font-size: 16px;
+}
+
+.pricing-card.highlighted .feature-icon {
+    color: #fff;
+}
+
+.pricing-card-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #fff;
+    color: #1a2e5c;
+    border: 1px solid #1a2e5c;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.pricing-card-button:hover {
+    background-color: #1a2e5c;
+    color: #fff;
+}
+
+.pricing-card.highlighted .pricing-card-button {
+    background-color: #fff;
+    color: #8cc63f;
+    border: none;
+}
+
+.pricing-card.highlighted .pricing-card-button:hover {
+    background-color: #1a2e5c;
+    color: #fff;
+}
+
+footer {
+    background-color: #f9f7f2;
+    padding: 50px 0 20px;
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    height: 60px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-link {
+    color: #1a2e5c;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-link:hover {
+    color: #8cc63f;
+}
+
+.parking-management-image {
+    text-align: left;
+}
+
+.valet-service-image {
+    justify-content: flex-start;
+}
+
+.valet-service-content {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* تحسين الهيدر في وضع الريسبونسف */
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #1a2e5c;
+    cursor: pointer;
+}
+
+/* الاستجابة للشاشات المتوسطة */
+@media (max-width: 992px) {
+    .hero, .parking-management, .valet-service {
+        flex-direction: column;
+    }
+    
+    .hero-content, .hero-image, 
+    .parking-management-content, .parking-management-image,
+    .valet-service-content, .valet-service-image {
+        width: 100%;
+        text-align: center;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+    
+    .valet-service-content {
+        align-items: center;
+    }
+    
+    .valet-service ul li {
+        justify-content: center;
+    }
+    
+    .valet-service ul li:before {
+        margin-left: 10px;
+        margin-right: 0;
+    }
+    
+    .stats-section {
+        flex-wrap: wrap;
+    }
+    
+    .pricing-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .pricing-card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    
+    .pricing-toggle {
+        justify-content: center;
+    }
+    
+    .locations-container {
+        flex-direction: column;
+    }
+    
+    .locations-info {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .locations-map {
+        width: 100%;
+    }
+    
+    .location-item {
+        justify-content: center;
+    }
+}
+
+/* الاستجابة للشاشات الصغيرة */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+        position: relative;
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    
+    nav {
+        width: 100%;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 0;
+        display: none;
+    }
+    
+    nav.active ul {
+        display: flex;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    /* تعديل الخطوات لتظهر الأسهم في وضع الريسبونسف */
+    .step-one, .step-tow {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .step-arrow {
+        margin-top: 20px;
+        transform: rotate(90deg);
+        width: 100px !important;
+        height: auto !important;
+    }
+    
+    .step-arrow svg {
+        width: 100px;
+        height: auto;
+    }
+    
+    .step {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    
+    .locations-map iframe {
+        height: 350px;
+    }
+    
+    .pricing-section h2 {
+        font-size: 36px;
+        line-height: 40px;
+        text-align: center;
+    }
+}
+
+/* الاستجابة للشاشات الصغيرة جداً */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .hero p {
+        font-size: 16px;
+    }
+    
+    .stat-box-wrapper {
+        width: 150px;
+        height: 150px;
+        padding: 15px;
+    }
+    
+    .stat-box {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .stat-number {
+        font-size: 32px;
+    }
+    
+    .stat-text {
+        font-size: 14px;
+    }
+    
+    .parking-management h2, .valet-service h2 {
+        font-size: 24px;
+    }
+    
+    .how-it-works h2 {
+        font-size: 24px;
+    }
+    
+    .how-it-works .subtitle {
+        font-size: 16px;
+        margin-bottom: 40px;
+    }
+    
+    .step-number {
+        width: 80px;
+        height: 80px;
+        font-size: 24px;
+    }
+    
+    .faq-question {
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+    
+    .faq-question-text {
+        width: 100%;
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    
+    .faq-toggle {
+        width: 20px;
+        height: 20px;
+        font-size: 16px;
+    }
+    
+    .faq-number {
+        font-size: 16px;
+    }
+    
+    .faq-answer {
+        padding: 15px;
+        font-size: 14px;
+    }
+    
+    .pricing-card {
+        width: 100%;
+        padding: 20px;
+    }
+    
+    .pricing-card-title {
+        font-size: 16px;
+    }
+    
+    .pricing-card-price {
+        font-size: 28px;
+    }
+    
+    .toggle-option {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .locations-map iframe {
+        height: 300px;
+    }
+}
+
+/* تحسينات إضافية للتوافق مع الأجهزة المحمولة */
+@media (max-width: 480px) {
+    .logo img {
+        height: 40px;
+    }
+    
+    .lang-switch {
+        font-size: 14px;
+    }
+    
+    nav ul li a {
+        font-size: 14px;
+    }
+    
+    .hero h1 {
+        font-size: 24px;
+    }
+    
+    .hero p {
+        font-size: 14px;
+    }
+    
+    .stats-section {
+        gap: 15px;
+    }
+    
+    .stat-box-wrapper {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .stat-box {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .stat-number {
+        font-size: 28px;
+    }
+    
+    .stat-text {
+        font-size: 12px;
+    }
+    
+    .pricing-section h2 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+    
+    .locations-map iframe {
+        height: 250px;
+    }
+}
     </style>
 </head>
 
@@ -734,24 +1032,22 @@ word-wrap: break-word
     <div class="container">
         <header>
             <div class="logo">
-
                 <img src="prkPro-removebg-preview[1] 2.png" alt="Absher Park Logo">
             </div>
+            <button class="mobile-menu-toggle">☰</button>
             <nav>
                 <ul>
-                    <li><a href="#">عنا</a></li>
-                    <li><a href="#">مميزاتنا</a></li>
-                    <li><a href="#">كيف يعمل؟</a></li>
-                    <li><a href="#">مواقعنا</a></li>
-                    <li><a href="#">الأسئلة الشائعة</a></li>
+                    <li><a href="#about">عنا</a></li>
+                    <li><a href="#features">مميزاتنا</a></li>
+                    <li><a href="#how-it-works">كيف يعمل؟</a></li>
+                    <li><a href="#locations">مواقعنا</a></li>
+                    <li><a href="#faq">الأسئلة الشائعة</a></li>
                 </ul>
             </nav>
             <div class="lang-switch">العربية</div>
-
         </header>
 
-        <section class="hero">
-
+        <section id="hero" class="hero">
             <div class="hero-content">
                 <h1>استلم سيارتك بسهولة<br>مع <span>أبشر بارك</span></h1>
                 <p>حل ذكي لإدارة مواقف السيارات! استلم إشعار عند وصول سيارتك، واطلبها بضغطة زر عبر التطبيق.</p>
@@ -761,7 +1057,7 @@ word-wrap: break-word
             </div>
         </section>
 
-        <section class="stats-section">
+        <section id="stats" class="stats-section">
             <div class="stat-box-wrapper">
                 <div class="stat-box">
                     <div class="stat-number">+150</div>
@@ -776,8 +1072,7 @@ word-wrap: break-word
             </div>
         </section>
 
-        <section class="parking-management">
-
+        <section id="about" class="parking-management">
             <div class="parking-management-content">
                 <h2>إدارة مواقف السيارات</h2>
                 <p>تقدم ابشر بارك حلولاً مبتكرة ومتطورة لإدارة مواقف السيارات، سواء في الشوارع أو في المواقف المستقلة،
@@ -788,7 +1083,7 @@ word-wrap: break-word
             </div>
         </section>
 
-        <section class="valet-service">
+        <section id="features" class="valet-service">
             <div class="valet-service-image">
                 <img src="32440864_7957544 1.png" alt="خدمة صف السيارات">
             </div>
@@ -801,10 +1096,9 @@ word-wrap: break-word
                     <li>اشتراكات صف السيارات للموظفين</li>
                 </ul>
             </div>
-
         </section>
 
-        <section class="how-it-works">
+        <section id="how-it-works" class="how-it-works">
             <h2>كيف يعمل <span>أبشر بارك</span> ؟</h2>
             <p class="subtitle">بسهولة، بسرعة وراحة تامة! اتبع هذه الخطوات البسيطة واستلم سيارتك بدون أي انتظار.</p>
 
@@ -819,17 +1113,14 @@ word-wrap: break-word
                         </div>
                     </div>
                     <div class="step-arrow">
-
                         <svg width="307" height="123" viewBox="0 0 307 123" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M353 0.541969L337.543 0.441902C326.878 -2.59557 308.225 11.0018 296.169 11.5359C291.429 11.7362 286.585 11.4357 281.897 10.8683C277.62 10.3343 273.859 11.0352 269.84 11.6694C262.266 12.9044 254.95 14.807 246.912 15.0407C244.491 15.1074 241.863 16.3425 239.802 17.4106C236.196 19.3465 232.022 20.0141 227.643 20.7485C221.717 21.7498 215.277 22.4507 210.228 24.5202C203.787 27.1905 196.832 28.9596 190.082 31.0624C177.459 35.0345 164.629 38.7397 152.161 42.8452C146.751 44.6477 142.01 47.2178 136.961 49.4542C134.179 50.6892 131.345 51.9242 128.563 53.1592C121.865 56.2301 115.424 59.6347 108.366 62.305C99.9157 65.5093 93.9905 70.4159 86.7257 74.4214C82.0371 76.9582 77.6061 79.6953 73.2266 82.4657C68.1257 85.7368 63.2825 89.1748 58.2332 92.4459C56.0692 93.8478 53.6992 95.1496 51.123 96.2845C46.0222 98.5208 42.0549 101.492 35.6144 104.796C44.631 104.496 51.3291 104.095 57.615 102.393C61.5307 101.325 65.4465 100.824 69.6199 101.191C71.7324 101.391 73.6388 101.926 74.3601 103.361C75.0814 104.796 74.0509 105.931 72.4537 106.932C69.929 108.501 67.1983 109.636 63.6947 110.17C51.6898 111.973 39.7878 113.908 27.6798 115.844C26.6493 116.746 25.6704 117.647 24.64 118.515C19.6422 122.72 12.7895 123.488 5.26709 122.754C1.35132 122.387 -0.606567 120.384 0.16629 117.914C0.475433 117.046 0.887604 116.178 1.50589 115.411C5.21558 110.637 5.62778 105.097 9.80118 100.424C10.6255 99.489 10.9347 98.2873 10.9862 97.2192C11.3984 91.3445 13.0987 85.837 19.5906 81.3309C20.5696 80.6299 20.3635 79.2614 20.9302 78.2267C21.497 77.2587 22.3214 76.3574 23.5064 74.822C29.7923 81.5311 24.6914 88.3403 26.907 95.1162C28.8648 94.5821 30.5136 94.3486 31.7502 93.7478C36.3873 91.5114 40.9213 89.1414 45.4554 86.8049C45.9706 86.5379 46.589 86.2376 46.8981 85.8704C52.6172 79.2614 63.0764 75.7566 70.8565 70.4828C74.1025 68.2798 77.8637 66.444 82.3462 65.0087C87.4471 63.4399 91.8781 60.8029 96.103 58.2995C104.759 53.226 113.518 48.2525 124.441 45.2484C125.987 44.8145 127.481 44.1469 128.717 43.4126C137.219 38.4058 147.833 35.7688 157.931 32.5645C167.463 29.527 177.047 26.623 186.681 23.6857C192.813 21.8165 199.768 20.982 204.972 17.8444C219.244 15.9418 231.146 10.1006 245.109 7.73074C259.02 5.39423 272.983 3.15792 287.513 3.45833C292.665 3.55846 297.818 3.59171 302.918 3.65847C307.04 3.72523 311.059 3.99226 314.923 5.16052C317.654 5.99499 320.797 6.29543 323.837 6.69597C330.38 7.59719 335.945 9.80025 341.252 12.2703L353 0.541969Z"
                                 fill="#DFEFC9" />
                         </svg>
-
                     </div>
                 </div>
-
 
                 <div class="step-tow">
                     <div class="step">
@@ -840,16 +1131,12 @@ word-wrap: break-word
                         </div>
                     </div>
                     <div class="step-arrow">
-
-
                         <svg width="300" height="194" viewBox="0 0 300 194" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
-                                d="M281.85 174.124C281.758 174.733 281.665 175.342 281.533 176.133C283.297 177.404 284.709 179.286 287.125 179.667C287.84 179.781 287.896 180.993 287.192 181.434C286.704 181.73 286.08 182.054 285.577 181.985C283.22 181.674 280.816 181.676 278.789 179.988C277.596 178.991 275.951 178.64 274.345 178.889C272.72 179.134 270.971 178.228 269.58 179.38C269.351 180.455 269.22 181.418 268.933 182.328C268.643 183.257 268.184 184.112 267.661 185.353C268.747 185.375 269.56 185.377 270.352 185.393C271.677 185.427 272.944 185.468 274.17 186.225C275.41 187.003 276.86 187.14 278.345 186.942C279.886 186.737 281.394 187.039 282.85 187.673C284.492 188.384 286.216 188.885 287.882 189.487C288.33 189.64 288.882 189.738 289.204 190.054C290.407 191.263 292.18 191.45 293.413 192.608C294.384 193.519 295.012 193.52 295.962 192.884C297.939 191.59 299.091 189.911 299.023 187.363C298.955 184.643 298.85 182.01 298.316 179.306C297.689 176.086 297.047 172.844 296.869 169.51C296.708 166.446 295.743 163.593 294.148 160.662C292.779 162.142 292.297 163.621 292.655 165.241C293.18 167.639 292.767 170.104 293.16 172.512C293.198 172.767 292.88 173.309 292.644 173.373C292.23 173.495 291.701 173.458 291.314 173.281C290.912 173.081 290.536 172.677 290.287 172.281C289.068 170.192 286.959 169.153 285.22 167.678C284.468 167.041 283.247 166.953 282.266 166.611C281.924 165.871 281.731 164.954 281.197 164.421C279.295 162.587 279.248 162.634 275.823 161.867C273.416 158.84 270.51 156.335 267.17 154.385C265.775 153.555 264.816 151.807 262.858 152.057C261.621 151.089 260.377 150.158 259.166 149.157C258.711 148.774 258.402 148.232 258.041 147.755L258.058 147.759C257.663 148.227 257.271 148.677 256.926 149.08C255.528 149.22 254.65 148.481 254.285 147.413C253.567 145.316 251.818 144.411 250.12 143.611C246.756 142.038 243.359 140.533 240.3 138.396C240.108 138.26 239.901 138.101 239.671 138.052C234.412 136.78 230.396 133.144 225.855 130.5C225.131 130.08 224.34 129.797 223.579 129.463C223.036 129.234 222.327 129.178 221.929 128.788C220.184 127.083 217.896 126.71 215.731 126.021C214.71 125.689 213.768 125.165 212.781 124.764C211.998 124.445 211.211 124.144 210.409 123.916C209.394 123.643 208.195 123.807 207.606 122.576C207.517 122.386 207.218 122.227 207.002 122.2C204.47 121.928 202.6 120.463 200.812 118.787C200.428 118.419 199.758 118.353 199.077 118.074C201.378 117.345 201.352 117.378 203.348 117.993C203.849 118.157 204.6 118.107 205.031 117.818C205.994 117.204 206.925 117.002 208.08 116.962C209.068 116.925 210.194 116.326 210.952 115.63C212.924 113.84 213.091 113.666 214.954 113.339C215.781 113.191 216.661 113.054 217.365 112.613C218.496 111.902 219.543 111.153 220.817 110.643C221.787 110.259 222.56 109.319 223.366 108.575C224.424 107.601 224.938 106.053 226.381 105.445C227.03 103.526 229.496 102.889 229.363 100.212C229.277 98.2696 230.625 96.3657 230.997 94.2729C231.409 91.903 230.772 89.424 231.797 87.1274C231.975 86.727 231.853 86.1678 231.787 85.6965C230.965 80.8728 230.046 76.0667 227.651 71.7656C226.216 69.2119 224.505 66.828 223.177 64.2021C221.25 60.4005 217.85 58.0384 215.072 55.1036C214.56 54.5563 213.552 54.5132 212.522 54.1414C212.28 52.5848 211.322 51.352 209.898 50.306C206.993 48.1442 204.214 45.8191 201.178 43.8389C199.812 42.9575 198.415 42.3935 196.77 42.6528C196.142 41.7763 196.11 40.6263 194.959 40.0383C192.073 38.5666 189.418 36.7058 186.319 35.6268C184.631 35.039 183.123 33.9559 181.555 33.0695C180.3 32.3641 179.148 31.433 177.546 31.6634C177.222 31.7088 176.655 31.5883 176.553 31.3759C175.603 29.4971 173.655 29.9587 172.178 29.3394C169.847 28.386 167.487 27.4835 165.104 26.6903C162.823 25.938 160.503 25.368 158.193 24.6665C157.638 24.4913 156.995 24.2973 156.605 23.8713C154.146 21.1759 150.848 20.5118 147.516 19.9168C144.914 19.458 142.29 19.0137 139.687 18.5549C139.564 18.5286 139.428 18.5568 139.326 18.516C137.624 17.7346 135.89 17.194 133.943 17.2177C132.533 17.2413 131.138 16.754 129.721 16.5475C128.666 16.38 127.864 16.9332 127.2 17.7063C127.636 17.742 128.055 17.7739 128.452 17.8204C128.432 17.9115 128.417 17.9844 128.397 18.0756C128.016 17.9563 127.621 17.8149 127.239 17.6956C126.517 17.1798 126.124 16.5056 125.888 15.6171C125.721 15.01 125.079 14.5495 124.746 14.1166C123.766 14.289 124.072 14.8495 123.979 15.2869C123.801 16.1253 122.874 16.4806 122.401 15.9227C122.019 15.4602 121.803 14.8236 121.37 14.4266C120.86 13.956 120.241 13.3862 119.62 13.3493C118.603 13.2659 117.748 13.1982 117.209 12.169C117.102 11.9748 116.497 11.8649 116.249 11.9838C115.056 12.549 114.2 11.9667 113.234 11.3799C112.451 10.8893 111.478 10.6821 110.61 10.326C109.405 9.82167 107.992 9.9402 106.949 8.93682C106.641 8.64279 106.044 8.49646 105.596 8.51543C103.84 8.59878 102.292 8.13598 100.884 7.01706C100.475 6.68219 99.7301 6.61889 99.1683 6.65171C96.5794 6.82452 94.2195 5.92202 91.7836 5.28912C89.2416 4.63362 86.6003 4.3571 84.0117 3.92033C82.7086 3.70004 81.4055 3.47978 80.1122 3.29972C76.205 2.71557 72.4038 1.37287 68.3634 1.67485C68.0078 1.69442 67.6091 1.74289 67.2807 1.63488C63.2046 0.367009 58.9149 0.711081 54.7466 0.223758C54.045 0.131549 53.3123 0.185196 52.5874 0.202336C49.8233 0.242566 47.0398 0.373922 44.2773 0.319272C42.9885 0.292542 42.271 0.882801 41.712 1.945C41.0531 1.6523 40.4131 1.09691 39.8081 1.15864C35.3712 1.58576 30.9045 1.89223 26.5315 2.71401C21.4064 3.68049 16.5335 5.63424 12.05 8.45196C9.16879 10.2581 6.09036 11.7746 3.61966 14.2588C1.83275 16.0503 0.82865 18.1608 0.401512 20.7752C1.12285 20.1667 1.85412 19.5984 2.54396 18.9642C4.16264 17.4417 5.81889 16.0034 7.92485 15.2325C8.26441 15.1142 8.61171 14.9596 8.89991 14.7352C11.6662 12.5997 14.9687 11.8548 18.1961 10.9416C18.6673 10.8133 19.1799 10.751 19.5781 10.5309C24.2429 7.90424 29.3596 8.19333 34.3782 7.81383C36.6724 7.63544 38.951 7.52998 41.1394 6.7194C41.683 6.51127 42.3605 6.36972 42.8835 6.51916C46.3144 7.51632 49.8224 7.19626 53.2954 7.04022C57.177 6.87592 60.9743 7.45569 64.7926 7.84946C68.8448 8.27396 72.872 8.90266 76.9186 9.44029C77.2763 9.49739 77.6573 9.44515 77.9779 9.58962C81.3844 10.9626 85.0115 11.1251 88.5632 11.7289C91.3818 12.2146 94.2042 12.6821 96.8991 13.9227C98.8013 14.8039 101.084 14.8518 103.374 15.3012C103.789 14.5703 104.096 13.9116 104.507 13.3704C104.685 13.1416 105.178 12.9988 105.478 13.0628C105.726 13.1156 106.126 13.5818 106.087 13.764C105.688 15.2032 106.419 15.8542 107.581 16.2159C110.46 17.1145 113.313 18.0457 116.215 18.835C118.767 19.5307 121.385 19.9166 123.789 21.1333C125.158 21.8249 125.926 21.6073 128.012 20.9275C129.125 22.822 131.039 23.477 133.091 23.9139C138.965 25.1644 144.71 26.8447 150.377 28.8896C153.313 29.9528 156.384 30.6447 159.324 31.6897C162.836 32.9137 166.53 33.8907 169.682 35.762C172.821 37.6114 176.045 39.0598 179.369 40.4724C181.678 41.4403 183.731 43.0015 185.896 44.3006C186.732 44.8026 187.522 45.3517 188.37 45.7989C191.976 47.7098 195.74 49.3113 199.038 51.8042C200.664 53.0268 202.593 53.7804 203.963 55.4247C205.037 56.7203 206.987 56.9449 207.885 58.5459C210.622 60.1956 212.067 63.2274 214.583 65.1348C215.598 65.9226 216.337 67.1467 217.055 68.2903C217.966 69.7418 219.023 71.0336 220.093 72.3474C221.518 74.0797 222.769 76.0224 223.602 78.2765C224.693 81.233 225.507 84.3593 227.223 87.0681C227.403 87.354 227.598 87.7386 227.581 88.0779C227.49 90.4208 227.472 92.7605 227.182 95.0801C226.719 98.9062 225.15 102.192 222.011 104.515C220.913 105.329 219.854 106.132 219.833 107.709C216.308 107.759 212.999 108.102 210.126 110.215C210.659 110.233 211.191 110.251 211.724 110.269C211.722 110.364 211.703 110.455 211.701 110.55C211.188 110.441 210.657 110.328 210.144 110.219C209.6 110.255 209.042 110.27 208.463 110.299C208.551 110.927 208.625 111.362 208.715 112.067C207.872 111.945 207.118 112.013 206.529 111.735C205.015 111.032 203.527 110.982 201.979 111.567C199.912 112.327 197.795 112.543 195.592 112.208C194.426 112.036 193.123 111.987 192.012 112.341C188.622 113.41 185.512 112.557 182.591 111.078C180.521 110.028 178.329 109.466 176.197 108.707C175.749 108.555 175.205 108.591 174.811 108.355C170.27 105.712 165.184 104.667 160.21 103.36C156.972 102.5 153.723 101.693 150.305 102.547C149.855 102.661 149.348 102.61 148.876 102.567C146.522 102.332 144.869 103.581 143.843 105.534C142.457 108.135 141.193 110.857 141.284 113.906C141.955 115.096 142.992 115.698 144.158 116.042C145.773 116.538 147.41 116.925 149.011 117.399C150.713 117.914 152.297 117.946 153.797 116.722C154.153 116.436 154.824 116.064 155.106 116.219C156.428 116.958 157.012 115.692 157.914 115.274C158.079 115.195 158.343 115.346 158.785 115.441C158.209 116.499 157.64 117.521 156.979 118.714C158.914 119.355 160.506 119.084 162.116 118.474C164.49 117.57 164.514 117.632 166.994 118.579C167.765 118.172 168.577 117.659 169.468 117.296C170.363 116.915 171.58 117.193 171.908 118.082C172.411 119.37 173.435 119.512 174.478 119.734C175.682 119.99 176.103 118.88 176.785 118.282C176.492 118.353 176.239 118.413 176.746 118.293C176.219 118.333 176.482 118.313 176.746 118.293C176.819 118.384 176.892 118.476 176.982 118.572C177.808 119.643 179.238 118.137 180.248 119.476C180.869 120.295 182.38 120.407 183.487 120.852C184.591 121.316 185.651 121.98 186.798 122.243C188.156 122.551 189.598 122.553 191.396 122.707C191.878 122.962 190.968 123.588 191.403 124.499C192.085 124.854 193.116 125.398 194.049 125.882C194.9 125.358 195.583 124.932 196.563 124.322C196.717 125.25 196.821 125.805 196.903 126.375C197.096 126.512 197.269 126.739 197.485 126.766C198.187 126.858 198.924 126.958 199.639 126.901C201.332 126.766 202.656 127.41 203.875 128.546C207.578 132.001 210.928 134.162 214.789 135.918C216.272 136.596 217.318 136.285 218.205 134.987C217.171 134.805 216.119 134.62 215.093 134.401C214.97 134.375 214.908 134.057 214.819 133.866C216.825 133.303 216.825 133.303 218.101 135.042C218.406 136.65 219.308 137.623 220.822 138.155C222.63 138.787 224.462 139.387 225.838 140.918C226.214 141.322 226.92 141.396 227.476 141.648C229.544 142.622 231.603 143.632 233.679 144.569C234.2 144.813 235.056 145.224 235.305 145.01C236.412 144.065 236.922 145.317 237.31 145.666C239.252 147.318 241.171 148.812 243.855 148.888C244.185 148.901 244.522 149.144 244.809 149.358C246.315 150.536 247.741 151.83 249.324 152.91C249.952 153.349 250.904 153.304 251.771 153.488C252.161 154.352 252.387 155.372 252.994 155.997C253.65 156.651 254.628 157.011 255.516 157.353C257.076 157.933 258.534 158.815 260.322 158.757C261.569 158.718 262.538 159.553 263.472 160.38C263.405 161.128 263.36 161.862 263.289 162.628C264.027 163.242 264.86 163.762 265.486 164.467C266.59 165.712 267.924 166.396 269.528 166.68C270.349 166.817 271.154 167.122 271.907 167.492C272.527 167.795 273.2 168.11 272.961 169.145C272.902 169.418 273.434 169.874 273.763 170.154C274.948 171.187 276.52 171.712 277.611 172.669C278.796 173.702 279.886 174.315 281.367 174.307C281.477 174.311 281.613 174.283 281.745 174.273C281.957 174.318 282.173 174.345 282.364 174.404C282.399 174.412 282.411 174.529 282.453 174.595C282.346 174.401 282.096 174.271 281.85 174.124ZM62.8223 5.02946C62.8965 4.85474 62.9707 4.67999 63.0488 4.48705C63.4617 4.63212 63.8863 4.7225 64.27 4.91848C64.4214 4.98882 64.4694 5.28486 64.5544 5.49348C64.3542 5.56516 64.123 5.78261 63.9892 5.71604C63.5625 5.54897 63.1982 5.26189 62.8223 5.02946ZM285.832 175.486C286.148 176.087 286.444 176.435 286.508 176.83C286.54 177.027 286.148 177.477 285.92 177.505C285.333 177.57 285.065 177.094 285.12 176.573C285.143 176.292 285.457 176.035 285.832 175.486ZM230.401 140.766C231.02 140.897 231.174 140.873 231.233 140.943C231.465 141.24 231.673 141.57 231.901 141.885C231.604 141.803 231.3 141.757 231.036 141.606C230.849 141.528 230.772 141.283 230.401 140.766ZM225.773 137.399C225.618 137.518 225.48 137.736 225.33 137.743C225.185 137.731 225.043 137.529 224.885 137.4C225.04 137.281 225.183 137.045 225.328 137.056C225.482 137.032 225.633 137.274 225.773 137.399ZM209.455 114.759C209.38 114.59 209.21 114.345 209.265 114.261C209.371 114.112 209.606 114.048 209.775 113.951C209.87 114.199 209.969 114.43 210.064 114.679C209.871 114.714 209.665 114.727 209.455 114.759ZM269.386 164.307C269.39 164.46 269.394 164.613 269.399 164.767C268.996 164.833 268.6 164.958 268.191 164.967C268.024 164.969 267.858 164.705 267.705 164.558C267.85 164.399 268 164.126 268.15 164.12C268.554 164.13 268.975 164.238 269.386 164.307ZM282.039 171.154C281.866 171.269 281.711 171.389 281.539 171.504C281.446 171.332 281.367 171.182 281.274 171.01C281.36 170.952 281.476 170.843 281.547 170.858C281.73 170.954 281.873 171.061 282.039 171.154ZM221.051 135.346C221.083 135.543 221.15 135.748 221.143 135.956C221.153 135.996 220.888 136.111 220.856 136.085C220.716 135.96 220.606 135.784 220.492 135.627C220.682 135.515 220.864 135.439 221.051 135.346ZM162.519 116.578C162.387 116.417 162.277 116.241 162.145 116.08C162.345 116.008 162.531 115.914 162.724 115.879C162.798 115.876 162.954 116.1 162.954 116.1C162.805 116.277 162.664 116.419 162.519 116.578ZM203.129 113.984C203.143 114.177 203.248 114.466 203.154 114.56C203.013 114.702 202.754 114.704 202.54 114.753C202.525 114.56 202.42 114.271 202.493 114.191C202.652 114.053 202.893 114.048 203.129 113.984ZM101.363 12.5868C101.181 12.6623 101.002 12.7195 100.819 12.7949C100.803 12.6963 100.732 12.5096 100.772 12.4989C100.94 12.4015 101.136 12.3481 101.319 12.2726C101.331 12.3895 101.347 12.4882 101.363 12.5868ZM163.976 110.43C163.898 110.452 163.794 110.506 163.744 110.476C163.681 110.425 163.669 110.308 163.653 110.209C163.789 110.181 163.903 110.167 164.038 110.139C164.015 110.248 163.995 110.339 163.976 110.43ZM227.71 102.242C227.624 102.3 227.559 102.343 227.477 102.383C227.451 102.244 227.425 102.105 227.381 101.962C227.473 101.963 227.595 101.912 227.64 101.96C227.7 102.03 227.69 102.161 227.71 102.242ZM292.511 189.806C292.47 189.911 292.461 190.043 292.396 190.086C292.31 190.144 292.186 190.117 292.072 190.131C292.125 189.971 292.177 189.811 292.23 189.651C292.328 189.71 292.427 189.769 292.511 189.806ZM278.474 169.309C278.472 169.404 278.47 169.498 278.465 169.612C278.284 169.592 278.121 169.577 277.94 169.557C277.922 169.553 277.957 169.389 277.959 169.294C278.13 169.274 278.293 169.289 278.474 169.309ZM227.474 140.619C227.393 140.563 227.312 140.508 227.231 140.453C227.333 140.322 227.439 140.173 227.541 140.042C227.62 140.193 227.677 140.357 227.756 140.507C227.656 140.543 227.556 140.579 227.474 140.619ZM210.816 129.299C210.832 129.398 210.876 129.541 210.843 129.61C210.81 129.679 210.66 129.685 210.56 129.721C210.542 129.546 210.524 129.37 210.523 129.199C210.626 129.24 210.728 129.28 210.816 129.299ZM90.498 7.24453L90.2983 7.48779L90.2327 7.18803L90.498 7.24453ZM269.687 161.589L269.426 161.686L269.445 161.423L269.687 161.589ZM250.303 148.832L250.204 148.601L250.424 148.61L250.303 148.832Z"
+                                d="M281.85 174.124C281.758 174.733 281.665 175.342 281.533 176.133C283.297 177.404 284.709 179.286 287.125 179.667C287.84 179.781 287.896 180.993 287.192 181.434C286.704 181.73 286.08 182.054 285.577 181.985C283.22 181.674 280.816 181.676 278.789 179.988C277.596 178.991 275.951 178.64 274.345 178.889C272.72 179.134 270.971 178.228 269.58 179.38C269.351 180.455 269.22 181.418 268.933 182.328C268.643 183.257 268.184 184.112 267.661 185.353C268.747 185.375 269.56 185.377 270.352 185.393C271.677 185.427 272.944 185.468 274.17 186.225C275.41 187.003 276.86 187.14 278.345 186.942C279.886 186.737 281.394 187.039 282.85 187.673C284.492 188.384 286.216 188.885 287.882 189.487C288.33 189.64 288.882 189.738 289.204 190.054C290.407 191.263 292.18 191.45 293.413 192.608C294.384 193.519 295.012 193.52 295.962 192.884C297.939 191.59 299.091 189.911 299.023 187.363C298.955 184.643 298.85 182.01 298.316 179.306C297.689 176.086 297.047 172.844 296.869 169.51C296.708 166.446 295.743 163.593 294.148 160.662C292.779 162.142 292.297 163.621 292.655 165.241C293.18 167.639 292.767 170.104 293.16 172.512C293.198 172.767 292.88 173.309 292.644 173.373C292.23 173.495 291.701 173.458 291.314 173.281C290.912 173.081 290.536 172.677 290.287 172.281C289.068 170.192 286.959 169.153 285.22 167.678C284.468 167.041 283.247 166.953 282.266 166.611C281.924 165.871 281.731 164.954 281.197 164.421C279.295 162.587 279.248 162.634 275.823 161.867C273.416 158.84 270.51 156.335 267.17 154.385C265.775 153.555 264.816 151.807 262.858 152.057C261.621 151.089 260.377 150.158 259.166 149.157C258.711 148.774 258.402 148.232 258.041 147.755L258.058 147.759C257.663 148.227 257.271 148.677 256.926 149.08C255.528 149.22 254.65 148.481 254.285 147.413C253.567 145.316 251.818 144.411 250.12 143.611C246.756 142.038 243.359 140.533 240.3 138.396C240.108 138.26 239.901 138.101 239.671 138.052C234.412 136.78 230.396 133.144 225.855 130.5C225.131 130.08 224.34 129.797 223.579 129.463C223.036 129.234 222.327 129.178 221.929 128.788C220.184 127.083 217.896 126.71 215.731 126.021C214.71 125.689 213.768 125.165 212.781 124.764C211.998 124.445 211.211 124.144 210.409 123.916C209.394 123.643 208.195 123.807 207.606 122.576C207.517 122.386 207.218 122.227 207.002 122.2C204.47 121.928 202.6 120.463 200.812 118.787C200.428 118.419 199.758 118.353 199.077 118.074C201.378 117.345 201.352 117.378 203.348 117.993C203.849 118.157 204.6 118.107 205.031 117.818C205.994 117.204 206.925 117.002 208.08 116.962C209.068 116.925 210.194 116.326 210.952 115.63C212.924 113.84 213.091 113.666 214.954 113.339C215.781 113.191 216.661 113.054 217.365 112.613C218.496 111.902 219.543 111.153 220.817 110.643C221.787 110.259 222.56 109.319 223.366 108.575C224.424 107.601 224.938 106.053 226.381 105.445C227.03 103.526 229.496 102.889 229.363 100.212C229.277 98.2696 230.625 96.3657 230.997 94.2729C231.409 91.903 230.772 89.424 231.797 87.1274C231.975 86.727 231.853 86.1678 231.787 85.6965C230.965 80.8728 230.046 76.0667 227.651 71.7656C226.216 69.2119 224.505 66.828 223.177 64.2021C221.25 60.4005 217.85 58.0384 215.072 55.1036C214.56 54.5563 213.552 54.5132 212.522 54.1414C212.28 52.5848 211.322 51.352 209.898 50.306C206.993 48.1442 204.214 45.8191 201.178 43.8389C199.812 42.9575 198.415 42.3935 196.77 42.6528C196.142 41.7763 196.11 40.6263 194.959 40.0383C192.073 38.5666 189.418 36.7058 186.319 35.6268C184.631 35.039 183.123 33.9559 181.555 33.0695C180.3 32.3641 179.148 31.433 177.546 31.6634C177.222 31.7088 176.655 31.5883 176.553 31.3759C175.603 29.4971 173.655 29.9587 172.178 29.3394C169.847 28.386 167.487 27.4835 165.104 26.6903C162.823 25.938 160.503 25.368 158.193 24.6665C157.638 24.4913 156.995 24.2973 156.605 23.8713C154.146 21.1759 150.848 20.5118 147.516 19.9168C144.914 19.458 142.29 19.0137 139.687 18.5549C139.564 18.5286 139.428 18.5568 139.326 18.516C137.624 17.7346 135.89 17.194 133.943 17.2177C132.533 17.2413 131.138 16.754 129.721 16.5475C128.666 16.38 127.864 16.9332 127.2 17.7063C127.636 17.742 128.055 17.7739 128.452 17.8204C128.432 17.9115 128.417 17.9844 128.397 18.0756C128.016 17.9563 127.621 17.8149 127.239 17.6956C126.517 17.1798 126.124 16.5056 125.888 15.6171C125.721 15.01 125.079 14.5495 124.746 14.1166C123.766 14.289 124.072 14.8495 123.979 15.2869C123.801 16.1253 122.874 16.4806 122.401 15.9227C122.019 15.4602 121.803 14.8236 121.37 14.4266C120.86 13.956 120.241 13.3862 119.62 13.3493C118.603 13.2659 117.748 13.1982 117.209 12.169C117.102 11.9748 116.497 11.8649 116.249 11.9838C115.056 12.549 114.2 11.9667 113.234 11.3799C112.451 10.8893 111.478 10.6821 110.61 10.326C109.405 9.82167 107.992 9.9402 106.949 8.93682C106.641 8.64279 106.044 8.49646 105.596 8.51543C103.84 8.59878 102.292 8.13598 100.884 7.01706C100.475 6.68219 99.7301 6.61889 99.1683 6.65171C96.5794 6.82452 94.2195 5.92202 91.7836 5.28912C89.2416 4.63362 86.6003 4.3571 84.0117 3.92033C82.7086 3.70004 81.4055 3.47978 80.1122 3.29972C76.205 2.71557 72.4038 1.37287 68.3634 1.67485C68.0078 1.69442 67.6091 1.74289 67.2807 1.63488C63.2046 0.367009 58.9149 0.711081 54.7466 0.223758C54.045 0.131549 53.3123 0.185196 52.5874 0.202336C49.8233 0.242566 47.0398 0.373922 44.2773 0.319272C42.9885 0.292542 42.271 0.882801 41.712 1.945C41.0531 1.6523 40.4131 1.09691 39.8081 1.15864C35.3712 1.58576 30.9045 1.89223 26.5315 2.71401C21.4064 3.68049 16.5335 5.63424 12.05 8.45196C9.16879 10.2581 6.09036 11.7746 3.61966 14.2588C1.83275 16.0503 0.82865 18.1608 0.401512 20.7752C1.12285 20.1667 1.85412 19.5984 2.54396 18.9642C4.16264 17.4417 5.81889 16.0034 7.92485 15.2325C8.26441 15.1142 8.61171 14.9596 8.89991 14.7352C11.6662 12.5997 14.9687 11.8548 18.1961 10.9416C18.6673 10.8133 19.1799 10.751 19.5781 10.5309C24.2429 7.90424 29.3596 8.19333 34.3782 7.81383C36.6724 7.63544 38.951 7.52998 41.1394 6.7194C41.683 6.51127 42.3605 6.36972 42.8835 6.51916C46.3144 7.51632 49.8224 7.19626 53.2954 7.04022C57.177 6.87592 60.9743 7.45569 64.7926 7.84946C68.8448 8.27396 72.872 8.90266 76.9186 9.44029C77.2763 9.49739 77.6573 9.44515 77.9779 9.58962C81.3844 10.9626 85.0115 11.1251 88.5632 11.7289C91.3818 12.2146 94.2042 12.6821 96.8991 13.9227C98.8013 14.8039 101.084 14.8518 103.374 15.3012C103.789 14.5703 104.096 13.9116 104.507 13.3704C104.685 13.1416 105.178 12.9988 105.478 13.0628C105.726 13.1156 106.126 13.5818 106.087 13.764C105.688 15.2032 106.419 15.8542 107.581 16.2159C110.46 17.1145 113.313 18.0457 116.215 18.835C118.767 19.5307 121.385 19.9166 123.789 21.1333C125.158 21.8249 125.926 21.6073 128.012 20.9275C129.125 22.822 131.039 23.477 133.091 23.9139C138.965 25.1644 144.71 26.8447 150.377 28.8896C153.313 29.9528 156.384 30.6447 159.324 31.6897C162.836 32.9137 166.53 33.8907 169.682 35.762C172.821 37.6114 176.045 39.0598 179.369 40.4724C181.678 41.4403 183.731 43.0015 185.896 44.3006C186.732 44.8026 187.522 45.3517 188.37 45.7989C191.976 47.7098 195.74 49.3113 199.038 51.8042C200.664 53.0268 202.593 53.7804 203.963 55.4247C205.037 56.7203 206.987 56.9449 207.885 58.5459C210.622 60.1956 212.067 63.2274 214.583 65.1348C215.598 65.9226 216.337 67.1467 217.055 68.2903C217.966 69.7418 219.023 71.0336 220.093 72.3474C221.518 74.0797 222.769 76.0224 223.602 78.2765C224.693 81.233 225.507 84.3593 227.223 87.0681C227.403 87.354 227.598 87.7386 227.581 88.0779C227.49 90.4208 227.472 92.7605 227.182 95.0801C226.719 98.9062 225.15 102.192 222.011 104.515C220.913 105.329 219.854 106.132 219.833 107.709C216.308 107.759 212.999 108.102 210.126 110.215C210.659 110.233 211.191 110.251 211.724 110.269C211.722 110.364 211.703 110.455 211.701 110.55C211.188 110.441 210.657 110.328 210.144 110.219C209.6 110.255 209.042 110.27 208.463 110.299C208.551 110.927 208.625 111.362 208.715 112.067C207.872 111.945 207.118 112.013 206.529 111.735C205.015 111.032 203.527 110.982 201.979 111.567C199.912 112.327 197.795 112.543 195.592 112.208C194.426 112.036 193.123 111.987 192.012 112.341C188.622 113.41 185.512 112.557 182.591 111.078C180.521 110.028 178.329 109.466 176.197 108.707C175.749 108.555 175.205 108.591 174.811 108.355C170.27 105.712 165.184 104.667 160.21 103.36C156.972 102.5 153.723 101.693 150.305 102.547C149.855 102.661 149.348 102.61 148.876 102.567C146.522 102.332 144.869 103.581 143.843 105.534C142.457 108.135 141.193 110.857 141.284 113.906C141.955 115.096 142.992 115.698 144.158 116.042C145.773 116.538 147.41 116.925 149.011 117.399C150.713 117.914 152.297 117.946 153.797 116.722C154.153 116.436 154.824 116.064 155.106 116.219C156.428 116.958 157.012 115.692 157.914 115.274C158.079 115.195 158.343 115.346 158.785 115.441C158.209 116.499 157.64 117.521 156.979 118.714C158.914 119.355 160.506 119.084 162.116 118.474C164.49 117.57 164.514 117.632 166.994 118.579C167.765 118.172 168.577 117.659 169.468 117.296C170.363 116.915 171.58 117.193 171.908 118.082C172.411 119.37 173.435 119.512 174.478 119.734C175.682 119.99 176.103 118.88 176.785 118.282C176.492 118.353 176.239 118.413 176.746 118.293C176.219 118.333 176.482 118.313 176.746 118.293C176.819 118.384 176.892 118.476 176.982 118.572C177.808 119.643 179.238 118.137 180.248 119.476C180.869 120.295 182.38 120.407 183.487 120.852C184.591 121.316 185.651 121.98 186.798 122.243C188.156 122.551 189.598 122.553 191.396 122.707C191.878 122.962 190.968 123.588 191.403 124.499C192.085 124.854 193.116 125.398 194.049 125.882C194.9 125.358 195.583 124.932 196.563 124.322C196.717 125.25 196.821 125.805 196.903 126.375C197.096 126.512 197.269 126.739 197.485 126.766C198.187 126.858 198.924 126.958 199.639 126.901C201.332 126.766 202.656 127.41 203.875 128.546C207.578 132.001 210.928 134.162 214.789 135.918C216.272 136.596 217.318 136.285 218.205 134.987C217.171 134.805 216.119 134.62 215.093 134.401C214.97 134.375 214.908 134.057 214.819 133.866C216.825 133.303 216.825 133.303 218.101 135.042C218.406 136.65 219.308 137.623 220.822 138.155C222.63 138.787 224.462 139.387 225.838 140.918C226.214 141.322 226.92 141.396 227.476 141.648C229.544 142.622 231.603 143.632 233.679 144.569C234.2 144.813 235.056 145.224 235.305 145.01C236.412 144.065 236.922 145.317 237.31 145.666C239.252 147.318 241.171 148.812 243.855 148.888C244.185 148.901 244.522 149.144 244.809 149.358C246.315 150.536 247.741 151.83 249.324 152.91C249.952 153.349 250.904 153.304 251.771 153.488C252.161 154.352 252.387 155.372 252.994 155.997C253.65 156.651 254.628 157.011 255.516 157.353C257.076 157.933 258.534 158.815 260.322 158.757C261.569 158.718 262.538 159.553 263.472 160.38C263.405 161.128 263.36 161.862 263.289 162.628C264.027 163.242 264.86 163.762 265.486 164.467C266.59 165.712 267.924 166.396 269.528 166.68C270.349 166.817 271.154 167.122 271.907 167.492C272.527 167.795 273.2 168.11 272.961 169.145C272.902 169.418 273.434 169.874 273.763 170.154C274.948 171.187 276.52 171.712 277.611 172.669C278.796 173.702 279.886 174.315 281.367 174.307C281.477 174.311 281.613 174.283 281.745 174.273C281.957 174.318 282.173 174.345 282.364 174.404C282.399 174.412 282.411 174.529 282.453 174.595C282.346 174.401 282.096 174.271 281.85 174.124Z"
                                 fill="#DFEFC9" />
                         </svg>
-
-
                     </div>
                 </div>
 
@@ -862,20 +1149,14 @@ word-wrap: break-word
                         </div>
                     </div>
                     <div class="step-arrow">
-
-
                         <svg width="196" height="132" viewBox="0 0 196 132" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path id="Vector"
                                 d="M195.687 0.74781C193.34 3.85509 191.364 5.6312 189.968 7.9539C187.606 11.847 183.544 14.6493 179.426 17.199C176.1 19.2667 172.828 21.4238 169.519 23.5213C168.603 24.1209 167.651 24.9055 166.624 25.1629C158.843 27.286 152.863 32.4433 146.518 37.004C137.244 43.7177 127.88 50.3638 118.552 57.0696C114.275 60.1665 110.052 63.3529 105.756 66.42C98.9086 71.2876 92.1334 76.2744 85.122 80.8735C74.1375 88.0979 63.0258 95.1135 51.8778 102.069C49.2706 103.699 46.8614 105.248 44.8005 108.017C48.6283 109.039 51.7935 107.192 54.9292 106.754C57.9207 106.322 60.7508 106.11 64.4166 107.19C61.0337 108.76 58.5147 109.968 55.1318 111.538C57.1742 112.543 58.5117 113.2 60.6446 114.273C58.341 115.267 56.9384 116.122 55.4794 116.479C49.3735 118.032 43.1752 119.109 37.1067 120.966C27.0947 124.04 17.1573 127.641 7.18239 130.938C5.70598 131.428 4.13794 131.606 2.66076 131.934C-0.588609 127.329 -0.719697 122.42 1.76211 117.104C3.54775 113.317 5.60408 109.569 7.82319 105.927C12.0112 99.1221 16.0182 92.182 21.6702 86.08C22.5314 85.1463 23.5918 84.3776 25.0466 83.1231C26.126 86.4325 24.9112 88.8903 23.3542 91.434C18.5397 99.2341 15.8194 107.558 12.738 115.774C12.4885 116.417 12.8346 117.147 12.9841 118.283C14.5881 118.082 16.1213 118.171 17.5618 117.702C26.7273 114.858 35.0539 109.989 42.2924 103.82C48.1121 98.8836 54.659 95.2218 60.7517 90.8144C67.5091 85.8793 74.7382 81.5565 81.0239 76.009C84.1307 73.2572 87.5814 70.7458 91.1054 68.5169C102.972 60.9596 113.605 51.9451 124.71 43.4614C136.246 34.6332 148.109 26.1788 159.99 17.8357C166.173 13.4958 172.755 9.73059 179.229 5.78639C183.077 3.44178 187.143 1.53664 191.503 0.679632C192.549 0.533552 193.595 0.71372 195.687 0.74781Z"
                                 fill="#DFEFC9" />
                         </svg>
-
-
                     </div>
                 </div>
-
-
 
                 <div class="step-tow step-four">
                     <div class="step">
@@ -888,14 +1169,10 @@ word-wrap: break-word
                     <div class="step-arrow">
                     </div>
                 </div>
-
-
-
             </div>
-
         </section>
 
-        <section class="faq-section">
+        <section id="faq" class="faq-section">
             <h2>الأسئلة الشائعة</h2>
             <div class="faq-container">
                 <div class="faq-item">
@@ -936,14 +1213,22 @@ word-wrap: break-word
             </div>
         </section>
 
-        <section class="locations-section">
+        <section id="locations" class="locations-section">
             <h2>المواقع الرئيسية</h2>
-            <div class="locations-container">
-             
+            <div class="locations-map" style="width: 100%; margin-top: 30px;">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7521754.024655684!2d45.20766566118085!3d25.304390022756393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2z2KfZhNiu2YTZitisINin2YTYudix2KjZig!5e0!3m2!1sar!2s!4v1711559022086!5m2!1sar!2s&markers=color:green%7Clabel:R%7C24.7136,46.6753&markers=color:red%7Clabel:D%7C25.2048,55.2708" 
+                    width="100%" 
+                    height="450" 
+                    style="border:0; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </section>
 
-        <section class="pricing-section">
+        <section id="pricing" class="pricing-section">
             <h2>خطط الأسعار</h2>
             <div class="pricing-toggle">
                 <div class="toggle-container">
@@ -1072,7 +1357,6 @@ word-wrap: break-word
 
     <footer>
         <div class="footer-container">
-            
             <div class="footer-links">
                 <a href="#" class="footer-link">سياسة الخصوصية والأحكام</a>
                 <a href="#" class="footer-link">الاسترجاع</a>
@@ -1084,6 +1368,7 @@ word-wrap: break-word
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // تفعيل الأسئلة الشائعة
             const faqQuestions = document.querySelectorAll('.faq-question');
 
             faqQuestions.forEach(question => {
@@ -1102,6 +1387,7 @@ word-wrap: break-word
                 });
             });
 
+            // تفعيل خيارات التبديل
             const toggleOptions = document.querySelectorAll('.toggle-option');
 
             toggleOptions.forEach(option => {
@@ -1109,6 +1395,35 @@ word-wrap: break-word
                     toggleOptions.forEach(opt => opt.classList.remove('active'));
 
                     this.classList.add('active');
+                });
+            });
+
+            // تفعيل القائمة المتنقلة للهواتف
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const nav = document.querySelector('nav');
+
+            mobileMenuToggle.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+
+            // تفعيل التنقل السلس عند النقر على روابط القائمة
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // إغلاق القائمة المتنقلة إذا كانت مفتوحة
+                    nav.classList.remove('active');
+                    
+                    // الحصول على معرف القسم المستهدف
+                    const targetId = this.getAttribute('href');
+                    
+                    // التمرير إلى القسم المستهدف
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: 'smooth' });
+                    }
                 });
             });
         });
