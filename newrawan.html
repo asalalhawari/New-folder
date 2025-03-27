@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #25252e;
+            min-height: 100vh;
+            background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/asd.jpg-hZ4K2kRfWOu9Gb6dMPdkw6TtWNy93a.jpeg');
+            background-repeat: repeat;
+            background-size: 500px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            min-height: 100vh;
+        }
+
+        /* Header style */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 10px 0;
+        }
+
+        .home-button {
+            width: 80px;
+            height: 80px;
+            background-color: #915ca6;
+            border: none;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .home-button:hover {
+            background-color: #7d4e8f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .home-button svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        h1 {
+            color: #915ca6;
+            font-size: 40px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .language-toggle {
+            padding: 12px 20px;
+            background-color: #915ca6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-toggle:hover {
+            background-color: #7d4e8f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .cake-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+        }
+
+        .cake-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 56px;
+        }
+
+        .cake-card {
+            position: relative;
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            height: 236px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cake-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* تعديل خصائص الصورة لاستخدام img بدلاً من background-image */
+        .cake-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لضمان تغطية الصورة للمساحة بالكامل */
+            filter: blur(1px); /* تأثير ضبابي خفيف */
+            transition: all 0.3s ease;
+        }
+
+        /* إضافة طبقة شفافة فوق الصورة لتحسين قراءة النص */
+        .cake-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7));
+            z-index: 1;
+        }
+
+        .category-name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            text-align: center;
+            color: #25252e;
+            font-size: 40px;
+            font-weight: 500;
+            padding: 0 10px;
+            z-index: 2; /* جعل النص فوق الطبقة الشفافة */
+        }
+
+        @media (max-width: 1200px) {
+            .cake-row {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+            
+            .category-name {
+                font-size: 32px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .cake-row {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 24px;
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            .category-name {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .rtl header {
+                flex-direction: column;
+            }
+            
+            .cake-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .cake-card {
+                height: 200px;
+            }
+            
+            .category-name {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cake-row {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .cake-grid {
+                gap: 24px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .home-button {
+                width: 70px;
+                height: 70px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="app">
+        <header>
+            <button class="home-button">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M40.768 19.232L22.768 1.23201L19.232 4.76801L37.232 22.768L40.768 19.232Z" fill="white"/>
+                    <path d="M19.232 1.23201L1.23196 19.232L4.76796 22.768L22.768 4.76801L19.232 1.23201Z" fill="white"/>
+                    <path d="M37.5 17C37.5 16.6717 37.4353 16.3466 37.3097 16.0433C37.184 15.74 36.9999 15.4644 36.7677 15.2322C36.5356 15.0001 36.26 14.8159 35.9567 14.6903C35.6534 14.5647 35.3283 14.5 35 14.5C34.6717 14.5 34.3466 14.5647 34.0433 14.6903C33.7399 14.8159 33.4643 15.0001 33.2322 15.2322C33 15.4644 32.8159 15.74 32.6903 16.0433C32.5646 16.3466 32.5 16.6717 32.5 17H37.5ZM9.49996 17C9.49996 16.337 9.23657 15.7011 8.76773 15.2322C8.29889 14.7634 7.663 14.5 6.99996 14.5C6.33692 14.5 5.70104 14.7634 5.2322 15.2322C4.76336 15.7011 4.49996 16.337 4.49996 17H9.49996ZM11 41.5H31V36.5H11V41.5ZM37.5 35V17H32.5V35H37.5ZM9.49996 35V17H4.49996V35H9.49996ZM31 41.5C32.7239 41.5 34.3772 40.8152 35.5962 39.5962C36.8151 38.3772 37.5 36.7239 37.5 35H32.5C32.5 35.3978 32.3419 35.7794 32.0606 36.0607C31.7793 36.342 31.3978 36.5 31 36.5V41.5ZM11 36.5C10.6021 36.5 10.2206 36.342 9.9393 36.0607C9.658 35.7794 9.49996 35.3978 9.49996 35H4.49996C4.49996 36.7239 5.18478 38.3772 6.40377 39.5962C7.62276 40.8152 9.27606 41.5 11 41.5V36.5Z" fill="white"/>
+                </svg>
+            </button>
+            <h1 id="page-title">Select the Perfect Cake for Any Occasion</h1>
+            <button class="language-toggle" id="language-toggle">العربية</button>
+        </header>
+
+        <main>
+            <div class="cake-grid" id="cake-grid">
+                <div class="cake-row">
+                    <div class="cake-card">
+                        <img src="" alt="Boys Cake" class="cake-image" data-category="Boys">
+                        <h3 class="category-name">Boys</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Girls Cake" class="cake-image" data-category="Girls">
+                        <h3 class="category-name">Girls</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Teenagers Cake" class="cake-image" data-category="Teenagers">
+                        <h3 class="category-name">Teenagers</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Graduation Cake" class="cake-image" data-category="Graduation">
+                        <h3 class="category-name">Graduation</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Adults Cake" class="cake-image" data-category="Adults">
+                        <h3 class="category-name">Adults</h3>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="cake-row">
+                    <div class="cake-card">
+                        <img src="" alt="Careers Cake" class="cake-image" data-category="Careers Cake">
+                        <h3 class="category-name">Careers Cake</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Engagement & wedding Cake" class="cake-image" data-category="Engagement & wedding">
+                        <h3 class="category-name">Engagement & wedding</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Bride Shower Cake" class="cake-image" data-category="Bride Shower">
+                        <h3 class="category-name">Bride Shower</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Twins cake" class="cake-image" data-category="Twins cake">
+                        <h3 class="category-name">Twins cake</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Baby Shower Cake" class="cake-image" data-category="Baby Shower">
+                        <h3 class="category-name">Baby Shower</h3>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="cake-row">
+                    <div class="cake-card">
+                        <img src="" alt="3D Cake" class="cake-image" data-category="3D Cake">
+                        <h3 class="category-name">3D Cake</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Numbers and Letters Cake" class="cake-image" data-category="Numbers and Letters">
+                        <h3 class="category-name">Numbers and Letters</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="National Cake" class="cake-image" data-category="National">
+                        <h3 class="category-name">National</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Food and Drinks Cakes" class="cake-image" data-category="Food and Drinks Cakes">
+                        <h3 class="category-name">Food and Drinks Cakes</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Sports Cake" class="cake-image" data-category="Sports Cake">
+                        <h3 class="category-name">Sports Cake</h3>
+                    </div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="cake-row">
+                    <div class="cake-card">
+                        <img src="" alt="Valentine Cakes" class="cake-image" data-category="Valentine Cakes">
+                        <h3 class="category-name">Valentine Cakes</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Animals Cakes" class="cake-image" data-category="Animals Cakes">
+                        <h3 class="category-name">Animals Cakes</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Character Picture Cake" class="cake-image" data-category="Character Picture Cake">
+                        <h3 class="category-name">Character Picture Cake</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="" alt="Cream Cake" class="cake-image" data-category="Cream Cake">
+                        <h3 class="category-name">Cream Cake</h3>
+                    </div>
+                    <div class="cake-card">
+                        <img src="image (15).png" alt="Custom pyramids" class="cake-image" data-category="Custom pyramids">
+                        <h3 class="category-name">Custom pyramids</h3>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+  
+</body>
+</html>

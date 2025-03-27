@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر عربي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            direction: rtl;
+            background-color: #ffffff; /* Ensuring white background */
+        }
+
+        .showcase-container {
+            width: 100%;
+            position: relative;
+            max-width: 1170px;
+            margin: 0 auto;
+            padding-bottom: 100px; /* Add space at bottom for pagination dots */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            width: 100%;
+            height: 518px;
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 32px;
+        }
+
+        /* Product Showcase Section */
+        .product-showcase {
+            width: 100%;
+            position: relative;
+            margin-top: 60px;
+            height: 255px;
+        }
+
+        /* Decorative Elements */
+        .decorative-elements {
+            width: 47%;
+            height: 255px;
+            position: absolute;
+            opacity: 0.1;
+            overflow: hidden;
+        }
+
+        .decorative-elements.left {
+            left: 0;
+            top: 0;
+        }
+
+        .decorative-elements.right {
+            right: 0;
+            top: 0;
+        }
+
+        .decorative-square {
+            position: absolute;
+            border: 4px solid #C4962D;
+        }
+
+        .decorative-square.filled {
+            background: #C4962D;
+            border: none;
+        }
+
+        .square1 {
+            width: 45%;
+            height: 85%;
+            left: 35%;
+            top: 0;
+        }
+
+        .square2 {
+            width: 55%;
+            height: 120%;
+            left: 22%;
+            top: 48%;
+        }
+
+        .square3 {
+            width: 45%;
+            height: 85%;
+            left: 19%;
+            top: 131%;
+        }
+
+        .square4 {
+            width: 39%;
+            height: 98%;
+            left: 61%;
+            top: 76%;
+        }
+
+        .square5 {
+            width: 39%;
+            height: 98%;
+            left: 0;
+            top: 42%;
+        }
+
+        /* Product Image */
+        .product-image {
+            width: 53%;
+            height: 217px;
+            position: absolute;
+            left: 0;
+            top: 19px;
+            object-fit: cover;
+        }
+
+        /* Shop Now Button */
+        .shop-now-button {
+            padding: 8px 32px;
+            position: absolute;
+            right: 10%;
+            top: 40%;
+            background: #901A1D;
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            border: none;
+            border-radius: 24px;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .shop-now-button:hover {
+            transform: scale(1.05);
+            background-color: #a82025;
+        }
+
+        /* Pagination Dots */
+        .pagination-dots {
+            width: 72px;
+            height: 16px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 16px;
+            height: 16px;
+            background: #C8C8C8;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background: #C4962D;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .showcase-container {
+                padding: 0 20px 100px 20px;
+            }
+            
+            .hero-section {
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-section {
+                height: 400px;
+            }
+            
+            .shop-now-button {
+                font-size: 28px;
+                padding: 6px 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 350px;
+            }
+            
+            .product-showcase {
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 50px;
+            }
+            
+            .decorative-elements {
+                display: none;
+            }
+            
+            .product-image {
+                position: relative;
+                width: 100%;
+                left: 0;
+                top: 0;
+                margin-bottom: 20px;
+            }
+            
+            .shop-now-button {
+                position: relative;
+                right: 0;
+                top: 0;
+                margin: 20px 0;
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-section {
+                height: 250px;
+            }
+            
+            .shop-now-button {
+                font-size: 20px;
+                padding: 5px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="showcase-container">
+        <!-- Hero Image Section with Slider -->
+        <div class="hero-section">
+            <div class="hero-image-container">
+                <div class="slider">
+                    <div class="slide active">
+                        <img src="image (20).png" alt="صورة العرض الرئيسية 1" class="hero-image">
+                    </div>
+                    <div class="slide">
+                        <img src="image (22).png" alt="صورة العرض الرئيسية 2" class="hero-image">
+                    </div>
+                    <div class="slide">
+                        <img src="image (23).png" alt="صورة العرض الرئيسية 3" class="hero-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="product-showcase">
+          
+            <img src="image 3.png" alt="صورة المنتج" class="product-image">
+          
+            <button class="shop-now-button">تسوق الآن !</button>
+        </div>
+        
+        <!-- Pagination Dots -->
+        <div class="pagination-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all slides and dots
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            let currentSlide = 0;
+            let slideInterval;
+            
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Hide all slides
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                
+                // Remove active class from all dots
+                dots.forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                
+                // Show the selected slide
+                slides[index].classList.add('active');
+                
+                // Add active class to the corresponding dot
+                dots[index].classList.add('active');
+                
+                // Update current slide index
+                currentSlide = index;
+            }
+            
+            // Add click event to each dot
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    showSlide(index);
+                    // Clear existing interval
+                    clearInterval(slideInterval);
+                    // Restart auto-rotation after 10 seconds of inactivity
+                    setTimeout(startAutoRotation, 10000);
+                });
+            });
+            
+            // Auto-rotate slides
+            function rotateSlides() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+            
+            // Function to start auto-rotation
+            function startAutoRotation() {
+                // Clear any existing interval first
+                clearInterval(slideInterval);
+                // Set new interval
+                slideInterval = setInterval(rotateSlides, 5000);
+            }
+            
+            // Start auto-rotation on page load
+            startAutoRotation();
+            
+            // Handle window resize for better responsiveness
+            window.addEventListener('resize', function() {
+                // Adjust any elements that need resizing
+                // This is a placeholder for any specific resize logic you might need
+            });
+        });
+    </script>
+</body>
+</html>

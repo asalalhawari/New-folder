@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلويات شرقية وغربية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&family=Amiri:wght@400;700&family=Lateef&display=swap" rel="stylesheet">
+    <style>
+        /* ===== أساسيات التنسيق ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .background-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/pattern.png');
+            background-size: 800px;
+            background-repeat: repeat;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* ===== قسم الترحيب ===== */
+        .welcome-section {
+            padding: 80px 20px 20px;
+            text-align: center;
+        }
+
+        .welcome-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            font-family: 'Amiri', serif;
+            font-size: 52px;
+            font-weight: 700;
+            color: #C4962D;
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-family: 'Lateef', cursive;
+            font-size: 24px;
+            color: #901A1D;
+            margin-bottom: 40px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* ===== قسم الوصف ===== */
+        .description-section {
+            padding: 0 20px 60px;
+            text-align: center;
+        }
+
+        .description-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .description-text {
+            font-size: 24px;
+            line-height: 1.6;
+            color: #C4962D;
+            font-weight: 500;
+        }
+
+        /* ===== قسم بطاقات المنتجات ===== */
+        .products-section {
+            padding: 0 20px 80px;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 100%;
+            max-width: 360px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-label {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #C4962D;
+            color: white;
+            padding: 12px 30px;
+            border-top-left-radius: 30px;
+            font-size: 24px;
+            font-weight: 700;
+            min-width: 160px;
+            text-align: center;
+        }
+
+        /* ===== تجاوب الشاشة ===== */
+        @media (max-width: 992px) {
+            .main-title {
+                font-size: 44px;
+            }
+            
+            .subtitle {
+                font-size: 20px;
+            }
+            
+            .description-text {
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section {
+                padding-top: 60px;
+            }
+            
+            .main-title {
+                font-size: 38px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            
+            .description-text {
+                font-size: 20px;
+            }
+            
+            .products-row {
+                gap: 20px;
+            }
+            
+            .product-card {
+                max-width: 320px;
+            }
+            
+            .card-image {
+                height: 230px;
+            }
+            
+            .card-label {
+                font-size: 20px;
+                padding: 10px 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 32px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
+            
+            .description-text {
+                font-size: 18px;
+            }
+            
+            .product-card {
+                max-width: 100%;
+            }
+            
+            .card-label {
+                font-size: 18px;
+                padding: 8px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <!-- قسم الترحيب -->
+    <header class="welcome-section">
+        <div class="welcome-container">
+            <h1 class="main-title">مرحبا بكم في عالمنا</h1>
+            <p class="subtitle">Welcome to our world</p>
+        </div>
+    </header>
+
+    <!-- قسم الوصف -->
+    <section class="description-section">
+        <div class="description-container">
+            <p class="description-text">
+                نحن نصنع لك أفضل أنواع الحلويات الشرقية والغربية لتستمتع بتجربة تذوق لا مثيل لها ُ
+                <br>كل ما هو أمامك صنع بحب
+            </p>
+        </div>
+    </section>
+
+    <!-- قسم بطاقات المنتجات -->
+    <section class="products-section">
+        <div class="products-container">
+            <div class="products-row">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="images/kunafa.jpg" alt="كنافة">
+                    </div>
+                    <div class="card-label">
+                        <span>كنافة</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="images/daily-sweets.jpg" alt="حلويات يومية">
+                    </div>
+                    <div class="card-label">
+                        <span>حلويات يومية</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-row">
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="images/eastern-sweets.jpg" alt="حلويات شرقية">
+                    </div>
+                    <div class="card-label">
+                        <span>حلويات شرقية</span>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="card-image">
+                        <img src="images/mixed-dry.jpg" alt="مشكل نواشف">
+                    </div>
+                    <div class="card-label">
+                        <span>مشكل نواشف</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة تأثيرات حركية لبطاقات المنتجات عند ظهورها
+            const productCards = document.querySelectorAll('.product-card');
+            
+            // تأثير حركي بسيط لبطاقات المنتجات
+            productCards.forEach((card, index) => {
+                // إضافة تأخير بسيط لكل بطاقة لتأثير متتابع
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300 + index * 200);
+            });
+            
+            // إضافة تأثير ظهور تدريجي عند التمرير
+            function checkVisibility() {
+                const cards = document.querySelectorAll('.product-card');
+                cards.forEach(card => {
+                    const rect = card.getBoundingClientRect();
+                    const isVisible = (
+                        rect.top >= 0 &&
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                    );
+                    
+                    if (isVisible) {
+                        card.classList.add('visible');
+                    }
+                });
+            }
+            
+            // تحقق من الرؤية عند التحميل وعند التمرير
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+        });
+    </script>
+</body>
+</html>

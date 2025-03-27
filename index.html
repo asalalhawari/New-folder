@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حلويات أخو دنيا | Akho Donia Luxury Sweets</title>
+    <!-- خط تاجوال العربي -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* إعادة تعيين الستايل */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        /* المتغيرات */
+        :root {
+          --gold: #c4962d;
+          --light-gold: #e5d9b6;
+          --dark-gold: #a67c00;
+          --burgundy: #901a1d;
+          --white: #ffffff;
+          --off-white: #f9f9f9;
+          --gray: #d9d9d9;
+        }
+
+        body {
+          font-family: "Tajawal", sans-serif;
+          background-color: var(--white);
+          color: #333;
+          line-height: 1.6;
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+        }
+
+        /* البانر الرئيسي مع السلايدر */
+        .banner-slider {
+          position: relative;
+          max-width: 1200px;
+          margin: 40px auto 0;
+          padding: 0 20px;
+        }
+
+        .banner-slide {
+          display: none;
+          width: 100%;
+        }
+
+        .banner-slide.active {
+          display: block;
+          animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .gold-frame {
+          position: relative;
+          border: 8px solid var(--gold);
+          border-radius: 10px;
+          padding: 20px;
+          background-color: var(--white);
+          margin-top: 30px;
+        }
+
+        .title-banner {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: var(--burgundy);
+          color: var(--gold);
+          padding: 10px 40px;
+          border-radius: 30px;
+          font-size: 24px;
+          border: 4px solid var(--gold);
+          text-align: center;
+          z-index: 10;
+        }
+
+        .title-banner h1 {
+          font-size: 22px;
+          font-weight: 700;
+          white-space: nowrap;
+        }
+
+        .banner-image {
+          width: 100%;
+          height: auto;
+          border-radius: 5px;
+          display: block;
+        }
+
+        /* قسم المعلومات */
+        .info-section {
+          position: relative;
+          padding: 40px 0;
+          border-radius: 10px;
+          margin: 60px 0 30px;
+        }
+
+        .info-section::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: url("pattern.jpg");
+          opacity: 0.05;
+          border-radius: 10px;
+        }
+        
+
+        .info-content {
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 40px;
+        }
+
+        .info-text {
+          text-align: right;
+        }
+
+        .section-title {
+          color: var(--burgundy);
+          font-size: 36px;
+          font-weight: 700;
+          margin-bottom: 10px;
+        }
+
+        .section-desc {
+          color: var(--gold);
+          font-size: 20px;
+          font-weight: 500;
+        }
+
+        .shop-now {
+          text-align: center;
+        }
+
+        .shop-btn {
+          display: inline-block;
+          background-color: var(--burgundy);
+          color: var(--white);
+          padding: 12px 30px;
+          border-radius: 30px;
+          font-size: 18px;
+          font-weight: 600;
+          text-decoration: none;
+          transition: background-color 0.3s;
+        }
+
+        .shop-btn:hover {
+          background-color: #7a1518;
+        }
+
+        /* نقاط التنقل */
+        .slider-nav {
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+          margin: 20px 0 40px;
+        }
+
+        .nav-dot {
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          background-color: var(--gray);
+          cursor: pointer;
+          transition: background-color 0.3s;
+        }
+
+        .nav-dot.active {
+          background-color: var(--gold);
+        }
+
+        /* التجاوب مع الشاشات المختلفة */
+        @media (max-width: 768px) {
+          .info-content {
+            flex-direction: column;
+            gap: 30px;
+          }
+
+          .info-text {
+            text-align: center;
+          }
+
+          .title-banner h1 {
+            font-size: 18px;
+          }
+
+          .section-title {
+            font-size: 30px;
+          }
+
+          .section-desc {
+            font-size: 18px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .title-banner {
+            padding: 8px 30px;
+          }
+
+          .title-banner h1 {
+            font-size: 16px;
+          }
+
+          .gold-frame {
+            padding: 15px;
+            border-width: 6px;
+          }
+
+          .section-title {
+            font-size: 26px;
+          }
+
+          .section-desc {
+            font-size: 16px;
+          }
+
+          .shop-btn {
+            padding: 10px 25px;
+            font-size: 16px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <!-- البانر الرئيسي مع السلايدر -->
+    <div class="banner-slider">
+        <!-- الشريحة الأولى -->
+        <div class="banner-slide active">
+            <div class="gold-frame">
+               
+                <img src="image (12).png" alt="حلويات أخو دنيا" class="banner-image">
+            </div>
+        </div>
+        
+        <!-- الشريحة الثانية -->
+        <div class="banner-slide">
+            <div class="gold-frame">
+                
+                <img src="image (14).png" alt="حلويات أخو دنيا" class="banner-image">
+            </div>
+        </div>
+        
+        <!-- الشريحة الثالثة -->
+        <div class="banner-slide">
+            <div class="gold-frame">
+               
+                <img src="image (13).png" alt="حلويات أخو دنيا" class="banner-image">
+            </div>
+        </div>
+    </div>
+    
+    <!-- قسم المعلومات والتسوق -->
+    <div class="container">
+        <div class="info-section">
+            <div class="info-content">
+                <div class="info-text">
+                    <h2 class="section-title">حلويات شرقية</h2>
+                    <p class="section-desc">تُصنع بأفضل أنواع المواد في العالم</p>
+                    <p class="section-desc">في مصنعنا مع الإهتمام في أدق التفاصيل</p>
+                </div>
+                <div class="shop-now">
+                    <a href="#" class="shop-btn">تسوق الآن !</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- نقاط التنقل السفلية -->
+        <div class="slider-nav">
+            <span class="nav-dot active" onclick="goToSlide(0)"></span>
+            <span class="nav-dot" onclick="goToSlide(1)"></span>
+            <span class="nav-dot" onclick="goToSlide(2)"></span>
+        </div>
+    </div>
+
+    <script>
+        // متغيرات السلايدر
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.banner-slide');
+        const dots = document.querySelectorAll('.nav-dot');
+        const totalSlides = slides.length;
+
+        // دالة لعرض شريحة محددة
+        function showSlide(n) {
+            // التأكد من أن الرقم ضمن النطاق
+            if (n >= totalSlides) {
+                currentSlide = 0;
+            } else if (n < 0) {
+                currentSlide = totalSlides - 1;
+            } else {
+                currentSlide = n;
+            }
+            
+            // إخفاء جميع الشرائح
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].classList.remove('active');
+                dots[i].classList.remove('active');
+            }
+            
+            // إظهار الشريحة الحالية
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // الانتقال للشريحة التالية
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // الانتقال للشريحة السابقة
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // الانتقال لشريحة محددة (للنقاط)
+        function goToSlide(n) {
+            // إيقاف التبديل التلقائي مؤقتاً
+            clearInterval(slideInterval);
+            showSlide(n);
+            
+            // إعادة تشغيل التبديل التلقائي
+            slideInterval = setInterval(function() {
+                nextSlide();
+            }, 5000);
+        }
+
+        // تبديل الشرائح تلقائياً كل 5 ثوانٍ
+        let slideInterval = setInterval(function() {
+            nextSlide();
+        }, 5000);
+
+        // إضافة دعم التمرير باللمس للأجهزة المحمولة
+        let touchStartX = 0;
+        let touchEndX = 0;
+        const slider = document.querySelector('.banner-slider');
+
+        slider.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        slider.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            // للتصميم بالعربية (RTL)، نعكس اتجاه التمرير
+            if (touchEndX < touchStartX - 50) {
+                // تمرير لليسار - الشريحة التالية
+                nextSlide();
+            }
+            
+            if (touchEndX > touchStartX + 50) {
+                // تمرير لليمين - الشريحة السابقة
+                prevSlide();
+            }
+        }
+
+        // إضافة دعم التنقل بلوحة المفاتيح
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                // للتصميم بالعربية (RTL)، السهم الأيسر يعني التالي
+                nextSlide();
+            } else if (e.key === 'ArrowRight') {
+                // للتصميم بالعربية (RTL)، السهم الأيمن يعني السابق
+                prevSlide();
+            }
+        });
+
+        // إيقاف التبديل التلقائي عند تمرير المؤشر فوق السلايدر
+        slider.addEventListener('mouseenter', function() {
+            clearInterval(slideInterval);
+        });
+
+        slider.addEventListener('mouseleave', function() {
+            slideInterval = setInterval(function() {
+                nextSlide();
+            }, 5000);
+        });
+
+        // تهيئة السلايدر عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(0);
+        });
+    </script>
+</body>
+</html>
+
