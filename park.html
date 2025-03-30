@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -606,9 +605,10 @@ nav ul li a:hover {
 
 .pricing-card-description {
     font-size: 14px;
-    color: #666;
+    color: #000000;
     margin-bottom: 20px;
     line-height: 1.6;
+    font-weight: bold;
 }
 
 .pricing-card.highlighted .pricing-card-description {
@@ -624,7 +624,7 @@ nav ul li a:hover {
     align-items: center;
     margin-bottom: 15px;
     font-size: 14px;
-    color: #555;
+    color: #080118;
 }
 
 .pricing-card.highlighted .feature-item {
@@ -871,7 +871,6 @@ footer {
     }
 }
 
-/* الاستجابة للشاشات الصغيرة جداً */
 @media (max-width: 576px) {
     .container {
         padding: 0 15px;
@@ -1025,6 +1024,62 @@ footer {
         height: 250px;
     }
 }
+.login-button-container {
+        margin: 0 15px;
+    }
+    
+    .login-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #8cc63f;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 20px;
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 500;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .login-btn:hover {
+        background-color: #1a2e5c;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    
+    .login-icon {
+        margin-right: 8px;
+        margin-left: 0;
+    }
+    
+    .login-text-en {
+        display: none;
+    }
+    
+    /* When language is set to English */
+    html[lang="en"] .login-text-ar {
+        display: none;
+    }
+    
+    html[lang="en"] .login-text-en {
+        display: inline;
+    }
+    
+    html[lang="en"] .hero-content {
+    text-align: left;
+}
+
+html[lang="en"] .login-text-ar {
+    display: none;
+}
+
+html[lang="en"] .login-text-en {
+    display: inline;
+}
     </style>
 </head>
 
@@ -1032,25 +1087,38 @@ footer {
     <div class="container">
         <header>
             <div class="logo">
-                <img src="prkPro-removebg-preview[1] 2.png" alt="Absher Park Logo">
+                <img src="Frame 36783.png" alt="Absher Park Logo">
             </div>
             <button class="mobile-menu-toggle">☰</button>
             <nav>
                 <ul>
-                    <li><a href="#about">عنا</a></li>
-                    <li><a href="#features">مميزاتنا</a></li>
-                    <li><a href="#how-it-works">كيف يعمل؟</a></li>
-                    <li><a href="#locations">مواقعنا</a></li>
-                    <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    <li><a href="#about" class="translate" data-ar="عنا" data-en="About Us">عنا</a></li>
+                    <li><a href="#features" class="translate" data-ar="مميزاتنا" data-en="Our Features">مميزاتنا</a></li>
+                    <li><a href="#how-it-works" class="translate" data-ar="كيف يعمل؟" data-en="How It Works?">كيف يعمل؟</a></li>
+                    <li><a href="#locations" class="translate" data-ar="مواقعنا" data-en="Our Locations">مواقعنا</a></li>
+                    <li><a href="#faq" class="translate" data-ar="الأسئلة الشائعة" data-en="FAQ">الأسئلة الشائعة</a></li>
                 </ul>
             </nav>
-            <div class="lang-switch">العربية</div>
-        </header>
+            <div class="lang-switch" id="lang-toggle" data-ar="English" data-en="العربية">English</div>
+                       
+             <button id="login-btn" class="login-btn" onclick="window.location.href='https://absherpark.sa/admin/login';">
+                <span class="login-text-ar">تسجيل الدخول</span>
+                <span class="login-text-en">Login</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="login-icon">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 1-2 2h-4"></path>
+                    <polyline points="10 17 15 12 10 7"></polyline>
+                    <line x1="15" y1="12" x2="3" y2="12"></line>
+                </svg>
+            </button>
+        </header>  
+        
 
+    
+        
         <section id="hero" class="hero">
             <div class="hero-content">
-                <h1>استلم سيارتك بسهولة<br>مع <span>أبشر بارك</span></h1>
-                <p>حل ذكي لإدارة مواقف السيارات! استلم إشعار عند وصول سيارتك، واطلبها بضغطة زر عبر التطبيق.</p>
+                <h1 class="translate" data-ar="استلم سيارتك بسهولة<br>مع <span>أبشر بارك</span>" data-en="Get Your Car Easily<br>with <span>Absher Park</span>">استلم سيارتك بسهولة<br>مع <span>أبشر بارك</span></h1>
+                <p class="translate" data-ar="حل ذكي لإدارة مواقف السيارات! استلم إشعار عند وصول سيارتك، واطلبها بضغطة زر عبر التطبيق." data-en="Smart solution for parking management! Receive a notification when your car arrives, and request it with a button press through the app.">حل ذكي لإدارة مواقف السيارات! استلم إشعار عند وصول سيارتك، واطلبها بضغطة زر عبر التطبيق.</p>
             </div>
             <div class="hero-image">
                 <img src="Parking-amico 1.png" alt="Parking Illustration">
@@ -1061,22 +1129,21 @@ footer {
             <div class="stat-box-wrapper">
                 <div class="stat-box">
                     <div class="stat-number">+150</div>
-                    <div class="stat-text">موظفين</div>
+                    <div class="stat-text translate" data-ar="موظفين" data-en="Employees">موظفين</div>
                 </div>
             </div>
             <div class="stat-box-wrapper">
                 <div class="stat-box">
                     <div class="stat-number">+50</div>
-                    <div class="stat-text">مواقف ومواقع سيارات</div>
+                    <div class="stat-text translate" data-ar="مواقف ومواقع سيارات" data-en="Parking Locations">مواقف ومواقع سيارات</div>
                 </div>
             </div>
         </section>
 
         <section id="about" class="parking-management">
             <div class="parking-management-content">
-                <h2>إدارة مواقف السيارات</h2>
-                <p>تقدم ابشر بارك حلولاً مبتكرة ومتطورة لإدارة مواقف السيارات، سواء في الشوارع أو في المواقف المستقلة،
-                    مما يضمن تجربة سلسلة وفعالة للمستخدمين.</p>
+                <h2 class="translate" data-ar="إدارة مواقف السيارات" data-en="Parking Management">إدارة مواقف السيارات</h2>
+                <p class="translate" data-ar="تقدم ابشر بارك حلولاً مبتكرة ومتطورة لإدارة مواقف السيارات، سواء في الشوارع أو في المواقف المستقلة، مما يضمن تجربة سلسلة وفعالة للمستخدمين." data-en="Absher Park offers innovative and advanced solutions for parking management, whether on streets or in independent parking lots, ensuring a smooth and efficient experience for users.">تقدم ابشر بارك حلولاً مبتكرة ومتطورة لإدارة مواقف السيارات، سواء في الشوارع أو في المواقف المستقلة، مما يضمن تجربة سلسلة وفعالة للمستخدمين.</p>
             </div>
             <div class="parking-management-image">
                 <img src="31210601_7779604 (1) 2.png" alt="إدارة مواقف السيارات">
@@ -1088,19 +1155,19 @@ footer {
                 <img src="32440864_7957544 1.png" alt="خدمة صف السيارات">
             </div>
             <div class="valet-service-content">
-                <h2>خدمة صف السيارات</h2>
+                <h2 class="translate" data-ar="خدمة صف السيارات" data-en="Valet Service">خدمة صف السيارات</h2>
                 <ul>
-                    <li>خدمة صف السيارات المدفوعة</li>
-                    <li>خدمة صف السيارات المجانية</li>
-                    <li>خدمة صف السيارات للمناسبات</li>
-                    <li>اشتراكات صف السيارات للموظفين</li>
+                    <li class="translate" data-ar="خدمة صف السيارات المدفوعة" data-en="Paid Valet Service">خدمة صف السيارات المدفوعة</li>
+                    <li class="translate" data-ar="خدمة صف السيارات المجانية" data-en="Free Valet Service">خدمة صف السيارات المجانية</li>
+                    <li class="translate" data-ar="خدمة صف السيارات للمناسبات" data-en="Event Valet Service">خدمة صف السيارات للمناسبات</li>
+                    <li class="translate" data-ar="اشتراكات صف السيارات للموظفين" data-en="Employee Valet Subscriptions">اشتراكات صف السيارات للموظفين</li>
                 </ul>
             </div>
         </section>
 
         <section id="how-it-works" class="how-it-works">
-            <h2>كيف يعمل <span>أبشر بارك</span> ؟</h2>
-            <p class="subtitle">بسهولة، بسرعة وراحة تامة! اتبع هذه الخطوات البسيطة واستلم سيارتك بدون أي انتظار.</p>
+            <h2 class="translate" data-ar="كيف يعمل <span>أبشر بارك</span> ؟" data-en="How does <span>Absher Park</span> work?">كيف يعمل <span>أبشر بارك</span> ؟</h2>
+            <p class="subtitle translate" data-ar="بسهولة، بسرعة وراحة تامة! اتبع هذه الخطوات البسيطة واستلم سيارتك بدون أي انتظار." data-en="Easily, quickly and with complete comfort! Follow these simple steps and receive your car without any waiting.">بسهولة، بسرعة وراحة تامة! اتبع هذه الخطوات البسيطة واستلم سيارتك بدون أي انتظار.</p>
 
             <div class="steps-container">
                 <!--بطاقه 1 -->
@@ -1108,27 +1175,25 @@ footer {
                     <div class="step">
                         <div class="step-number">1</div>
                         <div class="step-content">
-                            <h3>وصلت؟ سلم سيارتك للموظف</h3>
-                            <p>توقف عند نقطة الاستقبال، وسلم سيارتك للموظف المختص، كل سهولة.</p>
+                            <h3 class="translate" data-ar="وصلت؟ سلم سيارتك للموظف" data-en="Arrived? Hand your car to the employee">وصلت؟ سلم سيارتك للموظف</h3>
+<p class="translate" data-ar="توقف عند نقطة الاستقبال، وسلم سيارتك للموظف المختص، كل سهولة." data-en="Stop at the reception point, and hand your car to the specialist employee, all with ease.">توقف عند نقطة الاستقبال، وسلم سيارتك للموظف المختص، كل سهولة.</p>
                         </div>
                     </div>
                     <div class="step-arrow">
-                        <svg width="307" height="123" viewBox="0 0 307 123" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M353 0.541969L337.543 0.441902C326.878 -2.59557 308.225 11.0018 296.169 11.5359C291.429 11.7362 286.585 11.4357 281.897 10.8683C277.62 10.3343 273.859 11.0352 269.84 11.6694C262.266 12.9044 254.95 14.807 246.912 15.0407C244.491 15.1074 241.863 16.3425 239.802 17.4106C236.196 19.3465 232.022 20.0141 227.643 20.7485C221.717 21.7498 215.277 22.4507 210.228 24.5202C203.787 27.1905 196.832 28.9596 190.082 31.0624C177.459 35.0345 164.629 38.7397 152.161 42.8452C146.751 44.6477 142.01 47.2178 136.961 49.4542C134.179 50.6892 131.345 51.9242 128.563 53.1592C121.865 56.2301 115.424 59.6347 108.366 62.305C99.9157 65.5093 93.9905 70.4159 86.7257 74.4214C82.0371 76.9582 77.6061 79.6953 73.2266 82.4657C68.1257 85.7368 63.2825 89.1748 58.2332 92.4459C56.0692 93.8478 53.6992 95.1496 51.123 96.2845C46.0222 98.5208 42.0549 101.492 35.6144 104.796C44.631 104.496 51.3291 104.095 57.615 102.393C61.5307 101.325 65.4465 100.824 69.6199 101.191C71.7324 101.391 73.6388 101.926 74.3601 103.361C75.0814 104.796 74.0509 105.931 72.4537 106.932C69.929 108.501 67.1983 109.636 63.6947 110.17C51.6898 111.973 39.7878 113.908 27.6798 115.844C26.6493 116.746 25.6704 117.647 24.64 118.515C19.6422 122.72 12.7895 123.488 5.26709 122.754C1.35132 122.387 -0.606567 120.384 0.16629 117.914C0.475433 117.046 0.887604 116.178 1.50589 115.411C5.21558 110.637 5.62778 105.097 9.80118 100.424C10.6255 99.489 10.9347 98.2873 10.9862 97.2192C11.3984 91.3445 13.0987 85.837 19.5906 81.3309C20.5696 80.6299 20.3635 79.2614 20.9302 78.2267C21.497 77.2587 22.3214 76.3574 23.5064 74.822C29.7923 81.5311 24.6914 88.3403 26.907 95.1162C28.8648 94.5821 30.5136 94.3486 31.7502 93.7478C36.3873 91.5114 40.9213 89.1414 45.4554 86.8049C45.9706 86.5379 46.589 86.2376 46.8981 85.8704C52.6172 79.2614 63.0764 75.7566 70.8565 70.4828C74.1025 68.2798 77.8637 66.444 82.3462 65.0087C87.4471 63.4399 91.8781 60.8029 96.103 58.2995C104.759 53.226 113.518 48.2525 124.441 45.2484C125.987 44.8145 127.481 44.1469 128.717 43.4126C137.219 38.4058 147.833 35.7688 157.931 32.5645C167.463 29.527 177.047 26.623 186.681 23.6857C192.813 21.8165 199.768 20.982 204.972 17.8444C219.244 15.9418 231.146 10.1006 245.109 7.73074C259.02 5.39423 272.983 3.15792 287.513 3.45833C292.665 3.55846 297.818 3.59171 302.918 3.65847C307.04 3.72523 311.059 3.99226 314.923 5.16052C317.654 5.99499 320.797 6.29543 323.837 6.69597C330.38 7.59719 335.945 9.80025 341.252 12.2703L353 0.541969Z"
-                                fill="#DFEFC9" />
-                        </svg>
+                        <svg width="307" height="123" viewBox="0 0 307 123" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M353 0.541969L337.543 0.441902C326.878 -2.59557 308.225 11.0018 296.169 11.5359C291.429 11.7362 286.585 11.4357 281.897 10.8683C277.62 10.3343 273.859 11.0352 269.84 11.6694C262.266 12.9044 254.95 14.807 246.912 15.0407C244.491 15.1074 241.863 16.3425 239.802 17.4106C236.196 19.3465 232.022 20.0141 227.643 20.7485C221.717 21.7498 215.277 22.4507 210.228 24.5202C203.787 27.1905 196.832 28.9596 190.082 31.0624C177.459 35.0345 164.629 38.7397 152.161 42.8452C146.751 44.6477 142.01 47.2178 136.961 49.4542C134.179 50.6892 131.345 51.9242 128.563 53.1592C121.865 56.2301 115.424 59.6347 108.366 62.305C99.9157 65.5093 93.9905 70.4159 86.7257 74.4214C82.0371 76.9582 77.6061 79.6953 73.2266 82.4657C68.1257 85.7368 63.2825 89.1748 58.2332 92.4459C56.0692 93.8478 53.6992 95.1496 51.123 96.2845C46.0222 98.5208 42.0549 101.492 35.6144 104.796C44.631 104.496 51.3291 104.095 57.615 102.393C61.5307 101.325 65.4465 100.824 69.6199 101.191C71.7324 101.391 73.6388 101.926 74.3601 103.361C75.0814 104.796 74.0509 105.931 72.4537 106.932C69.929 108.501 67.1983 109.636 63.6947 110.17C51.6898 111.973 39.7878 113.908 27.6798 115.844C26.6493 116.746 25.6704 117.647 24.64 118.515C19.6422 122.72 12.7895 123.488 5.26709 122.754C1.35132 122.387 -0.606567 120.384 0.16629 117.914C0.475433 117.046 0.887604 116.178 1.50589 115.411C5.21558 110.637 5.62778 105.097 9.80118 100.424C10.6255 99.489 10.9347 98.2873 10.9862 97.2192C11.3984 91.3445 13.0987 85.837 19.5906 81.3309C20.5696 80.6299 20.3635 79.2614 20.9302 78.2267C21.497 77.2587 22.3214 76.3574 23.5064 74.822C29.7923 81.5311 24.6914 88.3403 26.907 95.1162C28.8648 94.5821 30.5136 94.3486 31.7502 93.7478C36.3873 91.5114 40.9213 89.1414 45.4554 86.8049C45.9706 86.5379 46.589 86.2376 46.8981 85.8704C52.6172 79.2614 63.0764 75.7566 70.8565 70.4828C74.1025 68.2798 77.8637 66.444 82.3462 65.0087C87.4471 63.4399 91.8781 60.8029 96.103 58.2995C104.759 53.226 113.518 48.2525 124.441 45.2484C125.987 44.8145 127.481 44.1469 128.717 43.4126C137.219 38.4058 147.833 35.7688 157.931 32.5645C167.463 29.527 177.047 26.623 186.681 23.6857C192.813 21.8165 199.768 20.982 204.972 17.8444C219.244 15.9418 231.146 10.1006 245.109 7.73074C259.02 5.39423 272.983 3.15792 287.513 3.45833C292.665 3.55846 297.818 3.59171 302.918 3.65847C307.04 3.72523 311.059 3.99226 314.923 5.16052C317.654 5.99499 320.797 6.29543 323.837 6.69597C330.38 7.59719 335.945 9.80025 341.252 12.2703L353 0.541969Z" fill="#DFEFC9"/>
+                            </svg>
+                            
                     </div>
                 </div>
 
                 <div class="step-tow">
                     <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>إشعار فوري يصلك SMS بتأكيد استلام السيارة</h3>
-                            <p>بعد استلام سيارتك، تأكيد فوري يصلك استلام سيارتك، كن مطمئن تماماً.</p>
-                        </div>
+                       <div class="step-number">2</div>
+<div class="step-content">
+    <h3 class="translate" data-ar="إشعار فوري يصلك SMS بتأكيد استلام السيارة" data-en="Instant SMS notification confirming your car receipt">إشعار فوري يصلك SMS بتأكيد استلام السيارة</h3>
+    <p class="translate" data-ar="بعد استلام سيارتك، تأكيد فوري يصلك استلام سيارتك، كن مطمئن تماماً." data-en="After dropping off your car, you'll receive an instant confirmation, giving you complete peace of mind.">بعد استلام سيارتك، تأكيد فوري يصلك استلام سيارتك، كن مطمئن تماماً.</p>
+</div>
                     </div>
                     <div class="step-arrow">
                         <svg width="300" height="194" viewBox="0 0 300 194" fill="none"
@@ -1144,8 +1209,8 @@ footer {
                     <div class="step">
                         <div class="step-number">3</div>
                         <div class="step-content">
-                            <h3>حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق</h3>
-                            <p>ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها.</p>
+                            <h3 class="translate" data-ar="حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق" data-en="Ready to leave? Request your car via the app">حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق</h3>
+                            <p class="translate" data-ar="ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها." data-en="Simply request your car from the app and it will be ready when you need it.">ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها.</p>
                         </div>
                     </div>
                     <div class="step-arrow">
@@ -1162,8 +1227,8 @@ footer {
                     <div class="step">
                         <div class="step-number">4</div>
                         <div class="step-content">
-                            <h3>حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق</h3>
-                            <p>ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها.</p>
+                            <h3 class="translate" data-ar="حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق" data-en="Ready to leave? Request your car via the app">حان وقت المغادرة؟ اطلب سيارتك عبر التطبيق</h3>
+                            <p class="translate" data-ar="ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها." data-en="Simply request your car from the app and it will be ready when you need it.">ببساطة، قم بطلب سيارتك من التطبيق وستجدها جاهزة وقت ما تحتاجها.</p>
                         </div>
                     </div>
                     <div class="step-arrow">
@@ -1173,49 +1238,45 @@ footer {
         </section>
 
         <section id="faq" class="faq-section">
-            <h2>الأسئلة الشائعة</h2>
+            <h2 class="translate" data-ar="الأسئلة الشائعة" data-en="Frequently Asked Questions">الأسئلة الشائعة</h2>
             <div class="faq-container">
                 <div class="faq-item">
                     <div class="faq-question active">
                         <div class="faq-toggle">-</div>
-                        <div class="faq-question-text">كم يستغرق الوقت لاستلام سيارتي؟</div>
+                        <div class="faq-question-text translate" data-ar="كم يستغرق الوقت لاستلام سيارتي؟" data-en="How long does it take to receive my car?">كم يستغرق الوقت لاستلام سيارتي؟</div>
                         <div class="faq-number">01</div>
                     </div>
-                    <div class="faq-answer active">
-                        في أغلب الأحيان يتم استلام السيارة بشكل فوري بمجرد وصولك، نعتمد الوقت على توافر الموظفين وحجم
-                        الازدحام في الموقف، لكن في كل الأحوال لن تنتظر أكثر من دقائق معدودة.
+                    <div class="faq-answer active translate" data-ar="في أغلب الأحيان يتم استلام السيارة بشكل فوري بمجرد وصولك، نعتمد الوقت على توافر الموظفين وحجم الازدحام في الموقف، لكن في كل الأحوال لن تنتظر أكثر من دقائق معدودة." data-en="In most cases, your car is received immediately upon your arrival. The time depends on staff availability and parking congestion, but in all cases, you won't wait more than a few minutes.">
+                        في أغلب الأحيان يتم استلام السيارة بشكل فوري بمجرد وصولك، نعتمد الوقت على توافر الموظفين وحجم الازدحام في الموقف، لكن في كل الأحوال لن تنتظر أكثر من دقائق معدودة.
                     </div>
                 </div>
-
+        
                 <div class="faq-item">
                     <div class="faq-question">
                         <div class="faq-toggle">+</div>
-                        <div class="faq-question-text">هل يمكنني استخدام الخدمة في جميع المواقع؟</div>
+                        <div class="faq-question-text translate" data-ar="هل يمكنني استخدام الخدمة في جميع المواقع؟" data-en="Can I use the service at all locations?">هل يمكنني استخدام الخدمة في جميع المواقع؟</div>
                         <div class="faq-number">02</div>
                     </div>
-                    <div class="faq-answer">
-                        نعم، يمكنك استخدام خدمات أبشر بارك في جميع المواقع المتاحة. يمكنك الاطلاع على قائمة المواقع
-                        المتاحة من خلال التطبيق أو موقعنا الإلكتروني.
+                    <div class="faq-answer translate" data-ar="نعم، يمكنك استخدام خدمات أبشر بارك في جميع المواقع المتاحة. يمكنك الاطلاع على قائمة المواقع المتاحة من خلال التطبيق أو موقعنا الإلكتروني." data-en="Yes, you can use Absher Park services at all available locations. You can view the list of available locations through the app or our website.">
+                        نعم، يمكنك استخدام خدمات أبشر بارك في جميع المواقع المتاحة. يمكنك الاطلاع على قائمة المواقع المتاحة من خلال التطبيق أو موقعنا الإلكتروني.
                     </div>
                 </div>
-
+        
                 <div class="faq-item">
                     <div class="faq-question">
                         <div class="faq-toggle">+</div>
-                        <div class="faq-question-text">هل توجد أي رسوم إضافية على الخدمة؟</div>
+                        <div class="faq-question-text translate" data-ar="هل توجد أي رسوم إضافية على الخدمة؟" data-en="Are there any additional fees for the service?">هل توجد أي رسوم إضافية على الخدمة؟</div>
                         <div class="faq-number">03</div>
                     </div>
-                    <div class="faq-answer">
-                        لا توجد أي رسوم إضافية على الخدمة الأساسية. الرسوم المحددة هي فقط ما ستدفعه. قد تكون هناك رسوم
-                        إضافية فقط للخدمات الإضافية الاختيارية مثل غسيل السيارة أو الصيانة.
+                    <div class="faq-answer translate" data-ar="لا توجد أي رسوم إضافية على الخدمة الأساسية. الرسوم المحددة هي فقط ما ستدفعه. قد تكون هناك رسوم إضافية فقط للخدمات الإضافية الاختيارية مثل غسيل السيارة أو الصيانة." data-en="There are no additional fees for the basic service. The specified fees are all you'll pay. There may be additional fees only for optional additional services such as car washing or maintenance.">
+                        لا توجد أي رسوم إضافية على الخدمة الأساسية. الرسوم المحددة هي فقط ما ستدفعه. قد تكون هناك رسوم إضافية فقط للخدمات الإضافية الاختيارية مثل غسيل السيارة أو الصيانة.
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="locations" class="locations-section">
-            <h2>المواقع الرئيسية</h2>
-            <div class="locations-map" style="width: 100%; margin-top: 30px;">
+            <h2 class="translate" data-ar="المواقع الرئيسية" data-en="Main Locations">المواقع الرئيسية</h2>            <div class="locations-map" style="width: 100%; margin-top: 30px;">
                 <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7521754.024655684!2d45.20766566118085!3d25.304390022756393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5e48dfb1ab12bd%3A0x33d32f56c0080aa7!2z2KfZhNiu2YTZitisINin2YTYudix2KjZig!5e0!3m2!1sar!2s!4v1711559022086!5m2!1sar!2s&markers=color:green%7Clabel:R%7C24.7136,46.6753&markers=color:red%7Clabel:D%7C25.2048,55.2708" 
                     width="100%" 
@@ -1229,8 +1290,8 @@ footer {
         </section>
 
         <section id="pricing" class="pricing-section">
-            <h2>خطط الأسعار</h2>
-            <div class="pricing-toggle">
+<h2 class="translate" data-ar="خطط الأسعار" data-en="Pricing Plans">خطط الأسعار</h2>         
+   <div class="pricing-toggle">
                 <div class="toggle-container">
                     <div class="toggle-option active">Monthly</div>
                     <div class="toggle-option">Yearly</div>
@@ -1358,76 +1419,130 @@ footer {
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="#" class="footer-link">سياسة الخصوصية والأحكام</a>
-                <a href="#" class="footer-link">الاسترجاع</a>
+                <a href="#" class="footer-link translate" data-ar="سياسة الخصوصية والأحكام" data-en="Privacy Policy & Terms">سياسة الخصوصية والأحكام</a>
+                <a href="#" class="footer-link translate" data-ar="الاسترجاع" data-en="Refund Policy">الاسترجاع</a>
             </div>
             <div class="footer-logo">
-                <img src="prkPro-removebg-preview[1] 2.png" alt="أبشر بارك">
+                <img src="Frame 36783.png" alt="أبشر بارك">
             </div>
         </div>
     </footer>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // تفعيل الأسئلة الشائعة
-            const faqQuestions = document.querySelectorAll('.faq-question');
-
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function () {
-                    this.classList.toggle('active');
-
-                    const answer = this.nextElementSibling;
-                    answer.classList.toggle('active');
-
-                    const toggle = this.querySelector('.faq-toggle');
-                    if (toggle.textContent === '+') {
-                        toggle.textContent = '-';
-                    } else {
-                        toggle.textContent = '+';
-                    }
-                });
-            });
-
-            // تفعيل خيارات التبديل
-            const toggleOptions = document.querySelectorAll('.toggle-option');
-
-            toggleOptions.forEach(option => {
-                option.addEventListener('click', function () {
-                    toggleOptions.forEach(opt => opt.classList.remove('active'));
-
-                    this.classList.add('active');
-                });
-            });
-
-            // تفعيل القائمة المتنقلة للهواتف
-            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-            const nav = document.querySelector('nav');
-
-            mobileMenuToggle.addEventListener('click', function() {
-                nav.classList.toggle('active');
-            });
-
-            // تفعيل التنقل السلس عند النقر على روابط القائمة
-            const navLinks = document.querySelectorAll('nav ul li a');
+      document.addEventListener('DOMContentLoaded', function() {
+    
+    const langToggle = document.getElementById('lang-toggle');
+    
+    
+    function switchLanguage() {
+        const html = document.documentElement;
+        const currentLang = html.getAttribute('lang');
+        
+        if (currentLang === 'ar') {
             
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // إغلاق القائمة المتنقلة إذا كانت مفتوحة
-                    nav.classList.remove('active');
-                    
-                    // الحصول على معرف القسم المستهدف
-                    const targetId = this.getAttribute('href');
-                    
-                    // التمرير إلى القسم المستهدف
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
+            html.setAttribute('lang', 'en');
+            html.setAttribute('dir', 'ltr');
+            langToggle.textContent = langToggle.getAttribute('data-ar');
+        } else {
+            html.setAttribute('lang', 'ar');
+            html.setAttribute('dir', 'rtl');
+            langToggle.textContent = langToggle.getAttribute('data-en'); 
+        }
+        
+        document.querySelectorAll('.translate').forEach(element => {
+            if (html.getAttribute('lang') === 'en') {
+                if (element.getAttribute('data-en')) {
+                    element.innerHTML = element.getAttribute('data-en');
+                }
+            } else {
+                if (element.getAttribute('data-ar')) {
+                    element.innerHTML = element.getAttribute('data-ar');
+                }
+            }
         });
+        
+        const loginTextAr = document.querySelectorAll('.login-text-ar');
+        const loginTextEn = document.querySelectorAll('.login-text-en');
+        
+        if (html.getAttribute('lang') === 'en') {
+            loginTextAr.forEach(el => el.style.display = 'none');
+            loginTextEn.forEach(el => el.style.display = 'inline');
+        } else {
+            loginTextAr.forEach(el => el.style.display = 'inline');
+            loginTextEn.forEach(el => el.style.display = 'none');
+        }
+    }
+    
+    // Add click event to language toggle button
+    if (langToggle) {
+        langToggle.addEventListener('click', switchLanguage);
+    }
+    
+    // FAQ functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function () {
+            this.classList.toggle('active');
+
+            const answer = this.nextElementSibling;
+            answer.classList.toggle('active');
+
+            const toggle = this.querySelector('.faq-toggle');
+            if (toggle.textContent === '+') {
+                toggle.textContent = '-';
+            } else {
+                toggle.textContent = '+';
+            }
+        });
+    });
+
+    // Pricing toggle functionality
+    const toggleOptions = document.querySelectorAll('.toggle-option');
+
+    toggleOptions.forEach(option => {
+        option.addEventListener('click', function () {
+            toggleOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
+    // Mobile menu toggle
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const nav = document.querySelector('nav');
+
+    mobileMenuToggle.addEventListener('click', function() {
+        nav.classList.toggle('active');
+    });
+
+    // Navigation smooth scrolling
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            nav.classList.remove('active');
+            
+            const targetId = this.getAttribute('href');
+            
+            const targetSection = document.querySelector(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+        
     </script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
